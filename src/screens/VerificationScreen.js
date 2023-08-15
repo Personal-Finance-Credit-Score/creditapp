@@ -60,6 +60,7 @@ const VerificationScreen = (props) => {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     display: 'flex',
     backgroundColor: '#64B4A1',
     alignItems: 'center',
@@ -70,11 +71,9 @@ const styles = StyleSheet.create({
     width: 100,
     padding: 10,
     borderColor: 'black',
-    borderWidth: 2,
+    borderWidth: 1,
   },
   numContainer: {
-    borderWidth: 1,
-    borderColor: 'gray',
     width: '75%',
     height: '25%',
     padding: 10,

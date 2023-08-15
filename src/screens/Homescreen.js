@@ -13,7 +13,7 @@ const Homescreen = (props) => {
       <SafeAreaView style={styles.safeareaview}>
           <Text>Your Credit Score</Text>
           <View><Text>Credit Scords From Different Locations</Text></View>
-          <View><Text>Credit Scords From Different Locations</Text></View>
+          <View><Text>Graph</Text></View>
       
         <View style={styles.mainview}>
             <TouchableOpacity 
