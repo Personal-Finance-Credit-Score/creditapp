@@ -37,7 +37,7 @@ const SignupScreen = (props) => {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View style={styles.container}>
-      <Text style={styles.title}>Enter your information</Text>
+      <Text style={styles.title}>Sign Up</Text>
         
         <TextInput
           placeholder="Email"

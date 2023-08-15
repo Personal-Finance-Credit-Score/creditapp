@@ -5,13 +5,13 @@ import React, { useState } from 'react';
 
 const Login = (props) => {
   const navigation = useNavigation();
-  const [name, setName] = useState('');
+  const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
-  const [age, setAge] = useState('');
+
 
   const handleFormSubmit = () => {
     // You can handle the form data here
-    const formData = { name, email, age };
+    const formData = {email, password };
     console.log('Submitted Form:', formData);
 
     // Navigate to the Home screen
@@ -21,18 +21,18 @@ const Login = (props) => {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View style={styles.container}>
-        <Text>Next screen hey!</Text>
+        <Text>Login</Text>
         
-        <TextInput
-          placeholder="Name"
-          value={name}
-          onChangeText={text => setName(text)}
-          style={styles.input}
-        />
         <TextInput
           placeholder="Email"
           value={email}
           onChangeText={text => setEmail(text)}
+          style={styles.input}
+        />
+        <TextInput
+          placeholder="Password"
+          value={password}
+          onChangeText={text => setPassword(text)}
           style={styles.input}
         />
 

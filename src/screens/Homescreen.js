@@ -11,7 +11,9 @@ const Homescreen = (props) => {
   return (
       <View>
       <SafeAreaView style={styles.safeareaview}>
-          <Text>safeareaview</Text>
+          <Text>Your Credit Score</Text>
+          <View><Text>Credit Scords From Different Locations</Text></View>
+          <View><Text>Credit Scords From Different Locations</Text></View>
       
         <View style={styles.mainview}>
             <TouchableOpacity 

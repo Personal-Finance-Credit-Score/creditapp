@@ -6,9 +6,13 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
-import Homescreen from './src/Homescreen';
-import Login from './src/Login';
-import SignUpScreen from './src/SignupScreen';
+import Homescreen from './src/screens/Homescreen';
+import Login from './src/screens/Login';
+import SignUpScreen from './src/screens/SignupScreen';
+import IntakeForm from './src/screens/IntakeForm'
+import ConfirmationScreen from './src/screens/ConfirmationScreen'
+import LoadingScreen from './src/screens/LoadingScreen'
+import VerificationScreen from './src/screens/VerificationScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -37,6 +41,10 @@ function MyTabs() {
       <Tab.Screen name="Homescreen" component={Homescreen} />
       <Tab.Screen name="Login" component={Login} />
       <Tab.Screen name="SignUp" component={SignUpScreen} />
+      <Tab.Screen name="IntakeForm" component={IntakeForm} />
+      <Tab.Screen name="VerificationScreen" component={VerificationScreen} />
+      <Tab.Screen name="ConfirmationScreen" component={ConfirmationScreen} />
+      <Tab.Screen name="LoadingScreen" component={LoadingScreen} />
     </Tab.Navigator>
   );
 }
