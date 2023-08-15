@@ -7,7 +7,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import Homescreen from './src/Homescreen';
-import Nextscreen from './src/Nextscreen';
+import Login from './src/Login';
+import SignUpScreen from './src/SignupScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -34,13 +35,16 @@ function MyTabs() {
   return (
     <Tab.Navigator>
       <Tab.Screen name="Homescreen" component={Homescreen} />
-      <Tab.Screen name="Nextscreen" component={Nextscreen} />
+      <Tab.Screen name="Login" component={Login} />
+      <Tab.Screen name="SignUp" component={SignUpScreen} />
     </Tab.Navigator>
   );
 }
 
+
 function App() {
   return (
+   
     <NavigationContainer>
     {/* <Stack.Navigator>
       <Stack.Screen name="Homescreen" component={Homescreen} />

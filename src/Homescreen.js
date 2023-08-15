@@ -34,14 +34,14 @@ const styles = StyleSheet.create({
   safeareaview: {
     width: "100vw",
     height: '100%',
-    backgroundColor: 'red',
+    backgroundColor: '#64B4A1',
     paddingTop: "100%"
   },
   mainview: {
     flex: 1,
     width: "100vw",
     height: '50%',
-    backgroundColor: 'green',
+    backgroundColor: 'FFFFFF',
   },
   container: {
     display: 'flex',

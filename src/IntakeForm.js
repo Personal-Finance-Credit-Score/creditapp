@@ -3,7 +3,7 @@ import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView, TextInput, Button } from 'react-native';
 import React, { useState } from 'react';
 
-const Signup = (props) => {
+const Login = (props) => {
   const navigation = useNavigation();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -35,13 +35,6 @@ const Signup = (props) => {
           onChangeText={text => setEmail(text)}
           style={styles.input}
         />
-        <TextInput
-          placeholder="Age"
-          value={age}
-          onChangeText={text => setAge(text)}
-          keyboardType="numeric"
-          style={styles.input}
-        />
 
         <Button title="Submit" onPress={handleFormSubmit} />
         <TouchableOpacity onPress={() => navigation.navigate('Homescreen')}>
@@ -55,7 +48,7 @@ const Signup = (props) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#64B4A1',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -68,4 +61,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Nextscreen;
+export default Login;
