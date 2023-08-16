@@ -95,7 +95,7 @@ const CreditReport = (props) => {
             </View>
 
             {/* section 2 */}
-            <TouchableOpacity className="py-5 m-1 w-[350px] px-5 flex-row rounded bg-white" onPress={() => {
+            <TouchableOpacity className="py-5 m-1 w-[350px] px-5 flex-row rounded bg-white justify-between" onPress={() => {
              if(showCC === "flex") {
               setShowCC('hidden')
             } else {
@@ -118,7 +118,7 @@ const CreditReport = (props) => {
             </View>
 
             {/* section 3 */}
-            <TouchableOpacity className="py-5 m-1 w-[350px] rounded bg-white" onPress={() => {
+            <TouchableOpacity className="py-5 m-1 w-[350px] px-5 flex-row justify-between rounded bg-white" onPress={() => {
               if(showHomeLoans === "flex") {
                 setShowHomeLoans('hidden')
               } else {
@@ -129,7 +129,7 @@ const CreditReport = (props) => {
               }
               console.log("pressed!")
             }}>
-                <Text className="text-center text-themeNavyBlue">Home Loans</Text>
+                <Text className="text-themeNavyBlue">Home Loans</Text>
                 <Text className="">\/</Text>
             </TouchableOpacity>
             <View className={`${showHomeLoans} py-8 w-[346px]`}>
@@ -141,7 +141,7 @@ const CreditReport = (props) => {
             </View>
 
             {/* section 4 */}
-            <TouchableOpacity className="py-5 m-1 w-[350px] rounded bg-white" onPress={() => {
+            <TouchableOpacity className="py-5 m-1 w-[350px] px-5 flex-row justify-between rounded bg-white" onPress={() => {
               if(showStudent === "flex") {
                 setShowStudent('hidden')
               } else {
@@ -152,7 +152,7 @@ const CreditReport = (props) => {
               }
               console.log("pressed!")
             }}>
-                <Text className="text-center text-themeNavyBlue">Student Loans</Text>
+                <Text className="text-themeNavyBlue">Student Loans</Text>
                 <Text className="">\/</Text>
             </TouchableOpacity>
             <View className={`${showStudent} py-8 w-[346px]`}>
