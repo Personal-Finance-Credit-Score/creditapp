@@ -1,17 +1,29 @@
 import { View, Text, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import React from 'react';
-
+import React, { useEffect, useState } from 'react';
+import Auth from './Auth';
+import utils from '../../api/users/index';
 
 const Homescreen = (props) => {
+  const [user,setUser]=useState({})
+  const navigation = useNavigation(null);
+useEffect(()=>{
 
-  const navigation = useNavigation();
-
+  (async function(){
+    const userData = await utils.GetUser() 
+    if(userData){setUser(userData)}
+  })()
+},[])
   return (
       <View>
       <SafeAreaView style={styles.safeareaview}>
-          <Text>Your Credit Score</Text>
+        {
+          user===null?
+          <Auth/>
+          :
+          <View>
+            <Text>Your Credit Score</Text>
           <View><Text>Credit Scords From Different Locations</Text></View>
           <View><Text>Graph</Text></View>
       
@@ -20,6 +32,8 @@ const Homescreen = (props) => {
                 onPress={() => navigation.navigate('Nextscreen')}
             ><Text>Click here to go to Credit Cards</Text></TouchableOpacity> 
         </View>
+          </View>
+        }
 
     {/* <Text style={styles.textStyle}>Homescreen yay!</Text> */}
     
