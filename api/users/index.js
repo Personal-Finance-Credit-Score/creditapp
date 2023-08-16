@@ -1,66 +1,72 @@
-import Supabase from '../index'
+// import Supabase from '../index'
 
 
- async function Login(email,password) {
-  let { data, error } = await Supabase.auth.signInWithPassword({
-    email: email,
-    password: password,
-  });
+//  async function Login(email,password) {
+//   let { data, error } = await Supabase.auth.signInWithPassword({
+//     email: email,
+//     password: password,
+//   });
 
-  return "loggedin";
-}
-
-
+//   return "loggedin";
+// }
 
 
- async function SignUp(email,password) {
-let { data, error } = await Supabase.auth.signUp({
-    email: email,
-    password: password,
-  })
 
- }
-// thid party login
 
-// let { data, error } = await Supabase.auth.signInWithOAuth({
-//     provider: 'google'
+//  async function SignUp(email,password) {
+// let { data, error } = await Supabase.auth.signUp({
+//     email: email,
+//     password: password,
 //   })
 
-// getuser
+//  }
+//  async function SignUpPhone(phone) {
+//  let { data, error } = await supabase.auth.signUp({
+//   phone: '+13334445555',
+//   password: 'some-password'
+// })
+//  }
+// // thid party login
 
-async function GetUser() {
-  const {data: { user }} = await Supabase.auth.getUser();
+// // let { data, error } = await Supabase.auth.signInWithOAuth({
+// //     provider: 'google'
+// //   })
 
-  return user
-}
+// // getuser
 
+// async function GetUser() {
+//   const {data: { user }} = await Supabase.auth.getUser();
 
-
-async function signUpMagicLink(email){
-  let { data, error } = await supabase.auth.api.inviteUserByEmail(email)
-  return 'signed up successfully'
-}
-
-
-//recover password
-async function RecoverPassword(){
-  let { data, error } = await Supabase.auth.resetPasswordForEmail(email)
-}
-
-
-//user logout
-
-async function Logout() {
-  let { error } = await Supabase.auth.signOut();
-  return "logged out";
-}
+//   return user
+// }
 
 
-export default{
-    SignUp,
-    Login,
-    GetUser,
-    Logout,
-    RecoverPassword,
-    signUpMagicLink
-}
+
+// async function signUpMagicLink(email){
+//   let { data, error } = await supabase.auth.api.inviteUserByEmail(email)
+//   return 'signed up successfully'
+// }
+
+
+// //recover password
+// async function RecoverPassword(){
+//   let { data, error } = await Supabase.auth.resetPasswordForEmail(email)
+// }
+
+
+// //user logout
+
+// async function Logout() {
+//   let { error } = await Supabase.auth.signOut();
+//   return "logged out";
+// }
+
+
+// export default{
+//     SignUp,
+//     Login,
+//     GetUser,
+//     Logout,
+//     RecoverPassword,
+//     signUpMagicLink
+// }
