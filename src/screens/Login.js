@@ -2,43 +2,46 @@ import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView, TextInput, Button } from 'react-native';
 import React, { useState } from 'react';
-
-const Login = (props) => {
+import utils from '../../api/users/index';
+const Login = ({ creds, setCreds, setIsNew }) => {
   const navigation = useNavigation();
-  const [password, setPassword] = useState('');
-  const [email, setEmail] = useState('');
 
+  function handleChange(e) {
+    e.preventDefault();
+    setCreds({ ...creds, [e.target.name]: e.target.value });
+  }
 
-  const handleFormSubmit = () => {
-    // You can handle the form data here
-    const formData = {email, password };
-    console.log('Submitted Form:', formData);
-
+  function handleFormSubmit() {
+    (async function () {
+      const sendData = await utils.Login(creds.email, creds.password);
+    })();
     // Navigate to the Home screen
     navigation.navigate('Homescreen');
-  };
+  }
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View style={styles.container}>
         <Text>Login</Text>
-        
+
         <TextInput
           placeholder="Email"
           value={email}
-          onChangeText={text => setEmail(text)}
+          onChangeText={(text) => setEmail(text)}
           style={styles.input}
         />
         <TextInput
           placeholder="Password"
           value={password}
-          onChangeText={text => setPassword(text)}
+          onChangeText={(text) => setPassword(text)}
           style={styles.input}
         />
 
-        <Button title="Submit" onPress={handleFormSubmit} />
-        <TouchableOpacity onPress={() => navigation.navigate('Homescreen')}>
-          <Text>Go to Home screen</Text>
+        <TouchableOpacity onPress={handleFormSubmit}>
+          <Text>Submit</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => setIsNew(false)}>
+          <Text>Don't have an account yet, press here</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>

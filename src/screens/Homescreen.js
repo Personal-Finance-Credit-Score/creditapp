@@ -1,16 +1,29 @@
 import { View, Text, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import Auth from './Auth';
+import utils from '../../api/users/index';
 
 const Homescreen = (props) => {
+  const [user,setUser]=useState({})
+  const navigation = useNavigation(null);
+useEffect(()=>{
 
-  const navigation = useNavigation();
-
+  (async function(){
+    const userData = await utils.GetUser() 
+    if(userData){setUser(userData)}
+  })()
+},[])
   return (
       <View>
       <SafeAreaView style={styles.safeareaview}>
-          <View style={styles.heading}><Text>Your Credit Score</Text></View>
+        {
+          user===null?
+          <Auth/>
+          :
+          <View>
+            <View style={styles.heading}><Text>Your Credit Score</Text></View>
           <TouchableOpacity 
                 onPress={() => navigation.navigate('LoadingScreen')}
                 // Logo link to where?
@@ -40,7 +53,9 @@ const Homescreen = (props) => {
                 onPress={() => navigation.navigate('LoadingScreen')}
             ><Text>Click here for your offers and to loading pg</Text></TouchableOpacity> 
         </View>
-      
+        </View>
+        }
+
     
       
       </SafeAreaView>
