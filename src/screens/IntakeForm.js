@@ -31,7 +31,7 @@ const Login = (props) => {
       <View style={styles.container}>
         <Text>Enter your information</Text>
         <Text>This information will be used to create your account.</Text>
-        <Text>Your information is securely encrypted. We’ll never sell your person info. Your credit won’t be impacted</Text>
+        <Text>Your information is securely encrypted. We’ll never sell your personal info. Your credit won’t be impacted</Text>
 
         <TextInput
           placeholder="First Name"
