@@ -16,22 +16,27 @@ useEffect(()=>{
   })()
 },[])
   return (
-      <View className="bg-themeGreen min-h-screen">
-      <SafeAreaView>
+    <SafeAreaView className="flex-1 bg-themeLightBlue">
+      <View>
         {
           user===null?
           <Auth/>
           :
           <View>
-            <View ><Text className="text-blue-500">Your Credit Score</Text></View>
+            <View ><Text className="text-3xl font-bold text-themeNavyBlue">Your Credit Score</Text></View>
           <TouchableOpacity 
                 onPress={() => navigation.navigate('LoadingScreen')}
-                // Logo link to where?
-            ><Text>Clickable Logo img{'\n'}</Text></TouchableOpacity> 
-          <View className ="">
-            <View ><Text>Equifax{'\n'}</Text></View>
-            <View ><Text>Transunion{'\n'}</Text></View>
-            <View ><Text>some third {'\n'}</Text></View>
+            ><Text className="border-2 border-solid border-black-200 w-24 h-28 px-8 py-9 rounded-full text-black text-lg font-medium leading-relaxed">Transunion{'\n'}</Text></TouchableOpacity> 
+            
+             <TouchableOpacity 
+                onPress={() => navigation.navigate('LoadingScreen')}
+            ><Text className="w-24 h-28 px-8 py-9 rounded-full text-black text-lg font-medium leading-relaxed">Equifax{'\n'}</Text></TouchableOpacity> 
+             
+             <TouchableOpacity 
+                onPress={() => navigation.navigate('LoadingScreen')}
+            ><Text className="w-24 h-28 px-8 py-9 rounded-full text-black text-lg font-medium leading-relaxed">Experian{'\n'}</Text></TouchableOpacity> 
+            
+          <View className="bg-themeLightBlue">
           </View>  
           <Text>{'\n'}</Text>
             <View><Text>Next check in x days{'\n'}</Text></View>
@@ -58,9 +63,9 @@ useEffect(()=>{
 
     
       
+      </View>
       </SafeAreaView>
       
-      </View>
    
 
   );
