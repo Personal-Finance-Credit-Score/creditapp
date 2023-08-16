@@ -12,7 +12,8 @@ import SignUpScreen from './src/screens/SignupScreen';
 import IntakeForm from './src/screens/IntakeForm'
 import ConfirmationScreen from './src/screens/ConfirmationScreen'
 import LoadingScreen from './src/screens/LoadingScreen'
-import VerificationScreen from './src/screens/VerificationScreen';
+import VerificationScreen from './src/screens/VerificationScreen'
+
 
 const Stack = createNativeStackNavigator();
 
