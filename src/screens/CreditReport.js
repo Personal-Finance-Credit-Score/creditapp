@@ -15,6 +15,7 @@ const CreditReport = (props) => {
 
   }, [showCC])
 
+
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <ScrollView>
@@ -22,10 +23,10 @@ const CreditReport = (props) => {
         {/* there should be a nav bar for this page */}
 
       {/* container for the page */}
-      <View style={styles.container}>
+      <View className="flex flex-1 min-h-screen bg-testBgGreen align-center text-center pt-30">
 
-        <Text style={styles.loremEpsum}>Lorem Epsum</Text>
-        <Text style={styles.creditNum}>754</Text>
+        <Text className="text-2xl" style={styles.loremEpsum}>Lorem Epsum</Text>
+        <Text className="text-4xl" style={styles.creditNum}>754</Text>
         <Text>Calculated using VantageScore 3.9</Text>
         <Text>Provided by TransUnion</Text>
 
@@ -105,65 +106,65 @@ const CreditReport = (props) => {
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    display: 'flex',
-    flex: 1,
-    height: 1200,
-    backgroundColor: '#64B4A1',
-    alignItems: 'center',
-    textAlign: 'center',
-    paddingTop: 110,
-  },
-  creditNum: {
-    fontSize: 50,
-  },
-  loremEpsum: {
-    fontSize: 20,
-  },
-  dropDown: {
-    marginTop: 5,
-    marginBottom: 15,
-    width: 300,
-    height: 40,
-    borderWidth: 1,
-    borderColor: '#323778',
-  },
-  dateText: {
-    marginTop: 20,
-  },
-  divider: {
-    margin: 10,
-    height: 1,
-    width: 300,
-    backgroundColor: 'black',
-  },
-  debtViewer: {
-    paddingTop: 20,
-    paddingBottom: 20,
-    width: 400,
-    borderWidth: 2,
-    borderColor: "gray",
-    backgroundColor: 'white',
-  }, 
-  debtText: {
-    textAlign: 'center',
-  },
-  debtShow: {
-    display: 'flex',
-    paddingTop: 20,
-    paddingBottom: 20,
-    width: 396,
-    backgroundColor: '#D9D9D9'
-  },
-  textDebtShow: {
-    display: "flex", 
-    justifyContent: 'space-between', 
-    flexDirection: "row",
-    marginLeft: 20,
-    marginRight: 20,
-  }
+// const styles = StyleSheet.create({
+//   container: {
+//     display: 'flex',
+//     flex: 1,
+//     height: 1200,
+//     backgroundColor: '#64B4A1',
+//     alignItems: 'center',
+//     textAlign: 'center',
+//     paddingTop: 110,
+//   },
+//   creditNum: {
+//     fontSize: 50,
+//   },
+//   loremEpsum: {
+//     fontSize: 20,
+//   },
+//   dropDown: {
+//     marginTop: 5,
+//     marginBottom: 15,
+//     width: 300,
+//     height: 40,
+//     borderWidth: 1,
+//     borderColor: '#323778',
+//   },
+//   dateText: {
+//     marginTop: 20,
+//   },
+//   divider: {
+//     margin: 10,
+//     height: 1,
+//     width: 300,
+//     backgroundColor: 'black',
+//   },
+//   debtViewer: {
+//     paddingTop: 20,
+//     paddingBottom: 20,
+//     width: 400,
+//     borderWidth: 2,
+//     borderColor: "gray",
+//     backgroundColor: 'white',
+//   }, 
+//   debtText: {
+//     textAlign: 'center',
+//   },
+//   debtShow: {
+//     display: 'flex',
+//     paddingTop: 20,
+//     paddingBottom: 20,
+//     width: 396,
+//     backgroundColor: '#D9D9D9'
+//   },
+//   textDebtShow: {
+//     display: "flex", 
+//     justifyContent: 'space-between', 
+//     flexDirection: "row",
+//     marginLeft: 20,
+//     marginRight: 20,
+//   }
 
-});
+// });
 
 export default CreditReport;

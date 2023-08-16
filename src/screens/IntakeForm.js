@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView, TextInput, Button } from 'react-native';
 import React, { useState } from 'react';
@@ -27,8 +27,8 @@ const Login = (props) => {
   };
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <View style={styles.container}>
+    <SafeAreaView>
+      <View >
         <Text>Enter your information</Text>
         <Text>This information will be used to create your account.</Text>
         <Text>Your information is securely encrypted. We’ll never sell your personal info. Your credit won’t be impacted</Text>
@@ -37,55 +37,55 @@ const Login = (props) => {
           placeholder="First Name"
           value={firstName}
           onChangeText={text => setFirstName(text)}
-          style={styles.input}
+          
         />
         <TextInput
           placeholder="Last Name"
           value={lastName}
           onChangeText={text => setLastName(text)}
-          style={styles.input}
+          
         />
         <TextInput
           placeholder="Date of Birth"
           value={dob}
           onChangeText={text => setDob(text)}
-          style={styles.input}
+          
         />
         <TextInput
           placeholder="Street"
           value={street}
           onChangeText={text => setStreet(text)}
-          style={styles.input}
+          
         />
         <TextInput
           placeholder="City"
           value={city}
           onChangeText={text => setCity(text)}
-          style={styles.input}
+          
         />
         <TextInput
           placeholder="State"
           value={state}
           onChangeText={text => setState(text)}
-          style={styles.input}
+          
         />
         <TextInput
           placeholder="Zip"
           value={zip}
           onChangeText={text => setZip(text)}
-          style={styles.input}
+          
         />
         <TextInput
           placeholder="Last 4 of SSN"
           value={ssn}
           onChangeText={text => setSsn(text)}
-          style={styles.input}
+          
         />
       <TextInput  
           placeholder="Phone"
           value={phone}
           onChangeText={text => setPhone(text)}
-          style={styles.input}
+          
         />
         
         <Button title="Submit" onPress={handleFormSubmit} />
@@ -94,20 +94,20 @@ const Login = (props) => {
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#64B4A1',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  input: {
-    borderWidth: 1,
-    borderColor: 'gray',
-    width: '80%',
-    padding: 10,
-    marginVertical: 10,
-  },
-});
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     backgroundColor: '#64B4A1',
+//     alignItems: 'center',
+//     justifyContent: 'center',
+//   },
+//   input: {
+//     borderWidth: 1,
+//     borderColor: 'gray',
+//     width: '80%',
+//     padding: 10,
+//     marginVertical: 10,
+//   },
+// });
 
 export default Login;
