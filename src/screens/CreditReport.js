@@ -18,6 +18,9 @@ const CreditReport = (props) => {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <ScrollView>
+
+        {/* there should be a nav bar for this page */}
+
       {/* container for the page */}
       <View style={styles.container}>
 
@@ -34,10 +37,10 @@ const CreditReport = (props) => {
         <Text style={{ fontWeight: "bold", fontSize: 15 }}>Personal Information</Text>
         <View style={styles.divider}></View>
         <Text>Names Reported</Text>
-        <Text style={{ color: '#00000050'}}>Lorem Epsum</Text>
-        <Text>Employment Info</Text>
-        <Text>Addresses Reported</Text>
-        <Text style={{ fontWeight: 'bold'}}>Accounts</Text>
+        <Text style={{ color: '#00000050', paddingTop: 8, paddingBottom: 25}}>Lorem Epsum</Text>
+        <Text style={{ paddingBottom: 80 }}>Employment Info</Text>
+        <Text style={{ paddingBottom: 80 }}>Addresses Reported</Text>
+        <Text style={{ fontWeight: 'bold', paddingBottom: 20}}>Accounts</Text>
 
         <View>
             {/* section 1 */}
@@ -49,9 +52,11 @@ const CreditReport = (props) => {
                 <Text style={styles.debtText}>Auto Loans</Text>
             </TouchableOpacity>
             <View style={styles.debtShow}>
-                <Text>Tesla Motors Credit</Text>
-                <Text>$3,000.00</Text>
-                <Text>Reported: August 14, 2023</Text>
+                <View style={styles.textDebtShow}>
+                    <Text>Tesla Motors Credit</Text>
+                    <Text>$3,000.00</Text>    
+                </View>
+                <Text style={{marginLeft: 20}}>Reported: August 14, 2023</Text>
             </View>
 
             {/* section 2 */}
@@ -61,17 +66,19 @@ const CreditReport = (props) => {
             }}>
                 <Text style={styles.debtText}>Credit Cards</Text>
             </TouchableOpacity>
-            <View style={styles.textDebtShow}>
+            <View style={styles.debtShow}>
+                <View style={styles.textDebtShow}>
                     <Text>Tesla Motors Credit</Text>
                     <Text>$3,000.00</Text>    
                 </View>
                 <Text style={{marginLeft: 20}}>Reported: August 14, 2023</Text>
+            </View>
 
             {/* section 3 */}
             <TouchableOpacity style={styles.debtViewer}>
                 <Text style={styles.debtText}>Home Loans</Text>
             </TouchableOpacity>
-            <View >
+            <View style={styles.debtShow}>
                 <View style={styles.textDebtShow}>
                     <Text>Tesla Motors Credit</Text>
                     <Text>$3,000.00</Text>    
