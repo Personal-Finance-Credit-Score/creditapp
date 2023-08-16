@@ -1,6 +1,9 @@
-import { View, Text, TouchableOpacity, StyleSheet, SafeAreaView, TextInput, Button, ScrollView } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, SafeAreaView, TextInput, Image, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import React, { useState, useEffect } from 'react';
+import Avatar from '../../assets/Avatar.png'
+import ArrowLeft from '../../assets/arrowleft.png'
+import DownArrow from '../../assets/downarrow.png'
 
 const CreditReport = (props) => {
   const navigation = useNavigation();
@@ -14,24 +17,20 @@ const CreditReport = (props) => {
   return (
     <SafeAreaView className="flex-1 bg-themeLightBlue">
 
-        {/* there should be a nav bar for this page */}
         {/* Navbar, should be outside of scroll view so it stays at top of page on scroll */}
         <View className="h-1/8 pt-10 mb-1">
-        <View className="flex-row mt-6 mb-2 justify-between ml-4 ">
+        <View className="flex-row mt-6 mb-5 justify-between ml-4 ">
           <TouchableOpacity
-            className="mt-2 border w-10"
+            className="mt-2"
             onPress={() => navigation.goBack()}
             accessible={true}
             accessibilityLabel="Back"
             accessibilityHint="Navigates to the previous screen"
             >
-            
+            <Image className="" source={ArrowLeft}/>
             {/* <Icon name="arrowleft" size={30} color="#000" className="" /> */}
           </TouchableOpacity>
-          <Text
-            className={`text-xl text-themeBlue font-bold mt-2 mr-4`}>
-            AvatarImg
-          </Text>
+          <Image className="mr-4" source={Avatar}/>
         </View>
         <View className="shadow shadow-black ">
           
@@ -84,7 +83,7 @@ const CreditReport = (props) => {
                   console.log("pressed!")
                 }}>
                 <Text className="">Auto Loans</Text>
-                <Text className="">\/</Text>
+                <Image source={DownArrow}/>
             </TouchableOpacity>
             <View className={`${showAuto} py-8 w-[346px]`}>
                 <View className="flex justify-between flex-row mx-7">
@@ -95,7 +94,7 @@ const CreditReport = (props) => {
             </View>
 
             {/* section 2 */}
-            <TouchableOpacity className="py-5 m-1 w-[350px] px-5 flex-row rounded bg-white" onPress={() => {
+            <TouchableOpacity className="py-5 m-1 w-[350px] px-5 flex-row rounded bg-white justify-between" onPress={() => {
              if(showCC === "flex") {
               setShowCC('hidden')
             } else {
@@ -107,7 +106,7 @@ const CreditReport = (props) => {
             console.log("pressed!")
             }}>
                 <Text className="text-themeNavyBlue">Credit Cards</Text>
-                <Text className="">\/</Text>
+                <Image source={DownArrow}/>
             </TouchableOpacity>
             <View className={`${showCC} py-8 w-[346px]`}>
                 <View className="flex justify-between flex-row mx-7">
@@ -118,7 +117,7 @@ const CreditReport = (props) => {
             </View>
 
             {/* section 3 */}
-            <TouchableOpacity className="py-5 m-1 w-[350px] rounded bg-white" onPress={() => {
+            <TouchableOpacity className="py-5 m-1 w-[350px] px-5 flex-row justify-between rounded bg-white" onPress={() => {
               if(showHomeLoans === "flex") {
                 setShowHomeLoans('hidden')
               } else {
@@ -129,8 +128,8 @@ const CreditReport = (props) => {
               }
               console.log("pressed!")
             }}>
-                <Text className="text-center text-themeNavyBlue">Home Loans</Text>
-                <Text className="">\/</Text>
+                <Text className="text-themeNavyBlue">Home Loans</Text>
+                <Image source={DownArrow}/>
             </TouchableOpacity>
             <View className={`${showHomeLoans} py-8 w-[346px]`}>
                 <View className="flex justify-between flex-row mx-7">
@@ -141,7 +140,7 @@ const CreditReport = (props) => {
             </View>
 
             {/* section 4 */}
-            <TouchableOpacity className="py-5 m-1 w-[350px] rounded bg-white" onPress={() => {
+            <TouchableOpacity className="py-5 m-1 w-[350px] px-5 flex-row justify-between rounded bg-white" onPress={() => {
               if(showStudent === "flex") {
                 setShowStudent('hidden')
               } else {
@@ -152,8 +151,8 @@ const CreditReport = (props) => {
               }
               console.log("pressed!")
             }}>
-                <Text className="text-center text-themeNavyBlue">Student Loans</Text>
-                <Text className="">\/</Text>
+                <Text className="text-themeNavyBlue">Student Loans</Text>
+                <Image source={DownArrow}/>
             </TouchableOpacity>
             <View className={`${showStudent} py-8 w-[346px]`}>
                 <View className="flex justify-between flex-row mx-7">
