@@ -61,16 +61,17 @@ const VerificationScreen = (props) => {
 const styles = StyleSheet.create({
   container: {
     display: 'flex',
+    flex: 1,
     backgroundColor: '#64B4A1',
     alignItems: 'center',
     textAlign: 'center',
     justifyContent: 'center',
   },
   inputBox: {
-    width: 100,
-    padding: 10,
-    borderColor: 'black',
-    borderWidth: 2,
+    width: 150,
+    padding: 5,
+    borderColor: 'gray',
+    borderWidth: 1,
   },
   numContainer: {
     borderWidth: 1,
