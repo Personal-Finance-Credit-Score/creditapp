@@ -14,6 +14,7 @@ import ConfirmationScreen from './src/screens/ConfirmationScreen'
 import LoadingScreen from './src/screens/LoadingScreen'
 import VerificationScreen from './src/screens/VerificationScreen'
 import CreditReport from './src/screens/CreditReport';
+import ComingSoonScreen from './src/screens/ComingSoonScreen'
 
 
 
@@ -49,6 +50,7 @@ function MyTabs() {
       <Tab.Screen name="ConfirmationScreen" component={ConfirmationScreen} options={{tabBarLabel:"Confirm"}} />
       <Tab.Screen name="LoadingScreen" component={LoadingScreen} options={{tabBarLabel:"Load"}} />
       <Tab.Screen name="CreditReport" component={CreditReport} options={{tabBarLabel:"CR"}} />
+      <Tab.Screen name="ComingSoonScreen" component={ComingSoonScreen} options={{tabBarLabel:"Soon"}} />
     </Tab.Navigator>
   );
 }
