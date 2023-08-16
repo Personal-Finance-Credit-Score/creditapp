@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView, TextInput, Button } from 'react-native';
 import React, { useState } from 'react';
@@ -14,12 +14,13 @@ const Login = (props) => {
   const [zip, setZip] = useState('');
   const [phone, setPhone] = useState('');
   const [ssn, setSsn] = useState('');
+  const [income, setIncome] = useState('');
 
 
 
   const handleFormSubmit = () => {
     // You can handle the form data here
-    const formData = { firstName, lastName, dob, street, city, state, zip, phone, ssn };
+    const formData = { firstName, lastName, dob, street, city, state, zip, phone, ssn , income};
     console.log('Submitted Form:', formData);
 
     // Navigate to the Home screen
@@ -27,87 +28,103 @@ const Login = (props) => {
   };
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <View style={styles.container}>
-        <Text>Enter your information</Text>
-        <Text>This information will be used to create your account.</Text>
-        <Text>Your information is securely encrypted. We’ll never sell your personal info. Your credit won’t be impacted</Text>
-
+    <SafeAreaView>
+      <View className="pt-10 flex flex-1 mx-auto min-w-screen min-h-screen items-right text-center pt-30">
+        <Text className="text-3xl font-bold">Enter your information</Text>
+        <Text className="text-2xl font-semibold">This information will be used to create your account.</Text>
+        <Text className="text-lg font-bold">Your information is securely encrypted.</Text>
+        <Text className="text-lg font-bold">We’ll never sell your personal info.</Text>
+        <Text className="text-lg font-bold">Your credit won’t be impacted</Text>
+        <Text className="text-lg font-medium">First Name</Text>
         <TextInput
+          className="relative rounded-sm border border-gray-300 bg-white w-80 h-10 indent-2.5"
           placeholder="First Name"
           value={firstName}
           onChangeText={text => setFirstName(text)}
-          style={styles.input}
         />
+        <Text className="text-lg font-medium">Last Name</Text>
         <TextInput
+        className="relative rounded-sm border border-gray-300 bg-white w-80 h-10"
           placeholder="Last Name"
           value={lastName}
           onChangeText={text => setLastName(text)}
-          style={styles.input}
         />
+        <Text className="text-lg font-medium">Date Of Birth</Text>
         <TextInput
+        className="relative rounded-sm border border-gray-300 bg-white w-80 h-10"
           placeholder="Date of Birth"
           value={dob}
           onChangeText={text => setDob(text)}
-          style={styles.input}
         />
+        <Text className="text-lg font-medium">Current Address</Text>
         <TextInput
+        className="relative rounded-sm border border-gray-300 bg-white w-80 h-10"
           placeholder="Street"
           value={street}
           onChangeText={text => setStreet(text)}
-          style={styles.input}
         />
         <TextInput
+        className="relative rounded-sm border border-gray-300 bg-white w-80 h-10"
           placeholder="City"
           value={city}
           onChangeText={text => setCity(text)}
-          style={styles.input}
         />
+        <View className="flex flex-row space-x-4">
         <TextInput
+        className="relative rounded-sm border border-gray-300 bg-white w-40 h-10"
           placeholder="State"
           value={state}
           onChangeText={text => setState(text)}
-          style={styles.input}
         />
         <TextInput
+        className="relative rounded-sm border border-gray-300 bg-white w-36 h-10"
           placeholder="Zip"
           value={zip}
           onChangeText={text => setZip(text)}
-          style={styles.input}
         />
+        </View>
+        <Text className="text-lg font-medium">Phone</Text>
         <TextInput
-          placeholder="Last 4 of SSN"
-          value={ssn}
-          onChangeText={text => setSsn(text)}
-          style={styles.input}
-        />
-      <TextInput  
+        className="relative rounded-sm border border-gray-300 bg-white w-80 h-10"
           placeholder="Phone"
           value={phone}
           onChangeText={text => setPhone(text)}
-          style={styles.input}
         />
-        
+        <Text className="text-lg font-medium">Social Security Number (SSN)</Text>
+        <TextInput
+        className="relative rounded-sm border border-gray-300 bg-white w-80 h-10"
+          placeholder="Last 4 of SSN"
+          value={ssn}
+          onChangeText={text => setSsn(text)}
+        />
+        <Text className="text-lg font-medium">Income</Text>
+        <TextInput
+        className="relative rounded-sm border border-gray-300 bg-white w-80 h-10"
+          placeholder="Income"
+          value={income}
+          onChangeText={text => setIncome(text)}
+        />
+
         <Button title="Submit" onPress={handleFormSubmit} />
       </View>
     </SafeAreaView>
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#64B4A1',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  input: {
-    borderWidth: 1,
-    borderColor: 'gray',
-    width: '80%',
-    padding: 10,
-    marginVertical: 10,
-  },
-});
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     backgroundColor: '#64B4A1',
+//     alignItems: 'center',
+//     justifyContent: 'center',
+//   },
+//   input: {
+//     borderWidth: 1,
+//     borderColor: 'gray',
+//     width: '80%',
+//     padding: 10,
+//     marginVertical: 10,
+//   },
+// });
 
 export default Login;

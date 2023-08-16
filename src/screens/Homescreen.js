@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
@@ -16,7 +16,7 @@ useEffect(()=>{
   })()
 },[])
   return (
-      <View className="bg-green-500 min-h-screen">
+      <View className="bg-themeGreen min-h-screen">
       <SafeAreaView>
         {
           user===null?
