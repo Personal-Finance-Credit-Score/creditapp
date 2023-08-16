@@ -16,7 +16,7 @@ useEffect(()=>{
   })()
 },[])
   return (
-      <View className="bg-green-500 min-h-screen">
+      <View className="bg-themeGreen min-h-screen">
       <SafeAreaView>
         {
           user===null?

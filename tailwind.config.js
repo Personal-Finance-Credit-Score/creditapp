@@ -4,7 +4,12 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        testBgGreen: '#64B4A1'
+        themeWhite: '#FFFFFF',
+        themeGray: '#F5F5F5',
+        themeGreen: '#64B4A1',
+        themeLightBlue: '#D2E5E0',
+        themeBlue: '#323778',
+        themeNavyBlue: '#303464',
       },
     },
   },
