@@ -18,17 +18,17 @@ const VerificationScreen = (props) => {
   }
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView>
 
       {/* container for the page */}
-      <View style={styles.container}>
+      <View >
 
         {/* container for the top half of the screen */}
         <View>
           <Text>Verification</Text>
 
           {/* placeholder for image */}
-          <View style={styles.numContainer}></View>
+          <View ></View>
           <Text>Verification code</Text>
           <Text>A verification code has been sent to your mobile number</Text>
         </View>
@@ -37,19 +37,19 @@ const VerificationScreen = (props) => {
         <View>
     
           <TextInput
-            style={styles.inputBox}
+            
             placeholder=""
             value={verifyCode}
             onChangeText={text => setVerifyCode(text)}
           />
 
-          <TouchableOpacity style={styles.sendAgainBtn} onPress={() => {
+          <TouchableOpacity  onPress={() => {
               handleSendAgain
               
           }}>
             <Text>Send Again</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.submitBtn} onPress={handleFormSubmit}>
+          <TouchableOpacity onPress={handleFormSubmit}>
             <Text>Submit</Text>
           </TouchableOpacity>
         </View>
@@ -58,41 +58,41 @@ const VerificationScreen = (props) => {
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    display: 'flex',
-    flex: 1,
-    backgroundColor: '#64B4A1',
-    alignItems: 'center',
-    textAlign: 'center',
-    justifyContent: 'center',
-  },
-  inputBox: {
-    width: 150,
-    padding: 5,
-    borderColor: 'gray',
-    borderWidth: 1,
-  },
-  numContainer: {
-    borderWidth: 1,
-    borderColor: 'gray',
-    width: '75%',
-    height: '25%',
-    padding: 10,
-    marginVertical: 10,
-  },
-  submitBtn: {
-    width: 100,
-    padding: "5px",
-    backgroundColor: "gray",
-    color: 'white',
-  },
-  sendAgainBtn: {
-    width: "30vw",
-    padding: "5px",
-    backgroundColor: "white",
-    color: 'black',
-  }
-});
+// const styles = StyleSheet.create({
+//   container: {
+//     display: 'flex',
+//     flex: 1,
+//     backgroundColor: '#64B4A1',
+//     alignItems: 'center',
+//     textAlign: 'center',
+//     justifyContent: 'center',
+//   },
+//   inputBox: {
+//     width: 150,
+//     padding: 5,
+//     borderColor: 'gray',
+//     borderWidth: 1,
+//   },
+//   numContainer: {
+//     borderWidth: 1,
+//     borderColor: 'gray',
+//     width: '75%',
+//     height: '25%',
+//     padding: 10,
+//     marginVertical: 10,
+//   },
+//   submitBtn: {
+//     width: 100,
+//     padding: "5px",
+//     backgroundColor: "gray",
+//     color: 'white',
+//   },
+//   sendAgainBtn: {
+//     width: "30vw",
+//     padding: "5px",
+//     backgroundColor: "white",
+//     color: 'black',
+//   }
+// });
 
 export default VerificationScreen;
