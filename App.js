@@ -15,6 +15,7 @@ import LoadingScreen from './src/screens/LoadingScreen'
 import VerificationScreen from './src/screens/VerificationScreen'
 
 
+
 const Stack = createNativeStackNavigator();
 
 // function HomeScreen() {
@@ -39,13 +40,13 @@ const Tab = createMaterialBottomTabNavigator();
 function MyTabs() {
   return (
     <Tab.Navigator>
-      <Tab.Screen name="Homescreen" component={Homescreen} />
+      <Tab.Screen name="Homescreen" title="Home" component={Homescreen} options={{tabBarLabel:"Home"}} />
       <Tab.Screen name="Login" component={Login} />
-      <Tab.Screen name="SignUp" component={SignUpScreen} />
-      <Tab.Screen name="IntakeForm" component={IntakeForm} />
-      <Tab.Screen name="VerificationScreen" component={VerificationScreen} />
-      <Tab.Screen name="ConfirmationScreen" component={ConfirmationScreen} />
-      <Tab.Screen name="LoadingScreen" component={LoadingScreen} />
+      <Tab.Screen name="SignUp" component={SignUpScreen} options={{tabBarLabel:"SignUp"}} />
+      <Tab.Screen name="IntakeForm" component={IntakeForm} options={{tabBarLabel:"Intake"}} />
+      <Tab.Screen name="VerificationScreen" component={VerificationScreen} options={{tabBarLabel:"Verify"}}/>
+      <Tab.Screen name="ConfirmationScreen" component={ConfirmationScreen} options={{tabBarLabel:"Confirm"}} />
+      <Tab.Screen name="LoadingScreen" component={LoadingScreen} options={{tabBarLabel:"Load"}} />
     </Tab.Navigator>
   );
 }

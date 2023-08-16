@@ -3,7 +3,6 @@ import { SafeAreaView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 
-
 const Homescreen = (props) => {
 
   const navigation = useNavigation();
@@ -29,14 +28,19 @@ const Homescreen = (props) => {
           </View>
         <View style={styles.history}><Text>Score History</Text></View>  
         <View style={styles.historyGraph}><Text>SCORE GRAPH</Text></View>  
-
+        <View><Text>NAV WITH ICONS</Text></View>
+        {/* Need help adding icons */}
+        <View style={styles.factors}>
+          <View style={factorItem}><Text>Payment History</Text></View>
+          <View style={factorItem}><Text>Credit Utilization</Text></View>
+          <View style={factorItem}><Text>Derogatory Marks</Text></View>   
+        </View>
         <View style={styles.mainview}>
             <TouchableOpacity 
                 onPress={() => navigation.navigate('LoadingScreen')}
             ><Text>Click here for your offers and to loading pg</Text></TouchableOpacity> 
         </View>
-
-    {/* <Text style={styles.textStyle}>Homescreen yay!</Text> */}
+      
     
       
       </SafeAreaView>
@@ -76,8 +80,12 @@ const styles = StyleSheet.create({
   },
   heading: {
     padding: 10,
+    width: '100%',
+    height: 60,
+    alignItems: 'center',
     alignSelf: 'center',
-    backgroundColor: 'red',
+    fontSize: 50,
+    backgroundColor: '#323778',
   },
   carousel: { //cycle through reports?
     display: 'flex',
@@ -100,18 +108,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#B8B8B8',
     height: 40,
-    borderWidth: 4,
-    borderColor: '#323778',
   },
   history: {
     padding: 10,
   },
   historyGraph: {
-    borderWidth: 5,
     height: 200,
+    backgroundColor: '#B8B8B8'
   },
 
 });
-
 
 export default Homescreen;
