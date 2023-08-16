@@ -6,64 +6,64 @@ import Auth from './Auth';
 import utils from '../../api/users/index';
 
 const Homescreen = (props) => {
-//   const [user,setUser]=useState({})
-//   const navigation = useNavigation(null);
-// useEffect(()=>{
+  const [user,setUser]=useState({})
+  const navigation = useNavigation(null);
+useEffect(()=>{
 
-//   (async function(){
-//     const userData = await utils.GetUser() 
-//     if(userData){setUser(userData)}
-//   })()
-// },[])
-//   return (
-//       <View>
-//       <SafeAreaView style={styles.safeareaview}>
-//         {
-//           user===null?
-//           <Auth/>
-//           :
-//           <View>
-//             <View style={styles.heading}><Text>Your Credit Score</Text></View>
-//           <TouchableOpacity 
-//                 onPress={() => navigation.navigate('LoadingScreen')}
-//                 // Logo link to where?
-//             ><Text>Clickable Logo img{'\n'}</Text></TouchableOpacity> 
-//           <View style={styles.carousel}>
-//             <View style={styles.report}><Text>Equifax{'\n'}</Text></View>
-//             <View style={styles.report}><Text>Transunion{'\n'}</Text></View>
-//             <View style={styles.report}><Text>some third {'\n'}</Text></View>
-//           </View>  
-//           <Text>{'\n'}</Text>
-//             <View><Text>Next check in x days{'\n'}</Text></View>
-//           <View style={styles.row}>
-//             <View><Text>Your Debt:</Text></View>
-//             <View><Text>Credit Utilization:</Text></View>
-//           </View>
-//         <View style={styles.history}><Text>Score History</Text></View>  
-//         <View style={styles.historyGraph}><Text>SCORE GRAPH</Text></View>  
-//         <View><Text>NAV WITH ICONS</Text></View>
-//         {/* Need help adding icons */}
-//         <View style={styles.factors}>
-//           <View style={factorItem}><Text>Payment History</Text></View>
-//           <View style={factorItem}><Text>Credit Utilization</Text></View>
-//           <View style={factorItem}><Text>Derogatory Marks</Text></View>   
-//         </View>
-//         <View style={styles.mainview}>
-//             <TouchableOpacity 
-//                 onPress={() => navigation.navigate('LoadingScreen')}
-//             ><Text>Click here for your offers and to loading pg</Text></TouchableOpacity> 
-//         </View>
-//         </View>
-//         }
+  (async function(){
+    const userData = await utils.GetUser() 
+    if(userData){setUser(userData)}
+  })()
+},[])
+  return (
+      <View className="bg-green-500 min-h-screen">
+      <SafeAreaView>
+        {
+          user===null?
+          <Auth/>
+          :
+          <View>
+            <View ><Text className="text-blue-500">Your Credit Score</Text></View>
+          <TouchableOpacity 
+                onPress={() => navigation.navigate('LoadingScreen')}
+                // Logo link to where?
+            ><Text>Clickable Logo img{'\n'}</Text></TouchableOpacity> 
+          <View className ="">
+            <View ><Text>Equifax{'\n'}</Text></View>
+            <View ><Text>Transunion{'\n'}</Text></View>
+            <View ><Text>some third {'\n'}</Text></View>
+          </View>  
+          <Text>{'\n'}</Text>
+            <View><Text>Next check in x days{'\n'}</Text></View>
+          <View >
+            <View><Text>Your Debt:</Text></View>
+            <View><Text>Credit Utilization:</Text></View>
+          </View>
+        <View ><Text>Score History</Text></View>  
+        <View ><Text>SCORE GRAPH</Text></View>  
+        <View><Text>NAV WITH ICONS</Text></View>
+        {/* Need help adding icons */}
+        <View >
+          <View ><Text>Payment History</Text></View>
+          <View ><Text>Credit Utilization</Text></View>
+          <View ><Text>Derogatory Marks</Text></View>   
+        </View>
+        <View >
+            <TouchableOpacity 
+                onPress={() => navigation.navigate('LoadingScreen')}
+            ><Text>Click here for your offers and to loading pg</Text></TouchableOpacity> 
+        </View>
+        </View>
+        }
 
     
       
-//       </SafeAreaView>
+      </SafeAreaView>
       
-//       </View>
+      </View>
    
 
-//   );
+  );
 };
 
 // const styles = StyleSheet.create({
