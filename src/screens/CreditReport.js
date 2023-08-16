@@ -11,22 +11,15 @@ const CreditReport = (props) => {
   const [showStudent, setShowStudent] = useState("hidden")
 
 
-  useEffect(() => {
-
-  }, [showCC])
-
-
-
-
   return (
     <SafeAreaView className="flex-1 bg-themeLightBlue">
 
         {/* there should be a nav bar for this page */}
         {/* Navbar, should be outside of scroll view so it stays at top of page on scroll */}
-        <View className="h-1/8 mb-1 bg-themeLightBlue">
-        <View className="flex-row mt-6 mb-2 bg-themeLightBlue">
+        <View className="h-1/8 pt-10 mb-1">
+        <View className="flex-row mt-6 mb-2 justify-between ml-4 ">
           <TouchableOpacity
-            className="mt-2 ml-4"
+            className="mt-2 border w-10"
             onPress={() => navigation.goBack()}
             accessible={true}
             accessibilityLabel="Back"
@@ -36,8 +29,8 @@ const CreditReport = (props) => {
             {/* <Icon name="arrowleft" size={30} color="#000" className="" /> */}
           </TouchableOpacity>
           <Text
-            className={`text-3xl  text-themeBlue font-bold mx-auto mt-2 pr-12`}>
-            Hellooo
+            className={`text-xl text-themeBlue font-bold mt-2 mr-4`}>
+            AvatarImg
           </Text>
         </View>
         <View className="shadow shadow-black ">
@@ -50,35 +43,35 @@ const CreditReport = (props) => {
       
 
       {/* container for the page */}
-      <View className="flex flex-1 min-w-screen min-h-screen bg-testBgGreen items-center text-center pt-30">
+      <View className="flex flex-1 mb-16 min-w-screen min-h-screen bg-testBgGreen items-center text-center pt-30">
 
-        <Text className="text-3xl text-themeNavyBlue">Credit Report</Text>
+        <Text className="text-3xl font-bold text-themeNavyBlue">Credit Report</Text>
         <Text className="text-2xl text-themeNavyBlue">Lorem Epsum</Text>
-        <Text className="text-4xl text-themeNavyBlue">754</Text>
+        <Text className="text-5xl font-medium pt-2 text-themeNavyBlue">754</Text>
         <Text className="text-themeNavyBlue">Calculated using VantageScore 3.9</Text>
         <Text className="text-themeNavyBlue" >Provided by TransUnion</Text>
 
-        <Text className="mt-20 text-themeNavyBlue">Choose a date</Text>
+        <Text className="mt-5 text-themeNavyBlue">Choose a date</Text>
         
         {/* will replace with maybe drop down picker 
         https://www.npmjs.com/package/@react-native-picker/picker */}
-        <View className="mt-5 mb-15 w-[300px] h-[40px] border border-black"><Text>This is placeholder for now</Text></View>
-        <Text className="font-bold text-xl">Personal Information</Text>
+        <View className="mt-5 mb-15 w-[300px] h-[40px] border border-themeBlue"><Text>This is placeholder for now</Text></View>
+        <Text className="text-themeBlue font-bold mt-5">Personal Information</Text>
 
-        <View className="m-10 w-[300px] border border-themeNavyBlue"></View>
-        <Text className="text-themeNavyBlue">Names Reported</Text>
+        <View className="m-3 w-[300px] border border-themeBlue bg-themeBlue"></View>
+        <Text className="text-themeBlue">Names Reported</Text>
 
         {/* Might need this instead of gray text color    color: '#00000050' */}
-        <Text className="text-gray-500 pt-8 pb-25">Lorem Epsum</Text>
-        <Text className="pb-42 text-themeNavyBlue">Employment Info</Text>
-        <Text className="pb-42 text-themeNavyBlue">Addresses Reported</Text>
-        <Text className="font-bold pb-20 text-themeNavyBlue">Accounts</Text>
-        <View className="m-10 w-[300px] border border-themeNavyBlue"></View>
+        <Text className="text-gray-500 pt-2 pb-5">Lorem Epsum</Text>
+        <Text className="pb-20 text-themeNavyBlue">Employment Info</Text>
+        <Text className="pb-20 text-themeNavyBlue">Addresses Reported</Text>
+        <Text className="font-bold text-themeNavyBlue">Accounts</Text>
+        <View className="m-3 w-[300px] border border-themeNavyBlue bg-themeNavyBlue"></View>
 
-        <View>
+        <View className="items-center">
             {/* section 1 */}
             <TouchableOpacity 
-                className="py-5 m-3 w-[400px] border border-2 border-gray-500 bg-white"
+                className="py-5 m-1 w-[350px] rounded px-5 flex-row bg-white justify-between"
                 onPress={()=> {
                   if(showAuto === "flex") {
                     setShowAuto('hidden')
@@ -90,18 +83,19 @@ const CreditReport = (props) => {
                   }
                   console.log("pressed!")
                 }}>
-                <Text className="text-center">Auto Loans</Text>
+                <Text className="">Auto Loans</Text>
+                <Text className="">\/</Text>
             </TouchableOpacity>
-            <View className={`${showAuto} pt-20 pb-20 w-[396px] bg-gray-300`}>
-                <View className="flex justify-between flex-row mx-20">
+            <View className={`${showAuto} py-8 w-[346px]`}>
+                <View className="flex justify-between flex-row mx-7">
                     <Text className="text-themeNavyBlue" >Tesla Motors Credit</Text>
                     <Text className="text-themeNavyBlue">$3,000.00</Text>    
                 </View>
-                <Text className='ml-20 text-themeNavyBlue' style={{marginLeft: 20}}>Reported: August 14, 2023</Text>
+                <Text className='ml-7 text-themeNavyBlue'>Reported: August 14, 2023</Text>
             </View>
 
             {/* section 2 */}
-            <TouchableOpacity className={`py-5 m-3 w-[400px] border border-2 border-gray-500 bg-white`} onPress={() => {
+            <TouchableOpacity className="py-5 m-1 w-[350px] px-5 flex-row rounded bg-white justify-between" onPress={() => {
              if(showCC === "flex") {
               setShowCC('hidden')
             } else {
@@ -112,18 +106,19 @@ const CreditReport = (props) => {
             }
             console.log("pressed!")
             }}>
-                <Text className="text-center text-themeNavyBlue">Credit Cards</Text>
+                <Text className="text-themeNavyBlue">Credit Cards</Text>
+                <Text className="">\/</Text>
             </TouchableOpacity>
-            <View className={`${showCC} pt-20 pb-20 w-[396px] bg-gray-300 `}>
-                <View className="flex justify-between flex-row mx-20">
+            <View className={`${showCC} py-8 w-[346px]`}>
+                <View className="flex justify-between flex-row mx-7">
                     <Text className="text-themeNavyBlue">Tesla Motors Credit</Text>
                     <Text className="text-themeNavyBlue">$3,000.00</Text>    
                 </View>
-                <Text className='ml-20 text-themeNavyBlue'>Reported: August 14, 2023</Text>
+                <Text className='ml-7 text-themeNavyBlue'>Reported: August 14, 2023</Text>
             </View>
 
             {/* section 3 */}
-            <TouchableOpacity className="py-5 m-3 w-[400px] border border-2 border-gray-500 bg-white" onPress={() => {
+            <TouchableOpacity className="py-5 m-1 w-[350px] px-5 flex-row justify-between rounded bg-white" onPress={() => {
               if(showHomeLoans === "flex") {
                 setShowHomeLoans('hidden')
               } else {
@@ -134,18 +129,19 @@ const CreditReport = (props) => {
               }
               console.log("pressed!")
             }}>
-                <Text className="text-center text-themeNavyBlue">Home Loans</Text>
+                <Text className="text-themeNavyBlue">Home Loans</Text>
+                <Text className="">\/</Text>
             </TouchableOpacity>
-            <View className={`${showHomeLoans} pt-20 pb-20 w-[396px] bg-gray-300`}>
-                <View className="flex justify-between flex-row mx-20">
+            <View className={`${showHomeLoans} py-8 w-[346px]`}>
+                <View className="flex justify-between flex-row mx-7">
                     <Text className="text-themeNavyBlue">Tesla Motors Credit</Text>
                     <Text className="text-themeNavyBlue">$3,000.00</Text>    
                 </View>
-                <Text className='ml-20 text-themeNavyBlue'>Reported: August 14, 2023</Text>
+                <Text className='ml-7 text-themeNavyBlue'>Reported: August 14, 2023</Text>
             </View>
 
             {/* section 4 */}
-            <TouchableOpacity className="py-5 m-3 w-[400px] border border-2 border-gray-500 bg-white" onPress={() => {
+            <TouchableOpacity className="py-5 m-1 w-[350px] px-5 flex-row justify-between rounded bg-white" onPress={() => {
               if(showStudent === "flex") {
                 setShowStudent('hidden')
               } else {
@@ -156,14 +152,15 @@ const CreditReport = (props) => {
               }
               console.log("pressed!")
             }}>
-                <Text className="text-center text-themeNavyBlue">Student Loans</Text>
+                <Text className="text-themeNavyBlue">Student Loans</Text>
+                <Text className="">\/</Text>
             </TouchableOpacity>
-            <View className={`${showStudent} pt-20 pb-20 w-[396px] bg-gray-300`}>
-                <View className="flex justify-between flex-row mx-20">
+            <View className={`${showStudent} py-8 w-[346px]`}>
+                <View className="flex justify-between flex-row mx-7">
                     <Text className="text-themeNavyBlue">Tesla Motors Credit</Text>
                     <Text className="text-themeNavyBlue">$3,000.00</Text>    
                 </View>
-                <Text className='ml-20 text-themeNavyBlue'>Reported: August 14, 2023</Text>
+                <Text className='ml-7 text-themeNavyBlue'>Reported: August 14, 2023</Text>
             </View>
             
         </View>
