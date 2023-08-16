@@ -53,7 +53,7 @@ const CreditReport = (props) => {
         <Text className="mt-5 text-themeNavyBlue">Choose a date</Text>
         
         {/* will replace with maybe drop down picker 
-        https://www.npmjs.com/package/@react-native-picker/picker */}
+        https://www.npmjs.com/package/react-native-dropdown-picker */}
         <View className="mt-5 mb-15 w-[300px] h-[40px] border border-themeBlue"><Text>This is placeholder for now</Text></View>
         <Text className="text-themeBlue font-bold mt-5">Personal Information</Text>
 
