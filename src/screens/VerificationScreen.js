@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   submitBtn: {
-    width: "30vw",
+    width: 100,
     padding: "5px",
     backgroundColor: "gray",
     color: 'white',
