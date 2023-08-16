@@ -1,18 +1,26 @@
 import { View, Text, TouchableOpacity, StyleSheet, SafeAreaView, TextInput, Image, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import React, { useState, useEffect } from 'react';
-import Avatar from '../../assets/Avatar.png'
-import ArrowLeft from '../../assets/arrowleft.png'
-import DownArrow from '../../assets/downarrow.png'
+import Avatar from '../../assets/Avatar.png';
+import ArrowLeft from '../../assets/arrowleft.png';
+import DownArrow from '../../assets/downarrow.png';
+import DropDownPicker from 'react-native-dropdown-picker';
 
 const CreditReport = (props) => {
   const navigation = useNavigation();
 
+  // To hide/show elements in the Accounts Section
   const [showAuto, setShowAuto] = useState("hidden")
   const [showCC, setShowCC] = useState("hidden")
   const [showHomeLoans, setShowHomeLoans] = useState("hidden")
   const [showStudent, setShowStudent] = useState("hidden")
 
+  // this sets a value when user selects an option from the Dropdown picker
+  const [value, setValue] = useState(null);
+
+  const onChange = () => {
+    console.log("label: " + label + ", value: " + value)
+  }
 
   return (
     <SafeAreaView className="flex-1 bg-themeLightBlue">
@@ -51,10 +59,33 @@ const CreditReport = (props) => {
         <Text className="text-themeNavyBlue" >Provided by TransUnion</Text>
 
         <Text className="mt-5 text-themeNavyBlue">Choose a date</Text>
+        <View>
+          <DropDownPicker
+            items={[{
+              label: 'August 12, 2023',
+              value: 'August 12, 2023'
+            },
+            {
+              label: 'August 13, 2023',
+              value: 'August 13, 2023'
+            },
+            {
+              label: 'August 14, 2023',
+              value: 'August 14, 2023'
+            },
+          ]}
+            value={value}
+            setValue={setValue}
+            onSelectItem={item => onChange(item.value)}
+            dropDownDirection="TOP"
+            listMode="SCROLLVIEW"
+            placeholder="Select a date"
+          />
+        </View>
         
-        {/* will replace with maybe drop down picker 
-        https://www.npmjs.com/package/react-native-dropdown-picker */}
-        <View className="mt-5 mb-15 w-[300px] h-[40px] border border-themeBlue"><Text>This is placeholder for now</Text></View>
+        {/* drop down picker https://www.npmjs.com/package/react-native-dropdown-picker */}
+        {/* Personal Information Section */}
+        
         <Text className="text-themeBlue font-bold mt-5">Personal Information</Text>
 
         <View className="m-3 w-[300px] border border-themeBlue bg-themeBlue"></View>
@@ -67,6 +98,7 @@ const CreditReport = (props) => {
         <Text className="font-bold text-themeNavyBlue">Accounts</Text>
         <View className="m-3 w-[300px] border border-themeNavyBlue bg-themeNavyBlue"></View>
 
+        {/* Accounts Section */}
         <View className="items-center">
             {/* section 1 */}
             <TouchableOpacity 
@@ -80,7 +112,6 @@ const CreditReport = (props) => {
                     setShowHomeLoans('hidden')
                     setShowStudent('hidden')
                   }
-                  console.log("pressed!")
                 }}>
                 <Text className="">Auto Loans</Text>
                 <Image source={DownArrow}/>
@@ -103,7 +134,6 @@ const CreditReport = (props) => {
               setShowHomeLoans('hidden')
               setShowStudent('hidden')
             }
-            console.log("pressed!")
             }}>
                 <Text className="text-themeNavyBlue">Credit Cards</Text>
                 <Image source={DownArrow}/>
@@ -126,7 +156,6 @@ const CreditReport = (props) => {
                 setShowHomeLoans('flex')
                 setShowStudent('hidden')
               }
-              console.log("pressed!")
             }}>
                 <Text className="text-themeNavyBlue">Home Loans</Text>
                 <Image source={DownArrow}/>
@@ -149,7 +178,6 @@ const CreditReport = (props) => {
                 setShowHomeLoans('hidden')
                 setShowStudent('flex')
               }
-              console.log("pressed!")
             }}>
                 <Text className="text-themeNavyBlue">Student Loans</Text>
                 <Image source={DownArrow}/>
