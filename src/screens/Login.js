@@ -63,7 +63,10 @@ const Login = ({ creds, setCreds, setisOld }) => {
             <TouchableOpacity 
               className="bg-themeNavyBlue py-2 rounded"
               disabled={loading} 
-              onPress={() => signInWithEmail()}>
+              onPress={() => {
+                signInWithEmail();
+                navigation.navigate("VerificationScreen")
+              }}>
               <Text className="text-themeWhite font-medium text-center text-[15px]">Login</Text>
             </TouchableOpacity>
             </View>
