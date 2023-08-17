@@ -61,7 +61,10 @@ const Login = ({ creds, setCreds, setIsNew }) => {
           <View className="w-screen max-w-md px-7 mt-3">
             <TouchableOpacity 
               className="bg-themeNavyBlue py-2 rounded"
-              onPress={handleFormSubmit}>
+              onPress={() => {
+                handleFormSubmit()
+                navigation.navigate("VerificationScreen")
+              }}>
               <Text className="text-themeWhite font-medium text-center text-[15px]">Login</Text>
             </TouchableOpacity>
             </View>
@@ -69,7 +72,10 @@ const Login = ({ creds, setCreds, setIsNew }) => {
           <View className="w-screen max-w-md px-7 mt-3">
             <TouchableOpacity 
               className="py-2 rounded"
-              onPress={() => setIsNew(false)}>
+              onPress={() => {
+                // setIsNew(false)
+                navigation.navigate("SignUp")
+                }}>
               <Text className="text-center font-medium text-[15px]">Sign Up</Text>
             </TouchableOpacity>
           </View>

@@ -1,59 +1,108 @@
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import { SafeAreaView, TextInput, Button } from 'react-native';
-import React, { useState } from 'react';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+  Image,
+  ScrollView,
+} from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { SafeAreaView, TextInput, Button } from "react-native";
+import React, { useState, useRef } from "react";
+import Avatar from "../../assets/Avatar.png";
+import VerifyIcon from "../../assets/tabletpluslockVerify.png";
 
 const VerificationScreen = (props) => {
   const navigation = useNavigation();
+  const ref = useRef();
 
   const [verifyCode, setVerifyCode] = useState(null);
 
-  const handleSendAgain =() => {
-    console.log("send again " + verifyCode)
-  }
+  // for the 6 verification boxes
+  const [numOne, setNumOne] = useState('');
+  const [numTwo, setNumTwo] = useState('');
+
+  const handleSendAgain = () => {
+    console.log("send again " + verifyCode);
+  };
 
   const handleFormSubmit = () => {
-    console.log("submitt " + verifyCode)
-    navigation.navigate('Homescreen')
-  }
+    console.log("submitt " + verifyCode);
+    navigation.navigate("Homescreen");
+  };
 
   return (
-    <SafeAreaView>
-
-      {/* container for the page */}
-      <View >
-
-        {/* container for the top half of the screen */}
-        <View>
-          <Text>Verification</Text>
-
-          {/* placeholder for image */}
-          <View ></View>
-          <Text>Verification code</Text>
-          <Text>A verification code has been sent to your mobile number</Text>
+    <SafeAreaView className="flex-1 min-h-screen min-w-screen bg-themeLightBlue">
+      {/* Navbar without back arrow */}
+      <View className="flex h-1/8 pt-10 mb-1">
+        <View className="mt-6 mb-2 ml-4 ">
+          <Image className="self-end mr-4" source={Avatar} />
         </View>
-
-        {/* container for bottom half of screen */}
-        <View>
-    
-          <TextInput
-            
-            placeholder=""
-            value={verifyCode}
-            onChangeText={text => setVerifyCode(text)}
-          />
-
-          <TouchableOpacity  onPress={() => {
-              handleSendAgain
-              
-          }}>
-            <Text>Send Again</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={handleFormSubmit}>
-            <Text>Submit</Text>
-          </TouchableOpacity>
-        </View>
+        <View className="shadow shadow-black "></View>
       </View>
+
+      <ScrollView>
+        {/* container for the page */}
+        <View className="flex-1 items-center justify-center mt-10">
+          {/* container for the top half of the screen */}
+          <View className="flex-1">
+            <Text className="text-center text-3xl font-bold text-themeNavyBlue">
+              Verify your account
+            </Text>
+
+            {/* placeholder for image */}
+            <View className="items-center">
+              <Image className="my-14" source={VerifyIcon} />
+            </View>
+            <Text className="text-2xl text-themeNavyBlue mx-8">
+              Enter the verification code we sent to your email.
+            </Text>
+
+            <View className="flex-row justify-between mt-12 px-3">
+              <TextInput maxLength={1} className="flex-row border text-3xl w-12 py-2 text-center rounded border-themeNavyBlue" value={numOne} onChangeText={(value) => {
+                setNumOne(value)
+                if(value.lenth === 1) {
+                  ref.current.focus()
+                }
+              }}
+              returnKeyType="next"
+              />
+              <TextInput className="flex-row border text-3xl w-12 py-2 text-center rounded border-themeNavyBlue" 
+              value={numTwo} onChangeText={(value) => {
+                setNumTwo(value)
+                if(value.lenth === 1) {
+                  ref.current.focus()
+                }
+              }}
+              returnKeyType="next"
+              />
+              <TextInput className="flex-row border text-3xl w-12 py-2 text-center rounded border-themeNavyBlue" />
+              <TextInput className="flex-row border text-3xl w-12 py-2 text-center rounded border-themeNavyBlue" />
+              <TextInput className="flex-row border text-3xl w-12 py-2 text-center rounded border-themeNavyBlue" />
+              <TextInput className="flex-row border text-3xl w-12 py-2 text-center rounded border-themeNavyBlue" />
+            </View>
+          </View>
+
+          <Text className="mt-8 text-lg text-themeNavyBlue">
+            Didn't Receive a code?{" "}
+            <Text
+              className="font-bold"
+              onPress={() => console.log("resent code!")}
+            >
+              Resend
+            </Text>
+          </Text>
+
+          <View className="w-screen max-w-md px-9 mt-12">
+            <TouchableOpacity
+              className="bg-themeNavyBlue max-w-md py-3"
+              onPress={handleFormSubmit}
+            >
+              <Text className="text-center text-white font-bold">Verify</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };
