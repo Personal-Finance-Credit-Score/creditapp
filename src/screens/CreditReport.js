@@ -5,10 +5,7 @@ import Avatar from '../../assets/Avatar.png';
 import ArrowLeft from '../../assets/arrowleft.png';
 import DownArrow from '../../assets/downarrow.png';
 import DropDownPicker from 'react-native-dropdown-picker';
-import Avatar from '../../assets/Avatar.png';
-import ArrowLeft from '../../assets/arrowleft.png';
-import DownArrow from '../../assets/downarrow.png';
-import DropDownPicker from 'react-native-dropdown-picker';
+
 
 const CreditReport = (props) => {
   const navigation = useNavigation();
