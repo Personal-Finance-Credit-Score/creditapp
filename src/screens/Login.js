@@ -1,11 +1,17 @@
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView, TextInput, Button } from 'react-native';
 import React, { useState } from 'react';
 import utils from '../../api/users/index';
+import RiseLogo from '../../assets/riseLogo.png'
 
 const Login = ({ creds, setCreds, setIsNew }) => {
   const navigation = useNavigation();
+
+
+  // will delete later when we use functionality
+  const [email, setEmail] = useState(null)
+  const [password, setPassword] = useState(null)
 
   function handleChange(e) {
     e.preventDefault();
@@ -21,29 +27,53 @@ const Login = ({ creds, setCreds, setIsNew }) => {
   }
 
   return (
-    <SafeAreaView>
-      <View >
-        <Text>Login</Text>
+    <SafeAreaView className="flex-1 bg-themeLightBlue justify-center min-h-screen min-w-screen">
+      
+      {/* page container */}
+      <View className="flex items-center">
+        <View className="items-center">
+          <Image className="items-center" source={RiseLogo} />
+        </View>
 
-        <TextInput
-          placeholder="Email"
-          // value={email}
-          // onChangeText={(text) => setEmail(text)}
-          
-        />
-        <TextInput
-          placeholder="Password"
-          // value={password}
-          // onChangeText={(text) => setPassword(text)}
-          
-        />
+        {/* email container */}
+        <View className="w-screen max-w-md px-10 mt-3">
+          <Text className="my-1 ml-1">Email</Text>
+          <TextInput
+            className="px-3 py-1 rounded border border-gray-300 bg-themeWhite"
+            placeholder="Email"
+            value={email}
+            onChangeText={(text) => setEmail(text)}
+          />
+        </View>
 
-        <TouchableOpacity onPress={handleFormSubmit}>
-          <Text>Submit</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => setIsNew(false)}>
-          <Text>Don't have an account yet, press here</Text>
-        </TouchableOpacity>
+        <View className="w-screen max-w-md px-10 mt-3">
+          <Text className="my-1 ml-1">Password</Text>
+          <TextInput
+            className="px-3 py-1 rounded border border-gray-300 bg-themeWhite"
+            placeholder="Password"
+            value={email}
+            onChangeText={(text) => setEmail(text)}
+          />
+        </View>
+
+
+        {/* Login Button */}
+          <View className="w-screen max-w-md px-10 mt-3">
+            <TouchableOpacity 
+              className="bg-themeNavyBlue py-2 rounded"
+              onPress={handleFormSubmit}>
+              <Text className="text-themeWhite font-medium text-center">Login</Text>
+            </TouchableOpacity>
+            </View>
+          {/* Signup Button */}
+          <View className="w-screen max-w-md px-10 mt-3">
+            <TouchableOpacity 
+              className="py-2 rounded"
+              onPress={() => setIsNew(false)}>
+              <Text className="text-center font-medium">Sign Up</Text>
+            </TouchableOpacity>
+          </View>
+        
       </View>
     </SafeAreaView>
   );
