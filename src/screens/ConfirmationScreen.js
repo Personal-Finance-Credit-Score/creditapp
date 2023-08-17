@@ -1,17 +1,20 @@
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView, TextInput, Button } from 'react-native';
 import React, { useState } from 'react';
+import verifySuccess from '../../assets/checklock.png'
 
 const Login = (props) => {
   const navigation = useNavigation();
 
 
   return (
-    <SafeAreaView >
-      <View >
-        <Text>Success!</Text>
-        <Text>Loading to dashboard</Text>
+    <SafeAreaView className="flex-1 min-h-screen min-w-screen justify-center bg-themeLightBlue">
+      
+      {/* page container */}
+      <View className="mx-auto">
+        <Text className="text-5xl text-themeNavyBlue font-black ">Success!</Text>
+        <Image className="items-center" source={verifySuccess} />
       </View>
     </SafeAreaView>
   );
