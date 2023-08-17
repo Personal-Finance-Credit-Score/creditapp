@@ -30,50 +30,61 @@ const Homescreen = (props) => {
 
                 {/* container for credit circles */}
                 <View className='flex-1 flex-row justify-around'>
-
                   <View>
                     <TouchableOpacity className="flex align-middle border-4 border-solid border-themeGreen w-24 h-24 rounded-full"
-                      onPress={() => navigation.navigate('LoadingScreen')}
-                    ><Text className="text-2xl text-center font-medium my-auto">754</Text></TouchableOpacity>
-                    <Text className="text-center text-lg">Transunion</Text>
+                      onPress={() => navigation.navigate('LoadingScreen')}>
+                        <Text className="text-2xl text-center font-medium my-auto">754</Text></TouchableOpacity>
+                        <Text className="text-center text-lg">Transunion</Text>
                   </View>
 
                   <View>
                     <TouchableOpacity className="bg-themeLightBlue border-4 border-solid border-themeGreen w-24 h-24 rounded-full"
-                      onPress={() => navigation.navigate('LoadingScreen')}
-                    ><Text className="text-2xl text-center font-medium my-auto">734</Text></TouchableOpacity>
-                    <Text className="text-center text-lg">Equifax</Text>
-
+                      onPress={() => navigation.navigate('LoadingScreen')}>
+                        <Text className="text-2xl text-center font-medium my-auto">734</Text></TouchableOpacity>
+                        <Text className="text-center text-lg">Equifax</Text>
                   </View>
 
                   <View>
                     <TouchableOpacity className=" border-4 border-solid border-themeGreen w-24 h-24 rounded-full"
-                      onPress={() => navigation.navigate('LoadingScreen')}
-                      ><Text className="text-2xl text-center font-medium my-auto">782</Text></TouchableOpacity>
+                      onPress={() => navigation.navigate('LoadingScreen')}>
+                        <Text className="text-2xl text-center font-medium my-auto">782</Text></TouchableOpacity>
                       <Text className="text-center text-lg">Experian</Text>
                   </View>
                   <View className="bg-themeLightBlue">
                   </View>
                 </View>
-                <Text>{'\n'}</Text>
-                <View><Text>Next check in x days{'\n'}</Text></View>
-                <View >
-                  <View><Text>Your Debt:</Text></View>
-                  <View><Text>Credit Utilization:</Text></View>
+                <Text></Text>
+                <View className="">
+                  <Text className="text-xl text-center my-auto mt-1 mb-3">Next check tomorrow</Text></View>
+                
+                <View className="rounded-t-xl ml-5 mr-5 flex-row justify-between bg-themeGreen h-8">
+                  <View><Text className="text-xl ml-2 p-2 ">Total Debt: </Text></View>
+                  <View><Text className="text-xl mr-2 p-2">Credit Usage: </Text></View>
                 </View>
-                <View ><Text>Score History</Text></View>
-                <View ><Text>SCORE GRAPH</Text></View>
-                <View><Text>NAV WITH ICONS</Text></View>
+
+                <View className="rounded-b-xl ml-5 mr-5 flex-row bg-themeGreen justify-between p-4">  
+                  <View><Text className="text-xl p-2 font-bold">$5,000 </Text></View>
+                  <View><Text className="text-xl p-2 font-bold">21% </Text></View>
+                </View>
+                <View>
+                  <Text className="text-themeNavyBlue text-3xl font-bold ml-5 mt-3">Score History</Text>
+                </View>
+
+                <View className="rounded-xl h-1/4 border-2 border-solid flex-row p-3 justify-around ml-5 mr-5 items-center bg-themeWhite"><Text>graph img</Text></View>
+                <View><Text></Text></View>
                 {/* Need help adding icons */}
                 <View >
-                  <View ><Text>Payment History</Text></View>
-                  <View ><Text>Credit Utilization</Text></View>
-                  <View ><Text>Derogatory Marks</Text></View>
-                </View>
+                  <View className="flex-1 h-12 border-2 border-solid flex-row p-3 justify-around ml-5 mr-5 items-center bg-themeGreen"><Text className="text-themeWhite">Payment History</Text>
+                  <Text className="text-themeWhite">98%</Text></View>
+                  <View className="flex-1 h-12 flex-row border-2 border-solid p-3 justify-around ml-5 mr-5 items-center bg-themeGreen"><Text className="text-themeWhite">Credit Card Use</Text>
+                  <Text className="text-themeWhite">20%</Text></View>
+                  </View>
+                  <View className="flex-1 h-12 flex-row border-2 border-solid p-3 justify-around ml-5 mr-5 items-center bg-themeGreen"><Text className="text-themeWhite">Derogatory Marks</Text>
+                  <Text className="text-themeWhite">0</Text></View>
                 <View >
                   <TouchableOpacity
                     onPress={() => navigation.navigate('LoadingScreen')}
-                  ><Text>Click here for your offers and to loading pg</Text></TouchableOpacity>
+                  ><Text>Click here for your offers</Text></TouchableOpacity>
                 </View>
               </View>
           }
