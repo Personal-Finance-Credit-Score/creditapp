@@ -8,26 +8,36 @@ import {
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { SafeAreaView, TextInput, Button } from "react-native";
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import Avatar from "../../assets/Avatar.png";
 import VerifyIcon from "../../assets/tabletpluslockVerify.png";
 
 const VerificationScreen = (props) => {
   const navigation = useNavigation();
-  const ref = useRef();
 
-  const [verifyCode, setVerifyCode] = useState(null);
+  // initial array
+  const textInputs = Array(6).fill(null);
 
-  // for the 6 verification boxes
-  const [numOne, setNumOne] = useState('');
-  const [numTwo, setNumTwo] = useState('');
+  // can get what user enters as verification code here:
+  const [numbers, setNumbers] = useState(Array(6).fill(''));
 
+  // when user clicks on "resend"
   const handleSendAgain = () => {
-    console.log("send again " + verifyCode);
+    console.log("send again " + numbers);
+  };
+
+  const handleTextInputChange = (text, index) => {
+    const updatedNumbers = [...numbers];
+    updatedNumbers[index] = text;
+    setNumbers(updatedNumbers);
+
+    if (text.length === 1 && index < textInputs.length - 1) {
+      textInputs[index + 1].focus();
+    }
   };
 
   const handleFormSubmit = () => {
-    console.log("submitt " + verifyCode);
+    console.log("submitt " + numbers);
     navigation.navigate("Homescreen");
   };
 
@@ -58,28 +68,19 @@ const VerificationScreen = (props) => {
               Enter the verification code we sent to your email.
             </Text>
 
+            {/* verification code input boxes */}
             <View className="flex-row justify-between mt-12 px-3">
-              <TextInput maxLength={1} className="flex-row border text-3xl w-12 py-2 text-center rounded border-themeNavyBlue" value={numOne} onChangeText={(value) => {
-                setNumOne(value)
-                if(value.lenth === 1) {
-                  ref.current.focus()
-                }
-              }}
-              returnKeyType="next"
-              />
-              <TextInput className="flex-row border text-3xl w-12 py-2 text-center rounded border-themeNavyBlue" 
-              value={numTwo} onChangeText={(value) => {
-                setNumTwo(value)
-                if(value.lenth === 1) {
-                  ref.current.focus()
-                }
-              }}
-              returnKeyType="next"
-              />
-              <TextInput className="flex-row border text-3xl w-12 py-2 text-center rounded border-themeNavyBlue" />
-              <TextInput className="flex-row border text-3xl w-12 py-2 text-center rounded border-themeNavyBlue" />
-              <TextInput className="flex-row border text-3xl w-12 py-2 text-center rounded border-themeNavyBlue" />
-              <TextInput className="flex-row border text-3xl w-12 py-2 text-center rounded border-themeNavyBlue" />
+
+              {textInputs.map((_, index) => (
+                <TextInput
+                  className="flex-row border text-3xl w-12 py-2 text-center rounded border-themeNavyBlue"
+                  keyboardType="numeric"
+                  maxLength={1}
+                  onChangeText={(text) => handleTextInputChange(text, index)}
+                  ref={(input) => (textInputs[index] = input)}
+                />
+              ))}
+
             </View>
           </View>
 
