@@ -15,6 +15,7 @@ import LoadingScreen from './src/screens/LoadingScreen'
 import VerificationScreen from './src/screens/VerificationScreen'
 import CreditReport from './src/screens/CreditReport';
 import ComingSoonScreen from './src/screens/ComingSoonScreen'
+import PaymentHistory from './src/screens/CreditFactors/PaymentHistory';
 
 
 
@@ -47,10 +48,8 @@ function MyTabs() {
       <Tab.Screen name="SignUp" component={SignUpScreen} options={{tabBarLabel:"SignUp"}} />
       <Tab.Screen name="IntakeForm" component={IntakeForm} options={{tabBarLabel:"Intake"}} />
       <Tab.Screen name="VerificationScreen" component={VerificationScreen} options={{tabBarLabel:"Verify"}}/>
-      <Tab.Screen name="ConfirmationScreen" component={ConfirmationScreen} options={{tabBarLabel:"Confirm"}} />
-      <Tab.Screen name="LoadingScreen" component={LoadingScreen} options={{tabBarLabel:"Load"}} />
       <Tab.Screen name="CreditReport" component={CreditReport} options={{tabBarLabel:"CR"}} />
-      <Tab.Screen name="ComingSoonScreen" component={ComingSoonScreen} options={{tabBarLabel:"Soon"}} />
+      <Tab.Screen name="PaymentHistory" component={PaymentHistory} options={{tabBarLabel:"Pay"}} />
     </Tab.Navigator>
   );
 }
