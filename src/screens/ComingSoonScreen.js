@@ -19,7 +19,7 @@ const ComingSoonScreen = (props) => {
       </View>
 
       {/* page container */}
-      <View className="flex-1 items-center justify-center bg-yellow-300">
+      <View className="flex-1 items-center justify-center">
         <Text className="text-themeNavyBlue text-4xl font-bold">Coming Soon!</Text>
       </View>
     </SafeAreaView>
