@@ -20,6 +20,8 @@ import CreditCardUse from './src/screens/CreditFactors/CCUse';
 import DerogatoryMarks from './src/screens/CreditFactors/DerogatoryMarks';
 import CreditAge from './src/screens/CreditFactors/CreditAge';
 import HardInquiries from './src/screens/CreditFactors/HardInquiries';
+import CreditCardOffers from './src/screens/Offers/CreditCardOffers';
+import LoanOffers from "./src/screens/Offers/LoanOffers"
 
 import { supabase } from './lib/supabase'
 import { useState, useEffect } from 'react'
@@ -42,6 +44,9 @@ function MyTabs() {
       <Tab.Screen name="DerogatoryMarks" component={DerogatoryMarks} options={{tabBarLabel:"DM"}} />
       <Tab.Screen name="CreditAge" component={CreditAge} options={{tabBarLabel:"CAge"}} />
       <Tab.Screen name="HardInquiries" component={HardInquiries} options={{tabBarLabel:"HI"}} />
+      <Tab.Screen name="CreditCardOffers" component={CreditCardOffers} options={{tabBarLabel:"OFF"}} />
+      <Tab.Screen name="LoanOffers" component={LoanOffers} options={{tabBarLabel: ''}} />
+
     </Tab.Navigator>
   );
 }
