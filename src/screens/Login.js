@@ -36,20 +36,20 @@ const Login = ({ creds, setCreds, setIsNew }) => {
         </View>
 
         {/* email container */}
-        <View className="w-screen max-w-md px-10 mt-3">
-          <Text className="my-1 ml-1">Email</Text>
+        <View className="w-screen max-w-md px-7 mt-3">
+          <Text className="my-1 ml-1 text-themeNavyBlue text-[17px]">Email</Text>
           <TextInput
-            className="px-3 py-1 rounded border border-gray-300 bg-themeWhite"
+            className="px-3 py-2 rounded border border-gray-300 bg-themeWhite"
             placeholder="Email"
             value={email}
             onChangeText={(text) => setEmail(text)}
           />
         </View>
-
-        <View className="w-screen max-w-md px-10 mt-3">
-          <Text className="my-1 ml-1">Password</Text>
+        {/* password container */}
+        <View className="w-screen max-w-md px-7 mt-3">
+          <Text className="my-1 ml-1 text-themeNavyBlue text-[17px]">Password</Text>
           <TextInput
-            className="px-3 py-1 rounded border border-gray-300 bg-themeWhite"
+            className="px-3 py-2 rounded border border-gray-300 bg-themeWhite"
             placeholder="Password"
             value={email}
             onChangeText={(text) => setEmail(text)}
@@ -58,19 +58,19 @@ const Login = ({ creds, setCreds, setIsNew }) => {
 
 
         {/* Login Button */}
-          <View className="w-screen max-w-md px-10 mt-3">
+          <View className="w-screen max-w-md px-7 mt-3">
             <TouchableOpacity 
               className="bg-themeNavyBlue py-2 rounded"
               onPress={handleFormSubmit}>
-              <Text className="text-themeWhite font-medium text-center">Login</Text>
+              <Text className="text-themeWhite font-medium text-center text-[15px]">Login</Text>
             </TouchableOpacity>
             </View>
           {/* Signup Button */}
-          <View className="w-screen max-w-md px-10 mt-3">
+          <View className="w-screen max-w-md px-7 mt-3">
             <TouchableOpacity 
               className="py-2 rounded"
               onPress={() => setIsNew(false)}>
-              <Text className="text-center font-medium">Sign Up</Text>
+              <Text className="text-center font-medium text-[15px]">Sign Up</Text>
             </TouchableOpacity>
           </View>
         
