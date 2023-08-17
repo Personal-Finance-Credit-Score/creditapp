@@ -22,16 +22,40 @@ const CreditReport = (props) => {
   const [open, setOpen] = useState(false);
   const [items, setItems] = useState([
   {
-    label: 'August 12, 2023',
-    value: 'August 12, 2023'
-  },
-  {
-    label: 'August 13, 2023',
-    value: 'August 13, 2023'
-  },
-  {
     label: 'August 14, 2023',
     value: 'August 14, 2023'
+  },
+  {
+    label: 'July 14, 2023',
+    value: 'July 14, 2023'
+  },
+  {
+    label: 'June 14, 2023',
+    value: 'June 14, 2023'
+  },
+  {
+    label: 'September 14, 2022',
+    value: 'September 14, 2022'
+  },
+  {
+    label: 'March 14, 2022',
+    value: 'March 14, 2022'
+  },
+  {
+    label: 'November 14, 2021',
+    value: 'November 14, 2021'
+  },
+  {
+    label: 'January 14, 2021',
+    value: 'January 14, 2021'
+  },
+  {
+    label: 'July 14, 2019',
+    value: 'July 14, 2019'
+  },
+  {
+    label: 'February 14, 2018',
+    value: 'February 14, 2018'
   },
 ]);
 
@@ -82,7 +106,7 @@ const CreditReport = (props) => {
             setOpen={setOpen}
             setValue={setValue}
             setItems={setItems}
-            dropDownDirection="TOP"
+            dropDownDirection="BOTTOM"
             listMode="SCROLLVIEW"
             placeholder="Select a date"
           />
