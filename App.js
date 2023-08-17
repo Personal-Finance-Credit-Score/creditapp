@@ -16,28 +16,11 @@ import VerificationScreen from './src/screens/VerificationScreen'
 import CreditReport from './src/screens/CreditReport';
 import ComingSoonScreen from './src/screens/ComingSoonScreen'
 import PaymentHistory from './src/screens/CreditFactors/PaymentHistory';
+import { supabase } from './lib/supabase'
+import { useState, useEffect } from 'react'
+import Auth from './src/screens/Auth';
 
 
-
-const Stack = createNativeStackNavigator();
-
-// function HomeScreen() {
-//   return (
-//     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-//       <Text>Home!</Text>
-//     </View>
-//   );
-// }
-
-// function SettingsScreen() {
-//   return (
-//     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-//       <Text>Settings!</Text>
-//     </View>
-//   );
-// }
-
-// const Tab = createBottomTabNavigator();
 const Tab = createMaterialBottomTabNavigator();
 
 function MyTabs() {
@@ -56,14 +39,18 @@ function MyTabs() {
 
 
 function App() {
+  const [session,setSession] = useState(null);
+
+  useEffect(() => {
+    supabase.auth.onAuthStateChange((event, session) => {
+      setSession(session)
+    })
+  }, [])  
   return (
    
     <NavigationContainer>
-    {/* <Stack.Navigator>
-      <Stack.Screen name="Homescreen" component={Homescreen} />
-      <Stack.Screen name="Nextscreen" component={Nextscreen} />
-    </Stack.Navigator> */}
-    <MyTabs />
+      {!session ? <Auth/> : <MyTabs key={session.user.id} session={session} />}
+    {/* <MyTabs /> */}
   </NavigationContainer>
   );
 }
