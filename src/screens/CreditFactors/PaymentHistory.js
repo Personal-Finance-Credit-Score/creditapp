@@ -64,7 +64,7 @@ const PaymentHistory = (props) => {
           <TouchableOpacity
             className="w-20 justify-center"
             onPress={() => {
-              navigation.navigate("PaymentHistory");
+              navigation.navigate("CreditCardUse");
             }}
           >
             <Text className="text-themeWhite text-center">Credit Card Use</Text>
@@ -73,7 +73,7 @@ const PaymentHistory = (props) => {
           <TouchableOpacity
             className="w-20 justify-center"
             onPress={() => {
-              navigation.navigate("PaymentHistory");
+              navigation.navigate("DerogatoryMarks");
             }}
           >
             <Text className="text-themeWhite text-center">Derogatory Marks</Text>
@@ -82,7 +82,7 @@ const PaymentHistory = (props) => {
           <TouchableOpacity
             className="w-20 justify-center"
             onPress={() => {
-              navigation.navigate("PaymentHistory");
+              navigation.navigate("CreditAge");
             }}
           >
             <Text className="text-themeWhite text-center">Total Account & Credit Age</Text>
@@ -91,10 +91,10 @@ const PaymentHistory = (props) => {
           <TouchableOpacity
             className="w-20 justify-center"
             onPress={() => {
-              navigation.navigate("PaymentHistory");
+              navigation.navigate("HardInquiries");
             }}
           >
-            <Text className="text-themeWhite text-center">Hard Inquires</Text>
+            <Text className="text-themeWhite text-center">Hard Inquiries</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>
@@ -103,7 +103,7 @@ const PaymentHistory = (props) => {
 
       <ScrollView>
         {/* container for the page */}
-        <View className="flex flex-1 w-screen px-8 max-w-md bg-testBgGreen pt-30 mb-32">
+        <View className="flex flex-1 w-screen px-8 max-w-md bg-testBgGreen pt-5 mb-32">
           <View className="w-full">
             <Text className="text-3xl text-themeNavyBlue text-left mt-3">
               Payment History

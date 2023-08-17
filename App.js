@@ -9,13 +9,18 @@ import { createMaterialBottomTabNavigator } from '@react-navigation/material-bot
 import Homescreen from './src/screens/Homescreen';
 import Login from './src/screens/Login';
 import SignUpScreen from './src/screens/SignupScreen';
-import IntakeForm from './src/screens/IntakeForm'
-import ConfirmationScreen from './src/screens/ConfirmationScreen'
-import LoadingScreen from './src/screens/LoadingScreen'
-import VerificationScreen from './src/screens/VerificationScreen'
+import IntakeForm from './src/screens/IntakeForm';
+import ConfirmationScreen from './src/screens/ConfirmationScreen';
+import LoadingScreen from './src/screens/LoadingScreen';
+import VerificationScreen from './src/screens/VerificationScreen';
 import CreditReport from './src/screens/CreditReport';
-import ComingSoonScreen from './src/screens/ComingSoonScreen'
+import ComingSoonScreen from './src/screens/ComingSoonScreen';
 import PaymentHistory from './src/screens/CreditFactors/PaymentHistory';
+import CreditCardUse from './src/screens/CreditFactors/CCUse';
+import DerogatoryMarks from './src/screens/CreditFactors/DerogatoryMarks';
+import CreditAge from './src/screens/CreditFactors/CreditAge';
+import HardInquiries from './src/screens/CreditFactors/HardInquiries';
+
 import { supabase } from './lib/supabase'
 import { useState, useEffect } from 'react'
 import Auth from './src/screens/Auth';
@@ -33,6 +38,10 @@ function MyTabs() {
       <Tab.Screen name="VerificationScreen" component={VerificationScreen} options={{tabBarLabel:"Verify"}}/>
       <Tab.Screen name="CreditReport" component={CreditReport} options={{tabBarLabel:"CR"}} />
       <Tab.Screen name="PaymentHistory" component={PaymentHistory} options={{tabBarLabel:"Pay"}} />
+      <Tab.Screen name="CreditCardUse" component={CreditCardUse} options={{tabBarLabel:"CC"}} />
+      <Tab.Screen name="DerogatoryMarks" component={DerogatoryMarks} options={{tabBarLabel:"DM"}} />
+      <Tab.Screen name="CreditAge" component={CreditAge} options={{tabBarLabel:"CAge"}} />
+      <Tab.Screen name="HardInquiries" component={HardInquiries} options={{tabBarLabel:"HI"}} />
     </Tab.Navigator>
   );
 }
@@ -49,8 +58,8 @@ function App() {
   return (
    
     <NavigationContainer>
-      {/* {!session ? <Auth/> : <MyTabs key={session.user.id} session={session} />} */}
-    <MyTabs />
+      {!session ? <Auth/> : <MyTabs key={session.user.id} session={session} />}
+    {/* <MyTabs /> */}
   </NavigationContainer>
   );
 }
