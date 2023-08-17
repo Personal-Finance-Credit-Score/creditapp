@@ -5,10 +5,15 @@ import Avatar from '../../assets/Avatar.png';
 import ArrowLeft from '../../assets/arrowleft.png';
 import DownArrow from '../../assets/downarrow.png';
 import DropDownPicker from 'react-native-dropdown-picker';
+import Avatar from '../../assets/Avatar.png';
+import ArrowLeft from '../../assets/arrowleft.png';
+import DownArrow from '../../assets/downarrow.png';
+import DropDownPicker from 'react-native-dropdown-picker';
 
 const CreditReport = (props) => {
   const navigation = useNavigation();
 
+  // To hide/show elements in the Accounts Section
   // To hide/show elements in the Accounts Section
   const [showAuto, setShowAuto] = useState("hidden")
   const [showCC, setShowCC] = useState("hidden")
@@ -72,7 +77,7 @@ const CreditReport = (props) => {
         <Text className="text-themeNavyBlue" >Provided by TransUnion</Text>
 
         <Text className="mt-5 text-themeNavyBlue">Choose a date</Text>
-        <View className="mx-7">
+        <View className="mt-2 mx-7">
           <DropDownPicker
             items={items}
             value={value}
@@ -101,6 +106,7 @@ const CreditReport = (props) => {
         <Text className="font-bold text-themeNavyBlue">Accounts</Text>
         <View className="m-3 w-[300px] border border-themeNavyBlue bg-themeNavyBlue"></View>
 
+        {/* Accounts Section */}
         {/* Accounts Section */}
         <View className="items-center">
             {/* section 1 */}

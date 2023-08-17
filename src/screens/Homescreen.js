@@ -25,31 +25,33 @@ const Homescreen = (props) => {
               :
               <View>
                 <View>
-                  <Text className="text-3xl font-bold text-themeNavyBlue">Your Credit Score</Text>
+                  <Text className="text-4xl font-bold text-themeNavyBlue mt-24 mb-3 ml-5">Your Credit Score</Text>
                 </View>
 
                 {/* container for credit circles */}
                 <View className='flex-1 flex-row justify-around'>
 
-                  <View className="">
-
+                  <View>
                     <TouchableOpacity className="flex align-middle border-4 border-solid border-themeGreen w-24 h-24 rounded-full"
                       onPress={() => navigation.navigate('LoadingScreen')}
                     ><Text className="text-2xl text-center font-medium my-auto">754</Text></TouchableOpacity>
                     <Text className="text-center text-lg">Transunion</Text>
-                  
                   </View>
 
+                  <View>
+                    <TouchableOpacity className="bg-themeLightBlue border-4 border-solid border-themeGreen w-24 h-24 rounded-full"
+                      onPress={() => navigation.navigate('LoadingScreen')}
+                    ><Text className="text-2xl text-center font-medium my-auto">734</Text></TouchableOpacity>
+                    <Text className="text-center text-lg">Equifax</Text>
 
+                  </View>
 
-                  <TouchableOpacity className="bg-themeLightBlue border-4 border-solid border-themeGreen w-24 h-28 px-8 py-9 rounded-full"
-                    onPress={() => navigation.navigate('LoadingScreen')}
-                  ><Text className="h-rounded-full text-black text-lg font-medium leading-relaxed">Equifax</Text></TouchableOpacity>
-
-                  <TouchableOpacity className="border-4 border-solid border-themeGreen w-24 h-28 px-8 py-9 rounded-full"
-                    onPress={() => navigation.navigate('LoadingScreen')}
-                  ><Text className="text-black text-lg font-medium leading-relaxed">Experian</Text></TouchableOpacity>
-
+                  <View>
+                    <TouchableOpacity className=" border-4 border-solid border-themeGreen w-24 h-24 rounded-full"
+                      onPress={() => navigation.navigate('LoadingScreen')}
+                      ><Text className="text-2xl text-center font-medium my-auto">782</Text></TouchableOpacity>
+                      <Text className="text-center text-lg">Experian</Text>
+                  </View>
                   <View className="bg-themeLightBlue">
                   </View>
                 </View>
