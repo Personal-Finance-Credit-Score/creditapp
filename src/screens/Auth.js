@@ -4,21 +4,18 @@ import { SafeAreaView, TextInput, Button } from 'react-native';
 import React, { useState } from 'react';
 import SignupScreen from './SignupScreen';
 import Login from './Login';
+import { supabase } from '../../lib/supabase'
 
 const Auth = () => {
-  const [isNew,setIsNew]=useState(true)
-  const [creds,setCreds] = useState({
-    email:'',
-    password:''
-  })
+  const [isOld,setisOld]=useState(true)
 
   return (
     <SafeAreaView>
       <View >
-        {isNew?
-        <Login creds={creds} setCreds={setCreds} setIsNew={setIsNew}/>
+        {isOld?
+        <Login setisOld={setisOld}/>
         :
-        <SignupScreen creds={creds} setCreds={setCreds} setIsNew={setIsNew}/>
+        <SignupScreen setisOld={setisOld}/>
 
         }
       </View>

@@ -1,29 +1,27 @@
 import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { SafeAreaView, TextInput, Button } from 'react-native';
+import { SafeAreaView, TextInput, Button, Alert } from 'react-native';
 import React, { useState } from 'react';
 import utils from '../../api/users/index';
 import RiseLogo from '../../assets/riseLogo.png'
+import { supabase } from '../../lib/supabase'
 
-const Login = ({ creds, setCreds, setIsNew }) => {
+const Login = ({ creds, setCreds, setisOld }) => {
   const navigation = useNavigation();
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [loading, setLoading] = useState(false)
 
 
-  // will delete later when we use functionality
-  const [email, setEmail] = useState(null)
-  const [password, setPassword] = useState(null)
+  async function signInWithEmail() {
+    setLoading(true)
+    const { error } = await supabase.auth.signInWithPassword({
+      email: email,
+      password: password,
+    })
 
-  function handleChange(e) {
-    e.preventDefault();
-    setCreds({ ...creds, [e.target.name]: e.target.value });
-  }
-
-  function handleFormSubmit() {
-    (async function () {
-      const sendData = await utils.Login(creds.email, creds.password);
-    })();
-    // Navigate to the Home screen
-    navigation.navigate('Homescreen');
+    if (error) Alert.alert(error.message)
+    setLoading(false)
   }
 
   return (
@@ -43,6 +41,7 @@ const Login = ({ creds, setCreds, setIsNew }) => {
             placeholder="Email"
             value={email}
             onChangeText={(text) => setEmail(text)}
+            autoCapitalize={'none'}
           />
         </View>
         {/* password container */}
@@ -51,8 +50,10 @@ const Login = ({ creds, setCreds, setIsNew }) => {
           <TextInput
             className="px-3 py-2 rounded border border-gray-300 bg-themeWhite"
             placeholder="Password"
-            value={email}
-            onChangeText={(text) => setEmail(text)}
+            value={password}
+            onChangeText={(text) => setPassword(text)}
+            secureTextEntry={true}
+            autoCapitalize={'none'}
           />
         </View>
 
@@ -61,8 +62,9 @@ const Login = ({ creds, setCreds, setIsNew }) => {
           <View className="w-screen max-w-md px-7 mt-3">
             <TouchableOpacity 
               className="bg-themeNavyBlue py-2 rounded"
+              disabled={loading} 
               onPress={() => {
-                handleFormSubmit()
+                signInWithEmail();
                 navigation.navigate("VerificationScreen")
               }}>
               <Text className="text-themeWhite font-medium text-center text-[15px]">Login</Text>
@@ -72,10 +74,7 @@ const Login = ({ creds, setCreds, setIsNew }) => {
           <View className="w-screen max-w-md px-7 mt-3">
             <TouchableOpacity 
               className="py-2 rounded"
-              onPress={() => {
-                // setIsNew(false)
-                navigation.navigate("SignUp")
-                }}>
+              onPress={() => setisOld(false)}>
               <Text className="text-center font-medium text-[15px]">Sign Up</Text>
             </TouchableOpacity>
           </View>
