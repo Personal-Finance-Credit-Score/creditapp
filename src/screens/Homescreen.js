@@ -17,13 +17,13 @@ const Homescreen = (props) => {
   }, [])
   return (
     <SafeAreaView className="flex-1 bg-themeLightBlue">
-      <ScrollView>
         <View>
           {
             user === null ?
               <Auth />
               :
-              <View>
+      <ScrollView>
+              <View className="">
                 <View></View>
                 <View>
                   <Text className="text-4xl font-bold text-themeNavyBlue mt-24 mb-3 ml-5">Your Credit Score</Text>
@@ -96,12 +96,12 @@ const Homescreen = (props) => {
                   ><Text className="text-themeWhite text-center">View Full Credit Report</Text></TouchableOpacity>
                 </View>
               </View>
+          </ScrollView>
           }
 
 
 
         </View>
-      </ScrollView>
     </SafeAreaView>
 
 
