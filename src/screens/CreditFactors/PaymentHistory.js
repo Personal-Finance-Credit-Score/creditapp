@@ -51,7 +51,7 @@ const PaymentHistory = (props) => {
         style={{ android: { scrollbars: "none" } }}
         showsHorizontalScrollIndicator={false}
       >
-        <View className="bg-themeGreen flex-row justify-between p-3 w-[500px] mx-3">
+        <View className="bg-themeGreen flex-row justify-between p-3 w-[500px]">
           <TouchableOpacity
             className="w-20 bg-themeDarkGreen justify-center"
             onPress={() => {

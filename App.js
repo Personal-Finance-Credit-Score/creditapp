@@ -58,8 +58,8 @@ function App() {
   return (
    
     <NavigationContainer>
-      {!session ? <Auth/> : <MyTabs key={session.user.id} session={session} />}
-    {/* <MyTabs /> */}
+      {/* {!session ? <Auth/> : <MyTabs key={session.user.id} session={session} />} */}
+    <MyTabs />
   </NavigationContainer>
   );
 }
