@@ -48,7 +48,7 @@ const SignupScreen = ({ creds, setCreds, setisOld }) => {
       </View>
 
       {/* Page container */}
-      <View >
+      <View className="mb-32">
         <Text className="w-screen max-w-md px-10 text-3xl font-bold text-themeNavyBlue">Create your account</Text>
          {/* email container */}
          <View className="w-screen max-w-md px-7 mt-3">

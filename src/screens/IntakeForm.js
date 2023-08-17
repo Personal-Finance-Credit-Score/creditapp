@@ -49,7 +49,7 @@ const Login = (props) => {
       <ScrollView>
 
         {/* Page container */}
-        <View className="pt-10 flex flex-1 mx-auto min-w-screen min-h-screen items-right text-center pt-30 mb-10">
+        <View className="pt-10 flex flex-1 mx-auto min-w-screen min-h-screen items-right text-center pt-30 mb-32">
           <Text className="text-3xl font-bold text-themeNavyBlue">Enter your information</Text>
           <Text></Text>
           <Text className="text-2xl font-semibold text-themeNavyBlue">
