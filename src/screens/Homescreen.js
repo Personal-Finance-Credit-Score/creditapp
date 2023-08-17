@@ -6,67 +6,83 @@ import Auth from './Auth';
 import utils from '../../api/users/index';
 
 const Homescreen = (props) => {
-  const [user,setUser]=useState({})
+  const [user, setUser] = useState({})
   const navigation = useNavigation(null);
-useEffect(()=>{
+  useEffect(() => {
 
-  (async function(){
-    const userData = await utils.GetUser() 
-    if(userData){setUser(userData)}
-  })()
-},[])
+    (async function () {
+      const userData = await utils.GetUser()
+      if (userData) { setUser(userData) }
+    })()
+  }, [])
   return (
     <SafeAreaView className="flex-1 bg-themeLightBlue">
-      <View>
-        {
-          user===null?
-          <Auth/>
-          :
-          <View>
-            <View ><Text className="text-3xl font-bold text-themeNavyBlue">Your Credit Score</Text></View>
-          <TouchableOpacity 
-                onPress={() => navigation.navigate('LoadingScreen')}
-            ><Text className="border-2 border-solid border-black-200 w-24 h-28 px-8 py-9 rounded-full text-black text-lg font-medium leading-relaxed">Transunion{'\n'}</Text></TouchableOpacity> 
-            
-             <TouchableOpacity 
-                onPress={() => navigation.navigate('LoadingScreen')}
-            ><Text className="w-24 h-28 px-8 py-9 rounded-full text-black text-lg font-medium leading-relaxed">Equifax{'\n'}</Text></TouchableOpacity> 
-             
-             <TouchableOpacity 
-                onPress={() => navigation.navigate('LoadingScreen')}
-            ><Text className="w-24 h-28 px-8 py-9 rounded-full text-black text-lg font-medium leading-relaxed">Experian{'\n'}</Text></TouchableOpacity> 
-            
-          <View className="bg-themeLightBlue">
-          </View>  
-          <Text>{'\n'}</Text>
-            <View><Text>Next check in x days{'\n'}</Text></View>
-          <View >
-            <View><Text>Your Debt:</Text></View>
-            <View><Text>Credit Utilization:</Text></View>
-          </View>
-        <View ><Text>Score History</Text></View>  
-        <View ><Text>SCORE GRAPH</Text></View>  
-        <View><Text>NAV WITH ICONS</Text></View>
-        {/* Need help adding icons */}
-        <View >
-          <View ><Text>Payment History</Text></View>
-          <View ><Text>Credit Utilization</Text></View>
-          <View ><Text>Derogatory Marks</Text></View>   
-        </View>
-        <View >
-            <TouchableOpacity 
-                onPress={() => navigation.navigate('LoadingScreen')}
-            ><Text>Click here for your offers and to loading pg</Text></TouchableOpacity> 
-        </View>
-        </View>
-        }
+      <ScrollView>
+        <View>
+          {
+            user === null ?
+              <Auth />
+              :
+              <View>
+                <View>
+                  <Text className="text-3xl font-bold text-themeNavyBlue">Your Credit Score</Text>
+                </View>
 
-    
-      
-      </View>
-      </SafeAreaView>
-      
-   
+                {/* container for credit circles */}
+                <View className='flex-1 flex-row justify-around'>
+
+                  <View className="">
+
+                    <TouchableOpacity className="flex align-middle border-4 border-solid border-themeGreen w-24 h-24 rounded-full"
+                      onPress={() => navigation.navigate('LoadingScreen')}
+                    ><Text className="text-2xl text-center font-medium my-auto">754</Text></TouchableOpacity>
+                    <Text className="text-center text-lg">Transunion</Text>
+                  
+                  </View>
+
+
+
+                  <TouchableOpacity className="bg-themeLightBlue border-4 border-solid border-themeGreen w-24 h-28 px-8 py-9 rounded-full"
+                    onPress={() => navigation.navigate('LoadingScreen')}
+                  ><Text className="h-rounded-full text-black text-lg font-medium leading-relaxed">Equifax</Text></TouchableOpacity>
+
+                  <TouchableOpacity className="border-4 border-solid border-themeGreen w-24 h-28 px-8 py-9 rounded-full"
+                    onPress={() => navigation.navigate('LoadingScreen')}
+                  ><Text className="text-black text-lg font-medium leading-relaxed">Experian</Text></TouchableOpacity>
+
+                  <View className="bg-themeLightBlue">
+                  </View>
+                </View>
+                <Text>{'\n'}</Text>
+                <View><Text>Next check in x days{'\n'}</Text></View>
+                <View >
+                  <View><Text>Your Debt:</Text></View>
+                  <View><Text>Credit Utilization:</Text></View>
+                </View>
+                <View ><Text>Score History</Text></View>
+                <View ><Text>SCORE GRAPH</Text></View>
+                <View><Text>NAV WITH ICONS</Text></View>
+                {/* Need help adding icons */}
+                <View >
+                  <View ><Text>Payment History</Text></View>
+                  <View ><Text>Credit Utilization</Text></View>
+                  <View ><Text>Derogatory Marks</Text></View>
+                </View>
+                <View >
+                  <TouchableOpacity
+                    onPress={() => navigation.navigate('LoadingScreen')}
+                  ><Text>Click here for your offers and to loading pg</Text></TouchableOpacity>
+                </View>
+              </View>
+          }
+
+
+
+        </View>
+      </ScrollView>
+    </SafeAreaView>
+
+
 
   );
 };

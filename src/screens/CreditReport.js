@@ -15,12 +15,25 @@ const CreditReport = (props) => {
   const [showHomeLoans, setShowHomeLoans] = useState("hidden")
   const [showStudent, setShowStudent] = useState("hidden")
 
-  // this sets a value when user selects an option from the Dropdown picker
+  // For Dropdown Picker
   const [value, setValue] = useState(null);
+  const [open, setOpen] = useState(false);
+  const [items, setItems] = useState([
+  {
+    label: 'August 12, 2023',
+    value: 'August 12, 2023'
+  },
+  {
+    label: 'August 13, 2023',
+    value: 'August 13, 2023'
+  },
+  {
+    label: 'August 14, 2023',
+    value: 'August 14, 2023'
+  },
+]);
 
-  const onChange = () => {
-    console.log("label: " + label + ", value: " + value)
-  }
+
 
   return (
     <SafeAreaView className="flex-1 bg-themeLightBlue">
@@ -59,24 +72,14 @@ const CreditReport = (props) => {
         <Text className="text-themeNavyBlue" >Provided by TransUnion</Text>
 
         <Text className="mt-5 text-themeNavyBlue">Choose a date</Text>
-        <View>
+        <View className="mx-7">
           <DropDownPicker
-            items={[{
-              label: 'August 12, 2023',
-              value: 'August 12, 2023'
-            },
-            {
-              label: 'August 13, 2023',
-              value: 'August 13, 2023'
-            },
-            {
-              label: 'August 14, 2023',
-              value: 'August 14, 2023'
-            },
-          ]}
+            items={items}
             value={value}
+            open={open}
+            setOpen={setOpen}
             setValue={setValue}
-            onSelectItem={item => onChange(item.value)}
+            setItems={setItems}
             dropDownDirection="TOP"
             listMode="SCROLLVIEW"
             placeholder="Select a date"

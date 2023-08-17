@@ -3,6 +3,7 @@ import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView, TextInput, Button } from 'react-native';
 import React, { useState } from 'react';
 import utils from '../../api/users/index';
+import ArrowLeft from '../../assets/arrowleft.png'
 
 const SignupScreen = ({ creds, setCreds, setIsNew }) => {
   const navigation = useNavigation();
@@ -21,7 +22,26 @@ const SignupScreen = ({ creds, setCreds, setIsNew }) => {
   }
 
   return (
-    <SafeAreaView >
+    <SafeAreaView className="" >
+      {/* Navbar */}
+      <View className="h-1/8 pt-10 mb-1">
+        <View className="flex-row mt-6 mb-5 justify-between ml-4 ">
+          <TouchableOpacity
+            className="mt-2"
+            onPress={() => navigation.goBack()}
+            accessible={true}
+            accessibilityLabel="Back"
+            accessibilityHint="Navigates to the previous screen"
+            >
+            <Image className="" source={ArrowLeft}/>
+            {/* <Icon name="arrowleft" size={30} color="#000" className="" /> */}
+          </TouchableOpacity>
+          <Image className="mr-4" source={Avatar}/>
+        </View>
+        <View className="shadow shadow-black ">
+          
+        </View>
+      </View>
       <View >
         <Text >Sign Up</Text>
 
