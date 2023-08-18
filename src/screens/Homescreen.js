@@ -11,7 +11,6 @@ import { supabase } from '../../lib/supabase'
 
 const Homescreen = (props) => {
   const { session } = props
-  const [user, setUser] = useState({})
   const navigation = useNavigation(null);
 
   console.log(`This is within Homescreen ${session.user.id}`)

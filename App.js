@@ -38,7 +38,7 @@ function MyTabs({session}) {
       <Tab.Screen
         name="Homescreen"
         title="Home"
-        component={Homescreen}
+        component={() => <Homescreen session={session} />}
         options={{
           tabBarLabel: "Credit",
 
