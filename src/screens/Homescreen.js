@@ -10,6 +10,7 @@ import { LineChart } from "react-native-chart-kit";
 
 const Homescreen = (props) => {
   const navigation = useNavigation(null);
+
  
   return (
         <SafeAreaView className="flex-1 min-h-screen min-w-screen bg-themeLightBlue">
@@ -105,45 +106,48 @@ const Homescreen = (props) => {
                {/* ------------------- LINE GRAPH ------------------- */}
               <View className="rounded-xl border-2 border-solid flex-row p-3 justify-around ml-5 mr-5 items-center bg-themeWhite">
                 <View>
-                  <Text>Bezier Line Chart</Text>
+                  <View className="flex-row pb-2">
+                    <Text className="px-2">3 month</Text>
+                    <Text className="px-2">6 month</Text>
+                    <Text className="px-2">1 year</Text>
+                  </View>
                   <LineChart
                     data={{
-                      labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+                      labels: ["Mar", "Apr", "May", "Jun", "Jul", "Aug"],
+                      yAxisLabel: "asdf",
                       datasets: [
                         {
                           data: [
-                            Math.random() * 100,
-                            Math.random() * 100,
-                            Math.random() * 100,
-                            Math.random() * 100,
-                            Math.random() * 100,
-                            Math.random() * 100
+                            600,
+                            850,
+                            700,
+                            740,
+                            810
+
                           ]
                         }
                       ]
                     }}
                     width={350} // from react-native
                     height={220}
-                    yAxisLabel="$"
-                    yAxisSuffix="k"
+                    withInnerLines={false}
                     yAxisInterval={1} // optional, defaults to 1
                     chartConfig={{
-                      backgroundColor: `rgba(255, 255, 255)`,
-                      decimalPlaces: 2, // optional, defaults to 2dp
-                      color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-                      labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+                      backgroundColor: '#FFFFFF',
+                      backgroundGradientFrom: "#FFFFFF",
+                      backgroundGradientTo: "#FFFFFF",
+                      decimalPlaces: 0, // optional, defaults to 2dp
+                      
+                      color: (opacity = 1) => '#2B816B',
+                      labelColor: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
                       style: {
                         borderRadius: 16
                       },
                       propsForDots: {
                         r: "6",
                         strokeWidth: "2",
-                        stroke: "#ffa726"
+                        stroke: "#2B816B"
                       }
-                    }}
-                    style={{
-                      marginVertical: 8,
-                      borderRadius: 16
                     }}
                   />
                 </View>
@@ -160,12 +164,12 @@ const Homescreen = (props) => {
                 </Text>
               </View>
               <View>
-                <View className="rounded-xl flex-1 h-12 flex-row p-3 justify-around ml-5 mr-5 mb-2 items-center bg-themeGreen">
+                <TouchableOpacity className="rounded-xl flex-1 h-12 flex-row p-3 justify-around ml-5 mr-5 mb-2 items-center bg-themeGreen" onPress={()=> {navigation.navigate("PaymentHistory")}}>
                   <Text className="text-themeWhite font-bold">
                     Payment History
                   </Text>
                   <Text className="text-themeWhite font-bold">98%</Text>
-                </View>
+                </TouchableOpacity>
                 <View className="rounded-xl flex-1 h-12 flex-row p-3 justify-around ml-5 mr-5 mb-2 items-center bg-themeGreen">
                   <Text className="text-themeWhite font-bold">
                     Credit Card Use
