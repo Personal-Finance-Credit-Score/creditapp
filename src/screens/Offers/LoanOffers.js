@@ -14,7 +14,7 @@ import {
   import ArrowLeft from "../../../assets/arrowleft.png";
   import Logo from "../../../assets/riseLogo.png";
   
-  const CreditCardOffers = (props) => {
+  const LoanOffers = (props) => {
     const navigation = useNavigation();
     return (
       <SafeAreaView className="flex-1 min-w-screen min-h-screen bg-themeLightBlue">
@@ -50,7 +50,7 @@ import {
                 <TouchableOpacity
                   className="w-1/2 h-[50px] justify-center rounded-t-xl bg-themeGreen from-current"
                   onPress={() => {
-                    navigation.navigate("LoanOffers");
+                    navigation.navigate("CreditCardOffers");
                   }}
                 >
                   <Text className="text-themeWhite text-center p-1">Credit</Text>
@@ -165,5 +165,5 @@ import {
     );
   };
   
-  export default CreditCardOffers;
+  export default LoanOffers;
   

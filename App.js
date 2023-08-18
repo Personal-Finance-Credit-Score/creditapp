@@ -79,6 +79,23 @@ import Auth from './src/screens/Auth';
 // -----------------------------------------------------------------------------------------
 
 
+// const AuthStack = createNativeStackNavigator();
+
+function AuthStackScreen() {
+  return (
+    <AuthStack.Navigator>
+      <AuthStack.Screen name="Auth" component={Auth} />
+      <AuthStack.Screen name="Login" component={Login} />
+      <AuthStack.Screen name="SignUp" component={SignUpScreen} />
+      <AuthStack.Screen name="Verification" component={VerificationScreen} />
+      <AuthStack.Screen name="ConfirmationScreen" component={ConfirmationScreen} />
+      <AuthStack.Screen name="IntakeForm" component={IntakeForm} />
+      <AuthStack.Screen name="LoadingScreen" component={LoadingScreen} />
+      {/* Add other authentication screens */}
+    </AuthStack.Navigator>
+  );
+}
+
 const OfferStack = createNativeStackNavigator();
 
 function OfferStackScreen() {
@@ -109,9 +126,8 @@ function HomeStackScreen() {
 
 const Tab = createBottomTabNavigator();
 
-function App() {
+function MyTabs() {
   return (
-    <NavigationContainer>
       <Tab.Navigator screenOptions={{ headerShown: false }}>
         <Tab.Screen name="Homescreen" title="Credit" component={HomeStackScreen} options={{tabBarLabel:"Credit", tabBarIcon: () => {
             return <Image source={CreditTab} />;
@@ -127,7 +143,22 @@ function App() {
             return <Image source={MoreTab} />;
           },}} />
       </Tab.Navigator>
-    </NavigationContainer>
+  );
+}
+
+  function App() {
+    const [session, setSession] = useState(null);
+
+    useEffect(() => {
+      supabase.auth.onAuthStateChange((event, session) => {
+        setSession(session);
+      });
+    }, []);
+    return (
+      <NavigationContainer>
+        {/* {!session ? <Auth/> : <MyTabs key={session.user.id} session={session} />} */}
+        <MyTabs />
+      </NavigationContainer>
   );
 
 }
