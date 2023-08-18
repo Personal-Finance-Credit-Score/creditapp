@@ -27,10 +27,6 @@ import { supabase } from './lib/supabase'
 import { useState, useEffect } from 'react'
 import Auth from './src/screens/Auth';
 
-import { supabase } from "./lib/supabase";
-import { useState, useEffect } from "react";
-import Auth from "./src/screens/Auth";
-
 const Tab = createMaterialBottomTabNavigator();
 
 function MyTabs() {
