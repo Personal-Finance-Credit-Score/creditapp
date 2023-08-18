@@ -1,7 +1,7 @@
 // In App.js in a new project
 
 import * as React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -22,6 +22,7 @@ import CreditAge from './src/screens/CreditFactors/CreditAge';
 import HardInquiries from './src/screens/CreditFactors/HardInquiries';
 import CreditCardOffers from './src/screens/Offers/CreditCardOffers';
 import LoanOffers from "./src/screens/Offers/LoanOffers"
+import CreditTab from './assets/CreditTab.png'
 
 import { supabase } from './lib/supabase'
 import { useState, useEffect } from 'react'
@@ -34,15 +35,22 @@ function MyTabs({session}) {
   console.log(`This is within MyTabs ${session.user.id}`)
   return (
     <Tab.Navigator>
-      <Tab.Screen name="Homescreen" title="Home" component={() => <Homescreen session={session} />} options={{tabBarLabel:"Home"}} />
-      <Tab.Screen name="Login" component={Login} />
-      <Tab.Screen name="SignUp" component={SignUpScreen} options={{tabBarLabel:"SignUp"}} />
-      <Tab.Screen name="IntakeForm" component={IntakeForm} options={{tabBarLabel:"Intake"}} />
-      <Tab.Screen name="VerificationScreen" component={VerificationScreen} options={{tabBarLabel:"Verify"}}/>
-      <Tab.Screen name="ConfirmationScreen" component={ConfirmationScreen} options={{tabBarLabel:"Confirm"}} />
-      <Tab.Screen name="LoadingScreen" component={LoadingScreen} options={{tabBarLabel:"Load"}} />
+      <Tab.Screen
+        name="Homescreen"
+        title="Home"
+        component={Homescreen}
+        options={{
+          tabBarLabel: "Credit",
+
+          tabBarIcon: () => {
+            return <Image source={CreditTab} />;
+          },
+        }}
+      />
       <Tab.Screen name="CreditReport" component={CreditReport} options={{tabBarLabel:"CR"}} />
-      <Tab.Screen name="ComingSoonScreen" component={ComingSoonScreen} options={{tabBarLabel:"Soon"}} />
+      <Tab.Screen name="PaymentHistory" component={PaymentHistory} options={{tabBarLabel:"Pay"}} />
+      <Tab.Screen name="CreditCardOffers" component={CreditCardOffers} options={{tabBarLabel:"OFF"}} />
+      <Tab.Screen name="LoanOffers" component={CreditCardOffers} options={{tabBarLabel:"Loan"}} />
     </Tab.Navigator>
   );
 }
