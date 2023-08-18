@@ -79,30 +79,30 @@ import Auth from './src/screens/Auth';
 // -----------------------------------------------------------------------------------------
 
 
-// const AuthStack = createNativeStackNavigator();
+const AuthStack = createNativeStackNavigator();
 
-function AuthStackScreen() {
+function AuthStackScreen({session}) {
   return (
-    <AuthStack.Navigator>
+    <AuthStack.Navigator screenOptions={{ headerShown: false }}>
       <AuthStack.Screen name="Auth" component={Auth} />
       <AuthStack.Screen name="Login" component={Login} />
       <AuthStack.Screen name="SignUp" component={SignUpScreen} />
-      <AuthStack.Screen name="Verification" component={VerificationScreen} />
+      <AuthStack.Screen name="VerificationScreen" component={VerificationScreen} />
       <AuthStack.Screen name="ConfirmationScreen" component={ConfirmationScreen} />
       <AuthStack.Screen name="IntakeForm" component={IntakeForm} />
       <AuthStack.Screen name="LoadingScreen" component={LoadingScreen} />
-      {/* Add other authentication screens */}
+      
     </AuthStack.Navigator>
   );
 }
 
 const OfferStack = createNativeStackNavigator();
 
-function OfferStackScreen() {
+function OfferStackScreen({session}) {
   return (
     <OfferStack.Navigator screenOptions={{ headerShown: false }}>
-      <OfferStack.Screen name="CreditCardOffers" component={CreditCardOffers} />
-      <OfferStack.Screen name="LoanOffers" component={LoanOffers} />
+      <OfferStack.Screen name="CreditCardOffers" component={() => <CreditCardOffers session={session} />} />
+      <OfferStack.Screen name="LoanOffers" component={() => <LoanOffers session={session} />} />
     </OfferStack.Navigator>
   );
 }
@@ -110,36 +110,36 @@ function OfferStackScreen() {
 
 const HomeStack = createNativeStackNavigator();
 
-function HomeStackScreen() {
+function HomeStackScreen({session}) {
   return (
     <HomeStack.Navigator screenOptions={{ headerShown: false }}>
-      <HomeStack.Screen name="Home" component={Homescreen} />
-      <HomeStack.Screen name="CreditReport" component={CreditReport} />
-      <HomeStack.Screen name="PaymentHistory" component={PaymentHistory} />
-      <HomeStack.Screen name="CreditCardUse" component={CreditCardUse} />
-      <HomeStack.Screen name="DerogatoryMarks" component={DerogatoryMarks} />
-      <HomeStack.Screen name="CreditAge" component={CreditAge} />
-      <HomeStack.Screen name="HardInquiries" component={HardInquiries} />
+      <HomeStack.Screen name="Home" component={() => <Homescreen session={session} />} />
+      <HomeStack.Screen name="CreditReport" component={() => <CreditReport session={session} />} />
+      <HomeStack.Screen name="PaymentHistory" component={() => <PaymentHistory session={session} />} />
+      <HomeStack.Screen name="CreditCardUse" component={() => <CreditCardUse session={session} />} />
+      <HomeStack.Screen name="DerogatoryMarks" component={() => <DerogatoryMarks session={session} />} />
+      <HomeStack.Screen name="CreditAge" component={() => <CreditAge session={session} />} />
+      <HomeStack.Screen name="HardInquiries" component={() => <HardInquiries session={session} />} />
     </HomeStack.Navigator>
   );
 }
 
 const Tab = createBottomTabNavigator();
 
-function MyTabs() {
+function MyTabs({session}) {
   return (
       <Tab.Navigator screenOptions={{ headerShown: false }}>
-        <Tab.Screen name="Homescreen" title="Credit" component={HomeStackScreen} options={{tabBarLabel:"Credit", tabBarIcon: () => {
+        <Tab.Screen name="Homescreen" title="Credit" component={() => <HomeStackScreen session={session}/>} options={{tabBarLabel:"Credit", tabBarIcon: () => {
             return <Image source={CreditTab} />;
           },
         }} />
-        <Tab.Screen name="LoadingScreen" title="Money" component={ComingSoonScreen} options={{tabBarLabel:"Money", tabBarIcon: () => {
+        <Tab.Screen name="LoadingScreen" title="Money" component={() => <ComingSoonScreen session={session}/>} options={{tabBarLabel:"Money", tabBarIcon: () => {
             return <Image source={MoneyTab} />;
           },}} />
-        <Tab.Screen name="OffersScreen" title="Offers" component={OfferStackScreen} options={{tabBarLabel:"Offers", tabBarIcon: () => {
+        <Tab.Screen name="OffersScreen" title="Offers" component={() => <OfferStackScreen session={session}/>} options={{tabBarLabel:"Offers", tabBarIcon: () => {
             return <Image source={OffersTab} />;
           },}} />
-        <Tab.Screen name="MoreScreen" title="More" component={ComingSoonScreen} options={{tabBarLabel:"More", tabBarIcon: () => {
+        <Tab.Screen name="MoreScreen" title="More" component={() => <ComingSoonScreen session={session}/>} options={{tabBarLabel:"More", tabBarIcon: () => {
             return <Image source={MoreTab} />;
           },}} />
       </Tab.Navigator>
@@ -154,9 +154,11 @@ function MyTabs() {
         setSession(session);
       });
     }, []);
+
+    console.log("wooo session" + JSON.stringify(session))
     return (
       <NavigationContainer>
-        {!session ? <Auth/> : <MyTabs key={session.user.id} session={session} />}
+        {!session ? <AuthStackScreen /> : <MyTabs key={session.user.id} session={session} />}
         {/* <MyTabs /> */}
       </NavigationContainer>
   );

@@ -23,6 +23,7 @@ const SignupScreen = ({ creds, setCreds, setisOld }) => {
 
     if (error) Alert.alert(error.message)
     setLoading(false)
+    navigation.navigate("IntakeForm")
   }
 
   return (

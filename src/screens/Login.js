@@ -22,6 +22,7 @@ const Login = ({ creds, setCreds, setisOld }) => {
 
     if (error) Alert.alert(error.message)
     setLoading(false)
+    // navigation.navigate("VerificationScreen")
   }
 
   return (
@@ -65,7 +66,6 @@ const Login = ({ creds, setCreds, setisOld }) => {
               disabled={loading} 
               onPress={() => {
                 signInWithEmail();
-                navigation.navigate("VerificationScreen")
               }}>
               <Text className="text-themeWhite font-medium text-center text-[15px]">Login</Text>
             </TouchableOpacity>
