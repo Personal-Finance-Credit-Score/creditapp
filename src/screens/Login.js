@@ -5,12 +5,14 @@ import React, { useState } from 'react';
 import utils from '../../api/users/index';
 import RiseLogo from '../../assets/riseLogo.png'
 import { supabase } from '../../lib/supabase'
+import VerificationScreen from './VerificationScreen'
 
 const Login = ({ creds, setCreds, setisOld }) => {
   const navigation = useNavigation();
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
+  const [showVerify, setShowVerify] = useState(false)
 
 
   async function signInWithEmail() {
@@ -19,9 +21,17 @@ const Login = ({ creds, setCreds, setisOld }) => {
       email: email,
       password: password,
     })
+    
 
-    if (error) Alert.alert(error.message)
+    if (error) {
+      Alert.alert(error.message)
+    } else {
+      setShowVerify(true)
+    }
     setLoading(false)
+    // navigation.navigate("VerificationScreen")
+
+    
   }
 
   return (
@@ -65,7 +75,6 @@ const Login = ({ creds, setCreds, setisOld }) => {
               disabled={loading} 
               onPress={() => {
                 signInWithEmail();
-                navigation.navigate("VerificationScreen")
               }}>
               <Text className="text-themeWhite font-medium text-center text-[15px]">Login</Text>
             </TouchableOpacity>

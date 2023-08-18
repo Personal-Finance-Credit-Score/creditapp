@@ -6,6 +6,8 @@ import utils from '../../api/users/index';
 import ArrowLeft from '../../assets/arrowleft.png'
 import Avatar from '../../assets/Avatar.png'
 import { supabase } from '../../lib/supabase'
+import IntakeForm from './IntakeForm'
+
 
 const SignupScreen = ({ creds, setCreds, setisOld }) => {
   const navigation = useNavigation();
@@ -13,16 +15,39 @@ const SignupScreen = ({ creds, setCreds, setisOld }) => {
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [loading, setLoading] = useState(false)
+  const [showIntake,setShowIntake] = useState(false)
 
-  async function signUpWithEmail() {
-    setLoading(true)
-    const { error } = await supabase.auth.signUp({
-      email: email,
-      password: password,
-    })
+  // async function signUpWithEmail() {
+  //   setLoading(true)
+  //   const { data, error } = await supabase.auth.signUp({
+  //     email: email,
+  //     password: password,
+  //   })
+  //   console.log(user)
 
-    if (error) Alert.alert(error.message)
-    setLoading(false)
+  //   if (error) Alert.alert(error.message)
+
+  //   setLoading(false)
+  //   // navigation.navigate("VerificationScreen")
+  // }
+
+  function handleSignUp()  {
+    let show = true;
+    if (password !== confirmPassword) {
+      show = false;
+    }
+  
+    // Check if password meets the criteria
+    const hasUpperCase = /[A-Z]/.test(password);
+    const hasLowerCase = /[a-z]/.test(password);
+    const hasSpecialChar = /[!@#$%^&*()_+{}\[\]:;<>,.?~\-\/\\]/.test(password);
+  
+    if (!hasUpperCase || !hasLowerCase || !hasSpecialChar) {
+      show = false
+    }
+    if(show){
+      setShowIntake(true)
+    }
   }
 
   return (
@@ -48,7 +73,11 @@ const SignupScreen = ({ creds, setCreds, setisOld }) => {
       </View>
 
       {/* Page container */}
+      {!showIntake 
+        ?
       <View className="mb-32">
+        {/* useState if !showIntake  */}
+
         <Text className="w-screen max-w-md px-10 text-3xl font-bold text-themeNavyBlue">Create your account</Text>
          {/* email container */}
          <View className="w-screen max-w-md px-7 mt-3">
@@ -101,7 +130,14 @@ const SignupScreen = ({ creds, setCreds, setisOld }) => {
             <TouchableOpacity 
               className="bg-themeNavyBlue py-2 rounded"
               disabled={loading} 
-              onPress={() => signUpWithEmail()}>
+              onPress={() => handleSignUp()}
+              // onPress={() => signUpWithEmail()}
+              >
+                {/* if password and confirm fails
+                then don't go forward
+                else
+                opens component intake form
+                they fill out form */}
               <Text className="text-themeWhite font-medium text-center text-[15px]">Confirm</Text>
             </TouchableOpacity>
             <TouchableOpacity className="py-4 rounded" 
@@ -109,8 +145,12 @@ const SignupScreen = ({ creds, setCreds, setisOld }) => {
               <Text className="text-center">Already have an account, press here</Text>
             </TouchableOpacity>
             </View>
-        
       </View>
+      :
+      <View>
+        <IntakeForm email={email} password={password} />
+      </View>
+            }
     </SafeAreaView>
   );
 };
