@@ -1,11 +1,13 @@
 import { View, Text, TouchableOpacity, ScrollView, Image } from "react-native";
-import { SafeAreaView } from "react-native";
+import { SafeAreaView, Dimensions } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
 import Auth from "./Auth";
 import utils from "../../api/users/index";
 import Avatar from "../../assets/Avatar.png";
 import Logo from "../../assets/riseLogo.png"
+import { LineChart } from "react-native-chart-kit";
+
 const Homescreen = (props) => {
   const navigation = useNavigation(null);
  
@@ -99,9 +101,56 @@ const Homescreen = (props) => {
                 </Text>
               </View>
 
+
+               {/* ------------------- LINE GRAPH ------------------- */}
               <View className="rounded-xl border-2 border-solid flex-row p-3 justify-around ml-5 mr-5 items-center bg-themeWhite">
-                <Text>graph img</Text>
+                <View>
+                  <Text>Bezier Line Chart</Text>
+                  <LineChart
+                    data={{
+                      labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+                      datasets: [
+                        {
+                          data: [
+                            Math.random() * 100,
+                            Math.random() * 100,
+                            Math.random() * 100,
+                            Math.random() * 100,
+                            Math.random() * 100,
+                            Math.random() * 100
+                          ]
+                        }
+                      ]
+                    }}
+                    width={350} // from react-native
+                    height={220}
+                    yAxisLabel="$"
+                    yAxisSuffix="k"
+                    yAxisInterval={1} // optional, defaults to 1
+                    chartConfig={{
+                      backgroundColor: `rgba(255, 255, 255)`,
+                      decimalPlaces: 2, // optional, defaults to 2dp
+                      color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+                      labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+                      style: {
+                        borderRadius: 16
+                      },
+                      propsForDots: {
+                        r: "6",
+                        strokeWidth: "2",
+                        stroke: "#ffa726"
+                      }
+                    }}
+                    style={{
+                      marginVertical: 8,
+                      borderRadius: 16
+                    }}
+                  />
+                </View>
               </View>
+
+              {/* --------------------------------------------------- */}
+
               <View>
                 <Text></Text>
               </View>

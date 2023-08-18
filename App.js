@@ -27,13 +27,23 @@ import { supabase } from './lib/supabase'
 import { useState, useEffect } from 'react'
 import Auth from './src/screens/Auth';
 
-
 const Tab = createMaterialBottomTabNavigator();
 
 function MyTabs() {
   return (
     <Tab.Navigator>
-      <Tab.Screen name="Homescreen" title="Home" component={Homescreen} options={{tabBarLabel:"Home"}} />
+      <Tab.Screen
+        name="Homescreen"
+        title="Home"
+        component={Homescreen}
+        options={{
+          tabBarLabel: "Credit",
+
+          tabBarIcon: () => {
+            return <Image source={CreditTab} />;
+          },
+        }}
+      />
       <Tab.Screen name="Login" component={Login} />
       <Tab.Screen name="SignUp" component={SignUpScreen} options={{tabBarLabel:"SignUp"}} />
       <Tab.Screen name="IntakeForm" component={IntakeForm} options={{tabBarLabel:"Intake"}} />
@@ -46,21 +56,19 @@ function MyTabs() {
   );
 }
 
-
 function App() {
-  const [session,setSession] = useState(null);
+  const [session, setSession] = useState(null);
 
   useEffect(() => {
     supabase.auth.onAuthStateChange((event, session) => {
-      setSession(session)
-    })
-  }, [])  
+      setSession(session);
+    });
+  }, []);
   return (
-   
     <NavigationContainer>
       {/* {!session ? <Auth/> : <MyTabs key={session.user.id} session={session} />} */}
-    <MyTabs />
-  </NavigationContainer>
+      <MyTabs />
+    </NavigationContainer>
   );
 }
 
