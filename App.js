@@ -27,9 +27,6 @@ import { supabase } from './lib/supabase'
 import { useState, useEffect } from 'react'
 import Auth from './src/screens/Auth';
 
-import { supabase } from "./lib/supabase";
-import { useState, useEffect } from "react";
-import Auth from "./src/screens/Auth";
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -37,7 +34,7 @@ function MyTabs({session}) {
   console.log(`This is within MyTabs ${session.user.id}`)
   return (
     <Tab.Navigator>
-      <Tab.Screen name="Homescreen" title="Home" component={Homescreen} options={{tabBarLabel:"Home"}} />
+      <Tab.Screen name="Homescreen" title="Home" component={() => <Homescreen session={session} />} options={{tabBarLabel:"Home"}} />
       <Tab.Screen name="Login" component={Login} />
       <Tab.Screen name="SignUp" component={SignUpScreen} options={{tabBarLabel:"SignUp"}} />
       <Tab.Screen name="IntakeForm" component={IntakeForm} options={{tabBarLabel:"Intake"}} />
