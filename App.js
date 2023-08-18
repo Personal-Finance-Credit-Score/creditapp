@@ -22,37 +22,41 @@ import Auth from './src/screens/Auth';
 
 const Tab = createMaterialBottomTabNavigator();
 
-function MyTabs() {
+function MyTabs({session}) {
+  console.log(`This is within MyTabs ${session.user.id}`)
   return (
     <Tab.Navigator>
-      <Tab.Screen name="Homescreen" title="Home" component={Homescreen} options={{tabBarLabel:"Home"}} />
+      <Tab.Screen name="Homescreen" title="Home" component={() => <Homescreen session={session} />} options={{ tabBarLabel: "Home" }} />
       <Tab.Screen name="Login" component={Login} />
-      <Tab.Screen name="SignUp" component={SignUpScreen} options={{tabBarLabel:"SignUp"}} />
-      <Tab.Screen name="IntakeForm" component={IntakeForm} options={{tabBarLabel:"Intake"}} />
-      <Tab.Screen name="VerificationScreen" component={VerificationScreen} options={{tabBarLabel:"Verify"}}/>
-      <Tab.Screen name="ConfirmationScreen" component={ConfirmationScreen} options={{tabBarLabel:"Confirm"}} />
-      <Tab.Screen name="LoadingScreen" component={LoadingScreen} options={{tabBarLabel:"Load"}} />
-      <Tab.Screen name="CreditReport" component={CreditReport} options={{tabBarLabel:"CR"}} />
-      <Tab.Screen name="ComingSoonScreen" component={ComingSoonScreen} options={{tabBarLabel:"Soon"}} />
+      <Tab.Screen name="SignUp" component={SignUpScreen} options={{ tabBarLabel: "SignUp" }} />
+      <Tab.Screen name="IntakeForm" component={IntakeForm} options={{ tabBarLabel: "Intake" }} />
+      <Tab.Screen name="VerificationScreen" component={VerificationScreen} options={{ tabBarLabel: "Verify" }} />
+      <Tab.Screen name="ConfirmationScreen" component={ConfirmationScreen} options={{ tabBarLabel: "Confirm" }} />
+      <Tab.Screen name="LoadingScreen" component={LoadingScreen} options={{ tabBarLabel: "Load" }} />
+      <Tab.Screen name="CreditReport" component={CreditReport} options={{ tabBarLabel: "CR" }} />
+      <Tab.Screen name="ComingSoonScreen" component={ComingSoonScreen} options={{ tabBarLabel: "Soon" }} />
     </Tab.Navigator>
   );
 }
 
 
 function App() {
-  const [session,setSession] = useState(null);
+  const [session, setSession] = useState(null);
 
   useEffect(() => {
     supabase.auth.onAuthStateChange((event, session) => {
       setSession(session)
     })
-  }, [])  
+    console.log
+
+  }, [])
+
   return (
-   
+
     <NavigationContainer>
-      {!session ? <Auth/> : <MyTabs key={session.user.id} session={session} />}
-    {/* <MyTabs /> */}
-  </NavigationContainer>
+      {!session ? <Auth /> : <MyTabs key={session.user.id} session={session} />}
+      {/* <MyTabs /> */}
+    </NavigationContainer>
   );
 }
 
