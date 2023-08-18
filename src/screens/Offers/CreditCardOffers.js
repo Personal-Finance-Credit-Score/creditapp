@@ -38,7 +38,7 @@ import {
         <ScrollView>
           {/* container for the page */}
           <View className="min-h-screen">
-            <View className="">
+            <View>
               <Text className="font-bold text-themeNavyBlue text-[30px] ml-[25px] mb-3">Your Offers</Text>
             </View>
 
