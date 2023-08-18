@@ -77,6 +77,8 @@ const Homescreen = (props) => {
                   Next check: tomorrow
                 </Text>
               </View>
+
+              {/* total debt and credit usage titles */}
               <View className="rounded-t-xl ml-5 mr-5 flex-row justify-between bg-themeGreen ">
                 <View>
                   <Text className="text-xl ml-2 p-2 ">Total Debt: </Text>
@@ -88,6 +90,7 @@ const Homescreen = (props) => {
                 </View>
               </View>
 
+              {/* total debt and credit usage info */}
               <View className="rounded-b-xl ml-5 mr-5 flex-row bg-themeGreen justify-between p-4">
                 <View>
                   <Text className="text-xl p-2 font-bold">$5,000 </Text>
@@ -96,11 +99,24 @@ const Homescreen = (props) => {
                   <Text className="text-xl p-2 font-bold">21% </Text>
                 </View>
               </View>
+
+              {/* button to view credit report */}
               <View>
-                <Text className="text-themeNavyBlue text-3xl font-bold ml-5 mt-3">
+                <TouchableOpacity
+                  className="bg-themeNavyBlue justify-around align-center h-12 mr-[20px] ml-[20px] mt-2"
+                  onPress={() => navigation.navigate("CreditReport")}
+                >
+                  <Text className="text-themeWhite text-center">
+                    View Full Credit Report
+                  </Text>
+                </TouchableOpacity>
+              </View>
+              <View>
+                <Text className="text-themeNavyBlue text-3xl font-bold ml-5 mt-5">
                   Score History
                 </Text>
               </View>
+              
 
 
                {/* ------------------- LINE GRAPH ------------------- */}
@@ -211,16 +227,7 @@ const Homescreen = (props) => {
                   3
                 </Text>
               </TouchableOpacity>
-              <View>
-                <TouchableOpacity
-                  className="bg-themeNavyBlue justify-around align-center h-12 mr-[20px] ml-[20px] mt-[29px]"
-                  onPress={() => navigation.navigate("LoadingScreen")}
-                >
-                  <Text className="text-themeWhite text-center">
-                    View Full Credit Report
-                  </Text>
-                </TouchableOpacity>
-              </View>
+              
             </View>
           </ScrollView>
         </SafeAreaView>
