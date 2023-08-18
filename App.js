@@ -24,7 +24,6 @@ import CreditCardOffers from './src/screens/Offers/CreditCardOffers';
 import LoanOffers from "./src/screens/Offers/LoanOffers"
 import CreditTab from './assets/CreditTab.png'
 
-import CreditTab from './assets/CreditTab.png'
 import { supabase } from './lib/supabase'
 import { useState, useEffect } from 'react'
 import Auth from './src/screens/Auth';
