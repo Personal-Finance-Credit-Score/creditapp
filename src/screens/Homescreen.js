@@ -6,11 +6,41 @@ import Auth from "./Auth";
 import utils from "../../api/users/index";
 import Avatar from "../../assets/Avatar.png";
 import { LineChart } from "react-native-chart-kit";
+import { supabase } from '../../lib/supabase'
 
 const Homescreen = (props) => {
   const { session } = props
   const [user, setUser] = useState({})
   const navigation = useNavigation(null);
+  console.log(`This is within Homescreen ${session.user.id}`)
+  const sessionUserId = session.user.id
+
+  async function getCustomerId() {
+    const { data, error } = await supabase
+      .from('customer')
+      .select('customer_id')
+      .eq('user_id', sessionUserId)
+      .single();
+  
+    if (error) {
+      console.error('Error fetching customer data:', error.message);
+      return null;
+    }
+  
+    if (data) {
+      return data.customer_id;
+    }
+  
+    return null;
+  }
+  
+  getCustomerId().then(customerId => {
+    if (customerId !== null) {
+      console.log('Customer ID:', customerId);
+    } else {
+      console.log('Customer not found.');
+    }
+  });
  
   return (
         <SafeAreaView className="flex-1 min-h-screen min-w-screen bg-themeLightBlue">
