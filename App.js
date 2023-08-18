@@ -22,12 +22,12 @@ import CreditAge from './src/screens/CreditFactors/CreditAge';
 import HardInquiries from './src/screens/CreditFactors/HardInquiries';
 import CreditCardOffers from './src/screens/Offers/CreditCardOffers';
 import LoanOffers from "./src/screens/Offers/LoanOffers"
+import CreditTab from './assets/CreditTab.png'
 
 import CreditTab from './assets/CreditTab.png'
 import { supabase } from './lib/supabase'
 import { useState, useEffect } from 'react'
 import Auth from './src/screens/Auth';
-
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -49,6 +49,7 @@ function MyTabs() {
       <Tab.Screen name="CreditReport" component={CreditReport} options={{tabBarLabel:"CR"}} />
       <Tab.Screen name="PaymentHistory" component={PaymentHistory} options={{tabBarLabel:"Pay"}} />
       <Tab.Screen name="CreditCardOffers" component={CreditCardOffers} options={{tabBarLabel:"OFF"}} />
+      <Tab.Screen name="LoanOffers" component={CreditCardOffers} options={{tabBarLabel:"Loan"}} />
     </Tab.Navigator>
   );
 }

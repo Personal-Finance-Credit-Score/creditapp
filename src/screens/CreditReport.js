@@ -92,7 +92,7 @@ const CreditReport = (props) => {
       <View className="flex flex-1 mb-16 min-w-screen min-h-screen bg-testBgGreen items-center text-center pt-30">
 
         <Text className="text-3xl font-bold text-themeNavyBlue">Credit Report</Text>
-        <Text className="text-2xl text-themeNavyBlue">Lorem Epsum</Text>
+        <Text className="text-2xl text-themeNavyBlue">Lorem Ipsum</Text>
         <Text className="text-5xl font-medium pt-2 text-themeNavyBlue">754</Text>
         <Text className="text-themeNavyBlue">Calculated using VantageScore 3.9</Text>
         <Text className="text-themeNavyBlue" >Provided by TransUnion</Text>
@@ -121,7 +121,7 @@ const CreditReport = (props) => {
         <Text className="text-themeBlue">Names Reported</Text>
 
         {/* Might need this instead of gray text color    color: '#00000050' */}
-        <Text className="text-gray-500 pt-2 pb-5">Lorem Epsum</Text>
+        <Text className="text-gray-500 pt-2 pb-5">Lorem Ipsum</Text>
         <Text className="pb-20 text-themeNavyBlue">Employment Info</Text>
         <Text className="pb-20 text-themeNavyBlue">Addresses Reported</Text>
         <Text className="font-bold text-themeNavyBlue">Accounts</Text>
