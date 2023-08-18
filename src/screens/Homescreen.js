@@ -128,7 +128,7 @@ const Homescreen = (props) => {
                         }
                       ]
                     }}
-                    width={350} // from react-native
+                    width={340} // from react-native
                     height={220}
                     withInnerLines={false}
                     yAxisInterval={1} // optional, defaults to 1
@@ -164,53 +164,53 @@ const Homescreen = (props) => {
                 </Text>
               </View>
               <View>
-                <TouchableOpacity className="rounded-xl flex-1 h-12 flex-row p-3 justify-around ml-5 mr-5 mb-2 items-center bg-themeGreen" onPress={navigation.navigate("PaymentHistory")}>
+                <TouchableOpacity className="rounded-xl flex-1 h-12 flex-row p-3 justify-around ml-5 mr-5 mb-2 items-center bg-themeGreen" onPress={()=> {navigation.navigate("PaymentHistory")}}>
                   <Text className="text-themeWhite font-bold">
                     Payment History
                   </Text>
                   <Text className="text-themeWhite font-bold">98%</Text>
                 </TouchableOpacity>
-                <View className="rounded-xl flex-1 h-12 flex-row p-3 justify-around ml-5 mr-5 mb-2 items-center bg-themeGreen">
+                <TouchableOpacity className="rounded-xl flex-1 h-12 flex-row p-3 justify-around ml-5 mr-5 mb-2 items-center bg-themeGreen" onPress={()=> {navigation.navigate("CreditCardUse")}}>
                   <Text className="text-themeWhite font-bold">
                     Credit Card Use
                   </Text>
                   <Text className="text-themeWhite font-bold">20%</Text>
-                </View>
+                </TouchableOpacity>
               </View>
               <View className="flex-1 justify-center bg-themeLightBlue">
-                <View className="rounded-xl flex-1 h-12 flex-row p-3 justify-around ml-5 mr-5 mb-2 items-center bg-themeGreen">
+                <TouchableOpacity className="rounded-xl flex-1 h-12 flex-row p-3 justify-around ml-5 mr-5 mb-2 items-center bg-themeGreen" onPress={()=> {navigation.navigate("DerogatoryMarks")}}>
                   <Text className="text-themeWhite font-bold">
                     Derogatory Marks
                   </Text>
                   <Text className="font-bold text-themeWhite">0%</Text>
-                </View>
+                </TouchableOpacity>
                 <View className="flex-row">
-                  <View className="rounded-xl flex-1 flex-col p-3 justify-around ml-[25px] mr-[22px] mb-2 items-center h-[100px] w-[143px] bg-themeGreen">
+                  <TouchableOpacity className="rounded-xl flex-1 flex-col p-3 justify-around ml-[25px] mr-[22px] mb-2 items-center h-[100px] w-[143px] bg-themeGreen" onPress={()=> {navigation.navigate("CreditAge")}}>
                     <Text className="text-themeWhite font-bold mt-3">
                       Credit Age
                     </Text>
                     <Text className="text-themeWhite font-semibold mb-5">
                       5 yrs, 4 mos
                     </Text>
-                  </View>
-                  <View className="rounded-xl flex-1 flex-col p-3 justify-around ml-[22] mr-[25px] mb-2 items-center w-[143px] bg-themeGreen">
+                  </TouchableOpacity>
+                  <TouchableOpacity className="rounded-xl flex-1 flex-col p-3 justify-around ml-[22] mr-[25px] mb-2 items-center w-[143px] bg-themeGreen" onPress={()=> {navigation.navigate("CreditAge")}}>
                     <Text className="text-themeWhite font-bold mt-3">
                       Total Accounts
                     </Text>
                     <Text className="text-themeWhite font-semibold mb-5">
                       5
                     </Text>
-                  </View>
+                  </TouchableOpacity>
                 </View>
               </View>
-              <View className="rounded-xl flex-1 flex-col p-3 justify-around self-center mb-0 mt-0 items-center w-[143px] bg-themeGreen">
+              <TouchableOpacity className="rounded-xl flex-1 flex-col p-3 justify-around self-center mb-0 mt-0 items-center w-[143px] bg-themeGreen" onPress={()=> {navigation.navigate("HardInquiries")}}>
                 <Text className="text-themeWhite font-bold mt-3">
                   Hard Inquiries
                 </Text>
                 <Text className="text-themeWhite font-semibold mt-2 mb-5">
                   3
                 </Text>
-              </View>
+              </TouchableOpacity>
               <View>
                 <TouchableOpacity
                   className="bg-themeNavyBlue justify-around align-center h-12 mr-[20px] ml-[20px] mt-[29px]"

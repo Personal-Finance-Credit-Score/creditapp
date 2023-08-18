@@ -23,6 +23,10 @@ import HardInquiries from './src/screens/CreditFactors/HardInquiries';
 import CreditCardOffers from './src/screens/Offers/CreditCardOffers';
 import LoanOffers from "./src/screens/Offers/LoanOffers"
 import CreditTab from './assets/CreditTab.png'
+import MoneyTab from './assets/MoneyTab.png'
+import OffersTab from './assets/OffersTab.png'
+import MoreTab from './assets/MoreTab.png'
+
 
 import { supabase } from './lib/supabase'
 import { useState, useEffect } from 'react'
@@ -109,10 +113,19 @@ function App() {
   return (
     <NavigationContainer>
       <Tab.Navigator screenOptions={{ headerShown: false }}>
-        <Tab.Screen name="Homescreen" title="Credit" component={HomeStackScreen} options={{tabBarLabel:"Credit"}} />
-        <Tab.Screen name="LoadingScreen" title="Money" component={ComingSoonScreen} options={{tabBarLabel:"Money"}} />
-        <Tab.Screen name="OffersScreen" title="Offers" component={OfferStackScreen} options={{tabBarLabel:"Offers"}} />
-        <Tab.Screen name="MoreScreen" title="More" component={ComingSoonScreen} options={{tabBarLabel:"More"}} />
+        <Tab.Screen name="Homescreen" title="Credit" component={HomeStackScreen} options={{tabBarLabel:"Credit", tabBarIcon: () => {
+            return <Image source={CreditTab} />;
+          },
+        }} />
+        <Tab.Screen name="LoadingScreen" title="Money" component={ComingSoonScreen} options={{tabBarLabel:"Money", tabBarIcon: () => {
+            return <Image source={MoneyTab} />;
+          },}} />
+        <Tab.Screen name="OffersScreen" title="Offers" component={OfferStackScreen} options={{tabBarLabel:"Offers", tabBarIcon: () => {
+            return <Image source={OffersTab} />;
+          },}} />
+        <Tab.Screen name="MoreScreen" title="More" component={ComingSoonScreen} options={{tabBarLabel:"More", tabBarIcon: () => {
+            return <Image source={MoreTab} />;
+          },}} />
       </Tab.Navigator>
     </NavigationContainer>
   );
