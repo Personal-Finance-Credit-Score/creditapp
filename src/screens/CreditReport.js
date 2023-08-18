@@ -138,9 +138,6 @@ const CreditReport = (props) => {
                     setShowAuto('hidden')
                   } else {
                     setShowAuto('flex')
-                    setShowCC('hidden')
-                    setShowHomeLoans('hidden')
-                    setShowStudent('hidden')
                   }
                 }}>
                 <Text className="">Auto Loans</Text>
@@ -159,10 +156,7 @@ const CreditReport = (props) => {
              if(showCC === "flex") {
               setShowCC('hidden')
             } else {
-              setShowAuto('hidden')
               setShowCC('flex')
-              setShowHomeLoans('hidden')
-              setShowStudent('hidden')
             }
             }}>
                 <Text className="text-themeNavyBlue">Credit Cards</Text>
@@ -181,10 +175,7 @@ const CreditReport = (props) => {
               if(showHomeLoans === "flex") {
                 setShowHomeLoans('hidden')
               } else {
-                setShowAuto('hidden')
-                setShowCC('hidden')
                 setShowHomeLoans('flex')
-                setShowStudent('hidden')
               }
             }}>
                 <Text className="text-themeNavyBlue">Home Loans</Text>
@@ -203,9 +194,6 @@ const CreditReport = (props) => {
               if(showStudent === "flex") {
                 setShowStudent('hidden')
               } else {
-                setShowAuto('hidden')
-                setShowCC('hidden')
-                setShowHomeLoans('hidden')
                 setShowStudent('flex')
               }
             }}>
