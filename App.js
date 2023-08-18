@@ -1,7 +1,7 @@
 // In App.js in a new project
 
 import * as React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -23,13 +23,11 @@ import HardInquiries from './src/screens/CreditFactors/HardInquiries';
 import CreditCardOffers from './src/screens/Offers/CreditCardOffers';
 import LoanOffers from "./src/screens/Offers/LoanOffers"
 
+import CreditTab from './assets/CreditTab.png'
 import { supabase } from './lib/supabase'
 import { useState, useEffect } from 'react'
 import Auth from './src/screens/Auth';
 
-import { supabase } from "./lib/supabase";
-import { useState, useEffect } from "react";
-import Auth from "./src/screens/Auth";
 
 const Tab = createMaterialBottomTabNavigator();
 
