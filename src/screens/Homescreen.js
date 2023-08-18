@@ -12,6 +12,9 @@ import { supabase } from '../../lib/supabase'
 const Homescreen = (props) => {
   const { session } = props
   const navigation = useNavigation(null);
+  const [creditScores, setCreditScores] = useState([]);
+const [selectedRange, setSelectedRange] = useState('3 month');
+const [isLoading, setIsLoading] = useState(true);
 
   console.log(`This is within Homescreen ${session.user.id}`)
   const sessionUserId = session.user.id
@@ -42,6 +45,57 @@ const Homescreen = (props) => {
       console.log('Customer not found.');
     }
   });
+
+  useEffect(() => {
+    async function fetchCreditScores() {
+      try {
+        const { data, error } = await supabase
+          .from('historicalcreditscores')
+          .select('credit_score', 'timestamp')
+          .eq('credit_bureau', 'Equifax')
+          .gte('timestamp', '2022-07-17T00:00:00Z')
+          .order('timestamp', { ascending: true });
+
+        if (error) {
+          console.error('Error fetching credit scores:', error.message);
+          return [];
+        }
+
+        if (data) {
+          const sortedData = data.sort(
+            (a, b) => new Date(b.timestamp) - new Date(a.timestamp)
+          );
+
+          const scores = sortedData.map((item) => item.credit_score);
+          setCreditScores(scores);
+        }
+      } catch (error) {
+        console.error('Error fetching credit scores:', error.message);
+      } finally {
+        setIsLoading(false); // Update loading state after fetch
+      }
+    }
+
+    fetchCreditScores();
+  }, [selectedRange]);
+
+  const handleRangeSelect = (range) => {
+    setSelectedRange(range);
+  };
+
+  const getDisplayedScores = () => {
+    if (selectedRange === '3 month') {
+      return creditScores.slice(-3);
+    } else if (selectedRange === '6 month') {
+      return creditScores.slice(-6);
+    } else if (selectedRange === '1 year') {
+      return creditScores.slice(-12);
+    }
+  };
+
+  if (isLoading) {
+    return // Render a loading indicator while fetching data
+  }
  
   return (
         <SafeAreaView className="flex-1 min-h-screen min-w-screen bg-themeLightBlue">
@@ -151,31 +205,30 @@ const Homescreen = (props) => {
 
 
                {/* ------------------- LINE GRAPH ------------------- */}
-              <View className="rounded-xl border-2 border-solid flex-row p-3 justify-around ml-5 mr-5 items-center bg-themeWhite">
+               <View className="rounded-xl border-2 border-solid flex-row p-3 justify-around ml-5 mr-5 items-center bg-themeWhite">
                 <View>
                   <View className="flex-row pb-2">
-                    <Text className="px-2">3 month</Text>
-                    <Text className="px-2">6 month</Text>
-                    <Text className="px-2">1 year</Text>
+                  <TouchableOpacity onPress={() => handleRangeSelect('3 month')}>
+            <Text className={selectedRange === '3 month' ? 'px-2 selected' : 'px-2'}>3 month</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => handleRangeSelect('6 month')}>
+            <Text className={selectedRange === '6 month' ? 'px-2 selected' : 'px-2'}>6 month</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => handleRangeSelect('1 year')}>
+            <Text className={selectedRange === '1 year' ? 'px-2 selected' : 'px-2'}>1 year</Text>
+          </TouchableOpacity>
                   </View>
                   <LineChart
                     data={{
-                      labels: ["Mar", "Apr", "May", "Jun", "Jul", "Aug"],
+                      // labels: ["Mar", "Apr", "May", "Jun", "Jul", "Aug"],
                       yAxisLabel: "asdf",
                       datasets: [
                         {
-                          data: [
-                            600,
-                            850,
-                            700,
-                            740,
-                            810
-
-                          ]
+                          data: getDisplayedScores(),
                         }
                       ]
                     }}
-                    width={340} // from react-native
+                    width={345} // from react-native
                     height={220}
                     withInnerLines={false}
                     yAxisInterval={1} // optional, defaults to 1
