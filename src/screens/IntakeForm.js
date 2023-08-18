@@ -3,8 +3,10 @@ import { useNavigation } from "@react-navigation/native";
 import { SafeAreaView, TextInput, Button, ScrollView } from "react-native";
 import React, { useState } from "react";
 import Avatar from "../../assets/Avatar.png";
+import { supabase } from '../../lib/supabase'
 
-const Login = (props) => {
+const IntakeForm = (props) => {
+  const { email, password} = props
   const navigation = useNavigation();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -16,40 +18,52 @@ const Login = (props) => {
   const [phone, setPhone] = useState("");
   const [ssn, setSsn] = useState("");
   const [income, setIncome] = useState("");
+  const [loading, setLoading] = useState(false)
 
-  const handleFormSubmit = () => {
-    // You can handle the form data here
-    const formData = {
-      firstName,
-      lastName,
-      dob,
-      street,
-      city,
-      state,
-      zip,
-      phone,
-      ssn,
-      income,
-    };
-    console.log("Submitted Form:", formData);
 
-    // Navigate to the Home screen
-    navigation.navigate("ConfirmationScreen");
-  };
+  async function signUpWithEmail() {
+    setLoading(true)
+    const { data, error } = await supabase.auth.signUp({
+      email: email,
+      password: password,
+    })
+
+
+    if (error) Alert.alert(error.message)
+
+  }
+
+
+  // const handleFormSubmit = async () => {
+  //   // You can handle the form data here
+    
+  //   await signUpWithEmail()
+
+  //   const formData = {
+  //     firstName,
+  //     lastName,
+  //     dob,
+  //     street,
+  //     city,
+  //     state,
+  //     zip,
+  //     phone,
+  //     ssn,
+  //     income,
+  //   };
+  //   console.log("Submitted Form:", formData);
+
+  //   // Navigate to the Home screen
+  //   navigation.navigate("ConfirmationScreen");
+  // };
 
   return (
-    <SafeAreaView className="flex-1 min-h-screen min-w-screen bg-themeLightBlue">
+    <View>
       {/* Navbar without back arrow */}
-      <View className="flex h-1/8 pt-10 mb-1">
-        <View className="mt-6 mb-2 ml-4 ">
-          <Image className="self-end mr-4" source={Avatar} />
-        </View>
-        <View className="shadow shadow-black "></View>
-      </View>
       <ScrollView>
 
         {/* Page container */}
-        <View className="pt-10 flex flex-1 mx-auto min-w-screen min-h-screen items-right text-center pt-30 mb-10">
+        <View className="pt-10 flex flex-1 mx-auto min-w-screen min-h-screen items-right text-center pt-30 mb-32">
           <Text className="text-3xl font-bold text-themeNavyBlue">Enter your information</Text>
           <Text></Text>
           <Text className="text-2xl font-semibold text-themeNavyBlue">
@@ -87,7 +101,7 @@ const Login = (props) => {
             value={dob}
             onChangeText={(text) => setDob(text)}
           />
-          <Text className="text-base font-medium pl-2 text-themeNavyBlue">Current Address</Text>
+          {/* <Text className="text-base font-medium pl-2 text-themeNavyBlue">Current Address</Text>
           <TextInput
             className="relative rounded-sm border border-gray-300 bg-white w-80 h-10 pl-2.5 mb-2"
             placeholder="Street"
@@ -136,11 +150,12 @@ const Login = (props) => {
             placeholder="Income"
             value={income}
             onChangeText={(text) => setIncome(text)}
-          />
+          /> */}
           <TouchableOpacity
             className="relative rounded-sm border bg-themeNavyBlue w-80 h-10 pl-2.5 mt-5 mb-2"
             title="Continue"
-            onPress={handleFormSubmit}
+            // onPress={handleFormSubmit}
+            onPress={() => signUpWithEmail()}
           >
             <Text className="text-white text-center my-auto rounded">
               Continue
@@ -148,24 +163,8 @@ const Login = (props) => {
           </TouchableOpacity>
         </View>
       </ScrollView>
-    </SafeAreaView>
+    </View>
   );
 };
 
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: '#64B4A1',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-//   input: {
-//     borderWidth: 1,
-//     borderColor: 'gray',
-//     width: '80%',
-//     padding: 10,
-//     marginVertical: 10,
-//   },
-// });
-
-export default Login;
+export default IntakeForm;
