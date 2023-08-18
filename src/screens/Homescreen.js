@@ -1,20 +1,109 @@
 import { View, Text, TouchableOpacity, ScrollView, Image } from "react-native";
-import { SafeAreaView } from "react-native";
+import { SafeAreaView, Dimensions } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
 import Auth from "./Auth";
 import utils from "../../api/users/index";
 import Avatar from "../../assets/Avatar.png";
+import Logo from "../../assets/riseLogo.png"
+import { LineChart } from "react-native-chart-kit";
+import { supabase } from '../../lib/supabase'
 
 const Homescreen = (props) => {
+  const { session } = props
   const navigation = useNavigation(null);
+  const [creditScores, setCreditScores] = useState([]);
+const [selectedRange, setSelectedRange] = useState('3 month');
+const [isLoading, setIsLoading] = useState(true);
+
+  console.log(`This is within Homescreen ${session.user.id}`)
+  const sessionUserId = session.user.id
+
+  async function getCustomerId() {
+    const { data, error } = await supabase
+      .from('customer')
+      .select('customer_id')
+      .eq('user_id', sessionUserId)
+      .single();
+  
+    if (error) {
+      console.error('Error fetching customer data:', error.message);
+      return null;
+    }
+  
+    if (data) {
+      return data.customer_id;
+    }
+  
+    return null;
+  }
+  
+  getCustomerId().then(customerId => {
+    if (customerId !== null) {
+      console.log('Customer ID:', customerId);
+    } else {
+      console.log('Customer not found.');
+    }
+  });
+
+  useEffect(() => {
+    async function fetchCreditScores() {
+      try {
+        const { data, error } = await supabase
+          .from('historicalcreditscores')
+          .select('credit_score', 'timestamp')
+          .eq('credit_bureau', 'Equifax')
+          .gte('timestamp', '2022-07-17T00:00:00Z')
+          .order('timestamp', { ascending: true });
+
+        if (error) {
+          console.error('Error fetching credit scores:', error.message);
+          return [];
+        }
+
+        if (data) {
+          const sortedData = data.sort(
+            (a, b) => new Date(b.timestamp) - new Date(a.timestamp)
+          );
+
+          const scores = sortedData.map((item) => item.credit_score);
+          setCreditScores(scores);
+        }
+      } catch (error) {
+        console.error('Error fetching credit scores:', error.message);
+      } finally {
+        setIsLoading(false); // Update loading state after fetch
+      }
+    }
+
+    fetchCreditScores();
+  }, [selectedRange]);
+
+  const handleRangeSelect = (range) => {
+    setSelectedRange(range);
+  };
+
+  const getDisplayedScores = () => {
+    if (selectedRange === '3 month') {
+      return creditScores.slice(-3);
+    } else if (selectedRange === '6 month') {
+      return creditScores.slice(-6);
+    } else if (selectedRange === '1 year') {
+      return creditScores.slice(-12);
+    }
+  };
+
+  if (isLoading) {
+    return // Render a loading indicator while fetching data
+  }
  
   return (
         <SafeAreaView className="flex-1 min-h-screen min-w-screen bg-themeLightBlue">
           {/* Navbar */}
           <TouchableOpacity>
             <View className="h-1/8 pt-10 mb-1">
-              <View className="flex-row mt-6 mb-5 mr-2 justify-end ml-4 ">
+              <View className="flex-row mt-2 mb-[20px] mr-2 justify-between ml-4 items-center">
+                <Image className="ml-2 w-[37px] h-[37px]" source={Logo} />
                 <Image className="mr-4" source={Avatar} />
               </View>
               <View className="shadow shadow-black "></View>
@@ -73,6 +162,8 @@ const Homescreen = (props) => {
                   Next check: tomorrow
                 </Text>
               </View>
+
+              {/* total debt and credit usage titles */}
               <View className="rounded-t-xl ml-5 mr-5 flex-row justify-between bg-themeGreen ">
                 <View>
                   <Text className="text-xl ml-2 p-2 ">Total Debt: </Text>
@@ -84,6 +175,7 @@ const Homescreen = (props) => {
                 </View>
               </View>
 
+              {/* total debt and credit usage info */}
               <View className="rounded-b-xl ml-5 mr-5 flex-row bg-themeGreen justify-between p-4">
                 <View>
                   <Text className="text-xl p-2 font-bold">$5,000 </Text>
@@ -92,15 +184,77 @@ const Homescreen = (props) => {
                   <Text className="text-xl p-2 font-bold">21% </Text>
                 </View>
               </View>
+
+              {/* button to view credit report */}
               <View>
-                <Text className="text-themeNavyBlue text-3xl font-bold ml-5 mt-3">
+                <TouchableOpacity
+                  className="bg-themeNavyBlue justify-around align-center h-12 mr-[20px] ml-[20px] mt-2"
+                  onPress={() => navigation.navigate("CreditReport")}
+                >
+                  <Text className="text-themeWhite text-center">
+                    View Full Credit Report
+                  </Text>
+                </TouchableOpacity>
+              </View>
+              <View>
+                <Text className="text-themeNavyBlue text-3xl font-bold ml-5 mt-5">
                   Score History
                 </Text>
               </View>
+              
 
-              <View className="rounded-xl border-2 border-solid flex-row p-3 justify-around ml-5 mr-5 items-center bg-themeWhite">
-                <Text>graph img</Text>
+
+               {/* ------------------- LINE GRAPH ------------------- */}
+               <View className="rounded-xl border-2 border-solid flex-row p-3 justify-around ml-5 mr-5 items-center bg-themeWhite">
+                <View>
+                  <View className="flex-row pb-2">
+                  <TouchableOpacity onPress={() => handleRangeSelect('3 month')}>
+            <Text className={selectedRange === '3 month' ? 'px-2 selected' : 'px-2'}>3 month</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => handleRangeSelect('6 month')}>
+            <Text className={selectedRange === '6 month' ? 'px-2 selected' : 'px-2'}>6 month</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => handleRangeSelect('1 year')}>
+            <Text className={selectedRange === '1 year' ? 'px-2 selected' : 'px-2'}>1 year</Text>
+          </TouchableOpacity>
+                  </View>
+                  <LineChart
+                    data={{
+                      // labels: ["Mar", "Apr", "May", "Jun", "Jul", "Aug"],
+                      yAxisLabel: "asdf",
+                      datasets: [
+                        {
+                          data: getDisplayedScores(),
+                        }
+                      ]
+                    }}
+                    width={345} // from react-native
+                    height={220}
+                    withInnerLines={false}
+                    yAxisInterval={1} // optional, defaults to 1
+                    chartConfig={{
+                      backgroundColor: '#FFFFFF',
+                      backgroundGradientFrom: "#FFFFFF",
+                      backgroundGradientTo: "#FFFFFF",
+                      decimalPlaces: 0, // optional, defaults to 2dp
+                      
+                      color: (opacity = 1) => '#2B816B',
+                      labelColor: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
+                      style: {
+                        borderRadius: 16
+                      },
+                      propsForDots: {
+                        r: "6",
+                        strokeWidth: "2",
+                        stroke: "#2B816B"
+                      }
+                    }}
+                  />
+                </View>
               </View>
+
+              {/* --------------------------------------------------- */}
+
               <View>
                 <Text></Text>
               </View>
@@ -110,135 +264,59 @@ const Homescreen = (props) => {
                 </Text>
               </View>
               <View>
-                <View className="rounded-xl flex-1 h-12 flex-row p-3 justify-around ml-5 mr-5 mb-2 items-center bg-themeGreen">
+                <TouchableOpacity className="rounded-xl flex-1 h-12 flex-row p-3 justify-around ml-5 mr-5 mb-2 items-center bg-themeGreen" onPress={()=> {navigation.navigate("PaymentHistory")}}>
                   <Text className="text-themeWhite font-bold">
                     Payment History
                   </Text>
                   <Text className="text-themeWhite font-bold">98%</Text>
-                </View>
-                <View className="rounded-xl flex-1 h-12 flex-row p-3 justify-around ml-5 mr-5 mb-2 items-center bg-themeGreen">
+                </TouchableOpacity>
+                <TouchableOpacity className="rounded-xl flex-1 h-12 flex-row p-3 justify-around ml-5 mr-5 mb-2 items-center bg-themeGreen" onPress={()=> {navigation.navigate("CreditCardUse")}}>
                   <Text className="text-themeWhite font-bold">
                     Credit Card Use
                   </Text>
                   <Text className="text-themeWhite font-bold">20%</Text>
-                </View>
+                </TouchableOpacity>
               </View>
               <View className="flex-1 justify-center bg-themeLightBlue">
-                <View className="rounded-xl flex-1 h-12 flex-row p-3 justify-around ml-5 mr-5 mb-2 items-center bg-themeGreen">
+                <TouchableOpacity className="rounded-xl flex-1 h-12 flex-row p-3 justify-around ml-5 mr-5 mb-2 items-center bg-themeGreen" onPress={()=> {navigation.navigate("DerogatoryMarks")}}>
                   <Text className="text-themeWhite font-bold">
                     Derogatory Marks
                   </Text>
                   <Text className="font-bold text-themeWhite">0%</Text>
-                </View>
+                </TouchableOpacity>
                 <View className="flex-row">
-                  <View className="rounded-xl flex-1 flex-col p-3 justify-around ml-[25px] mr-[22px] mb-2 items-center h-[100px] w-[143px] bg-themeGreen">
+                  <TouchableOpacity className="rounded-xl flex-1 flex-col p-3 justify-around ml-[25px] mr-[22px] mb-2 items-center h-[100px] w-[143px] bg-themeGreen" onPress={()=> {navigation.navigate("CreditAge")}}>
                     <Text className="text-themeWhite font-bold mt-3">
                       Credit Age
                     </Text>
                     <Text className="text-themeWhite font-semibold mb-5">
                       5 yrs, 4 mos
                     </Text>
-                  </View>
-                  <View className="rounded-xl flex-1 flex-col p-3 justify-around ml-[22] mr-[25px] mb-2 items-center w-[143px] bg-themeGreen">
+                  </TouchableOpacity>
+                  <TouchableOpacity className="rounded-xl flex-1 flex-col p-3 justify-around ml-[22] mr-[25px] mb-2 items-center w-[143px] bg-themeGreen" onPress={()=> {navigation.navigate("CreditAge")}}>
                     <Text className="text-themeWhite font-bold mt-3">
                       Total Accounts
                     </Text>
                     <Text className="text-themeWhite font-semibold mb-5">
                       5
                     </Text>
-                  </View>
+                  </TouchableOpacity>
                 </View>
               </View>
-              <View className="rounded-xl flex-1 flex-col p-3 justify-around self-center mb-0 mt-0 items-center w-[143px] bg-themeGreen">
+              <TouchableOpacity className="rounded-xl flex-1 flex-col p-3 justify-around self-center mb-0 mt-0 items-center w-[143px] bg-themeGreen" onPress={()=> {navigation.navigate("HardInquiries")}}>
                 <Text className="text-themeWhite font-bold mt-3">
                   Hard Inquiries
                 </Text>
                 <Text className="text-themeWhite font-semibold mt-2 mb-5">
                   3
                 </Text>
-              </View>
-              <View>
-                <TouchableOpacity
-                  className="bg-themeNavyBlue justify-around align-center h-12 mr-[20px] ml-[20px] mt-[29px]"
-                  onPress={() => navigation.navigate("LoadingScreen")}
-                >
-                  <Text className="text-themeWhite text-center">
-                    View Full Credit Report
-                  </Text>
-                </TouchableOpacity>
-              </View>
+              </TouchableOpacity>
+              
             </View>
           </ScrollView>
         </SafeAreaView>
   );
 };
 
-// const styles = StyleSheet.create({
-//   safeareaview: {
-//     width: "100vw",
-//     height: '100%',
-//     backgroundColor: '#64B4A1',
-//     paddingTop: "100%"
-//   },
-//   mainview: {
-//     flex: 1,
-//     width: "100vw",
-//     height: '50%',
-//     backgroundColor: 'FFFFFF',
-//     fontSize: '40px',
-//   },
-//   container: {
-//     display: 'flex',
-//     width: "100vw",
-//     height: '100vh',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//     paddingTop: '50px',
-//   },
-//   textStyle: {
-//     backgroundColor: 'red',
-//     color: 'red',
-//     backgroundColor: '#fff',
-//   },
-//   heading: {
-//     padding: 10,
-//     width: '100%',
-//     height: 60,
-//     alignItems: 'center',
-//     alignSelf: 'center',
-//     fontSize: 50,
-//     backgroundColor: '#323778',
-//   },
-//   carousel: { //cycle through reports?
-//     display: 'flex',
-//     flexDirection: 'row',
-//     justifyContent: 'space-evenly',
-//     alignItems: 'center',
-//   },
-//   report: { //Individual credit reports - (Transunion, etc)
-//     display: 'flex',
-//     borderWidth: 2,
-//     borderRadius: 25,
-//     padding: 20,
-//     margin: 15,
-//     backgroundColor: '#CCCCCC',
-//   },
-//   row: {
-//     display: 'flex',
-//     flexDirection: 'row',
-//     justifyContent: 'space-around',
-//     alignItems: 'center',
-//     backgroundColor: '#B8B8B8',
-//     height: 40,
-//   },
-//   history: {
-//     padding: 10,
-//   },
-//   historyGraph: {
-//     height: 200,
-//     backgroundColor: '#B8B8B8'
-//   },
-
-// });
 
 export default Homescreen;
