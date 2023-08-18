@@ -158,12 +158,12 @@ const Homescreen = (props) => {
                 </Text>
               </View>
               <View>
-                <View className="rounded-xl flex-1 h-12 flex-row p-3 justify-around ml-5 mr-5 mb-2 items-center bg-themeGreen">
+                <TouchableOpacity className="rounded-xl flex-1 h-12 flex-row p-3 justify-around ml-5 mr-5 mb-2 items-center bg-themeGreen" onPress={navigation.navigate("PaymentHistory")}>
                   <Text className="text-themeWhite font-bold">
                     Payment History
                   </Text>
                   <Text className="text-themeWhite font-bold">98%</Text>
-                </View>
+                </TouchableOpacity>
                 <View className="rounded-xl flex-1 h-12 flex-row p-3 justify-around ml-5 mr-5 mb-2 items-center bg-themeGreen">
                   <Text className="text-themeWhite font-bold">
                     Credit Card Use
