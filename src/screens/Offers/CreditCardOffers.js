@@ -43,7 +43,7 @@ import {
             </View>
 
             {/* container for tabs and content */}
-            <View className="px-10">
+            <View className="px-5">
               {/* cc & loan tabs */}
               <View className="flex-row">
       
