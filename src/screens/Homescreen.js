@@ -6,15 +6,10 @@ import Auth from './Auth';
 import utils from '../../api/users/index';
 
 const Homescreen = (props) => {
+  const { session } = props
   const [user, setUser] = useState({})
   const navigation = useNavigation(null);
-  useEffect(() => {
 
-    (async function () {
-      const userData = await utils.GetUser()
-      if (userData) { setUser(userData) }
-    })()
-  }, [])
   return (
     <SafeAreaView className="flex-1 bg-themeLightBlue">
         <View>
