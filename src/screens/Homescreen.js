@@ -9,6 +9,7 @@ import { LineChart } from "react-native-chart-kit";
 
 const Homescreen = (props) => {
   const navigation = useNavigation(null);
+
  
   return (
         <SafeAreaView className="flex-1 min-h-screen min-w-screen bg-themeLightBlue">
@@ -115,7 +116,11 @@ const Homescreen = (props) => {
                       datasets: [
                         {
                           data: [
-                            350,200,400
+                            600,
+                            850,
+                            700,
+                            740,
+                            810
 
                           ]
                         }
