@@ -27,35 +27,10 @@ const IntakeForm = (props) => {
       email: email,
       password: password,
     })
-
-
+    
     if (error) Alert.alert(error.message)
 
   }
-
-
-  // const handleFormSubmit = async () => {
-  //   // You can handle the form data here
-    
-  //   await signUpWithEmail()
-
-  //   const formData = {
-  //     firstName,
-  //     lastName,
-  //     dob,
-  //     street,
-  //     city,
-  //     state,
-  //     zip,
-  //     phone,
-  //     ssn,
-  //     income,
-  //   };
-  //   console.log("Submitted Form:", formData);
-
-  //   // Navigate to the Home screen
-  //   navigation.navigate("ConfirmationScreen");
-  // };
 
   return (
     <View>
@@ -101,7 +76,7 @@ const IntakeForm = (props) => {
             value={dob}
             onChangeText={(text) => setDob(text)}
           />
-          {/* <Text className="text-base font-medium pl-2 text-themeNavyBlue">Current Address</Text>
+          <Text className="text-base font-medium pl-2 text-themeNavyBlue">Current Address</Text>
           <TextInput
             className="relative rounded-sm border border-gray-300 bg-white w-80 h-10 pl-2.5 mb-2"
             placeholder="Street"
@@ -150,7 +125,7 @@ const IntakeForm = (props) => {
             placeholder="Income"
             value={income}
             onChangeText={(text) => setIncome(text)}
-          /> */}
+          />
           <TouchableOpacity
             className="relative rounded-sm border bg-themeNavyBlue w-80 h-10 pl-2.5 mt-5 mb-2"
             title="Continue"
