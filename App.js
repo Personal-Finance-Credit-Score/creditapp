@@ -9,34 +9,25 @@ import { createMaterialBottomTabNavigator } from '@react-navigation/material-bot
 import Homescreen from './src/screens/Homescreen';
 import Login from './src/screens/Login';
 import SignUpScreen from './src/screens/SignupScreen';
-import IntakeForm from './src/screens/IntakeForm'
-import ConfirmationScreen from './src/screens/ConfirmationScreen'
-import LoadingScreen from './src/screens/LoadingScreen'
-import VerificationScreen from './src/screens/VerificationScreen'
+import IntakeForm from './src/screens/IntakeForm';
+import ConfirmationScreen from './src/screens/ConfirmationScreen';
+import LoadingScreen from './src/screens/LoadingScreen';
+import VerificationScreen from './src/screens/VerificationScreen';
 import CreditReport from './src/screens/CreditReport';
-import ComingSoonScreen from './src/screens/ComingSoonScreen'
+import ComingSoonScreen from './src/screens/ComingSoonScreen';
+import PaymentHistory from './src/screens/CreditFactors/PaymentHistory';
+import CreditCardUse from './src/screens/CreditFactors/CCUse';
+import DerogatoryMarks from './src/screens/CreditFactors/DerogatoryMarks';
+import CreditAge from './src/screens/CreditFactors/CreditAge';
+import HardInquiries from './src/screens/CreditFactors/HardInquiries';
+import CreditCardOffers from './src/screens/Offers/CreditCardOffers';
+import LoanOffers from "./src/screens/Offers/LoanOffers"
+
+import { supabase } from './lib/supabase'
+import { useState, useEffect } from 'react'
+import Auth from './src/screens/Auth';
 
 
-
-const Stack = createNativeStackNavigator();
-
-// function HomeScreen() {
-//   return (
-//     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-//       <Text>Home!</Text>
-//     </View>
-//   );
-// }
-
-// function SettingsScreen() {
-//   return (
-//     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-//       <Text>Settings!</Text>
-//     </View>
-//   );
-// }
-
-// const Tab = createBottomTabNavigator();
 const Tab = createMaterialBottomTabNavigator();
 
 function MyTabs() {
@@ -47,23 +38,26 @@ function MyTabs() {
       <Tab.Screen name="SignUp" component={SignUpScreen} options={{tabBarLabel:"SignUp"}} />
       <Tab.Screen name="IntakeForm" component={IntakeForm} options={{tabBarLabel:"Intake"}} />
       <Tab.Screen name="VerificationScreen" component={VerificationScreen} options={{tabBarLabel:"Verify"}}/>
-      <Tab.Screen name="ConfirmationScreen" component={ConfirmationScreen} options={{tabBarLabel:"Confirm"}} />
-      <Tab.Screen name="LoadingScreen" component={LoadingScreen} options={{tabBarLabel:"Load"}} />
       <Tab.Screen name="CreditReport" component={CreditReport} options={{tabBarLabel:"CR"}} />
-      <Tab.Screen name="ComingSoonScreen" component={ComingSoonScreen} options={{tabBarLabel:"Soon"}} />
+      <Tab.Screen name="PaymentHistory" component={PaymentHistory} options={{tabBarLabel:"Pay"}} />
+      <Tab.Screen name="CreditCardOffers" component={CreditCardOffers} options={{tabBarLabel:"OFF"}} />
     </Tab.Navigator>
   );
 }
 
 
 function App() {
+  const [session,setSession] = useState(null);
+
+  useEffect(() => {
+    supabase.auth.onAuthStateChange((event, session) => {
+      setSession(session)
+    })
+  }, [])  
   return (
    
     <NavigationContainer>
-    {/* <Stack.Navigator>
-      <Stack.Screen name="Homescreen" component={Homescreen} />
-      <Stack.Screen name="Nextscreen" component={Nextscreen} />
-    </Stack.Navigator> */}
+      {/* {!session ? <Auth/> : <MyTabs key={session.user.id} session={session} />} */}
     <MyTabs />
   </NavigationContainer>
   );
