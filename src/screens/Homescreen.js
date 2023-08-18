@@ -115,18 +115,15 @@ const Homescreen = (props) => {
                       datasets: [
                         {
                           data: [
-                            850,
-                            700,
-                            550,
-                            400,
-                            250,
-                            0
+                            350,200,400
+
                           ]
                         }
                       ]
                     }}
                     width={350} // from react-native
                     height={220}
+                    withInnerLines={false}
                     yAxisInterval={1} // optional, defaults to 1
                     chartConfig={{
                       backgroundColor: '#FFFFFF',
@@ -160,12 +157,12 @@ const Homescreen = (props) => {
                 </Text>
               </View>
               <View>
-                <View className="rounded-xl flex-1 h-12 flex-row p-3 justify-around ml-5 mr-5 mb-2 items-center bg-themeGreen">
+                <TouchableOpacity className="rounded-xl flex-1 h-12 flex-row p-3 justify-around ml-5 mr-5 mb-2 items-center bg-themeGreen" onPress={()=> {navigation.navigate("PaymentHistory")}}>
                   <Text className="text-themeWhite font-bold">
                     Payment History
                   </Text>
                   <Text className="text-themeWhite font-bold">98%</Text>
-                </View>
+                </TouchableOpacity>
                 <View className="rounded-xl flex-1 h-12 flex-row p-3 justify-around ml-5 mr-5 mb-2 items-center bg-themeGreen">
                   <Text className="text-themeWhite font-bold">
                     Credit Card Use
