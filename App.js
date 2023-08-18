@@ -40,13 +40,7 @@ function MyTabs() {
       <Tab.Screen name="VerificationScreen" component={VerificationScreen} options={{tabBarLabel:"Verify"}}/>
       <Tab.Screen name="CreditReport" component={CreditReport} options={{tabBarLabel:"CR"}} />
       <Tab.Screen name="PaymentHistory" component={PaymentHistory} options={{tabBarLabel:"Pay"}} />
-      <Tab.Screen name="CreditCardUse" component={CreditCardUse} options={{tabBarLabel:"CC"}} />
-      <Tab.Screen name="DerogatoryMarks" component={DerogatoryMarks} options={{tabBarLabel:"DM"}} />
-      <Tab.Screen name="CreditAge" component={CreditAge} options={{tabBarLabel:"CAge"}} />
-      <Tab.Screen name="HardInquiries" component={HardInquiries} options={{tabBarLabel:"HI"}} />
       <Tab.Screen name="CreditCardOffers" component={CreditCardOffers} options={{tabBarLabel:"OFF"}} />
-      <Tab.Screen name="LoanOffers" component={LoanOffers} options={{tabBarLabel: ''}} />
-
     </Tab.Navigator>
   );
 }
