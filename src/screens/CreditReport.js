@@ -92,13 +92,13 @@ const CreditReport = (props) => {
       <View className="flex flex-1 mb-16 min-w-screen min-h-screen bg-testBgGreen items-center text-center pt-30">
 
         <Text className="text-3xl font-bold text-themeNavyBlue">Credit Report</Text>
-        <Text className="text-2xl text-themeNavyBlue">Lorem Ipsum</Text>
+        <Text className="text-2xl text-themeNavyBlue">Ryan Le</Text>
         <Text className="text-5xl font-medium pt-2 text-themeNavyBlue">754</Text>
         <Text className="text-themeNavyBlue">Calculated using VantageScore 3.9</Text>
         <Text className="text-themeNavyBlue" >Provided by TransUnion</Text>
 
         <Text className="mt-5 text-themeNavyBlue">Choose a date</Text>
-        <View className="mt-2 mx-7">
+        <View className="mt-2 mx-7 z-10 left-0 p-2">
           <DropDownPicker
             items={items}
             value={value}
@@ -118,12 +118,20 @@ const CreditReport = (props) => {
         <Text className="text-themeBlue font-bold mt-5">Personal Information</Text>
 
         <View className="m-3 w-[300px] border border-themeBlue bg-themeBlue"></View>
-        <Text className="text-themeBlue">Names Reported</Text>
+        <View className="pb-10">
+        <Text className="text-center text-themeBlue">Names Reported</Text>
 
         {/* Might need this instead of gray text color    color: '#00000050' */}
-        <Text className="text-gray-500 pt-2 pb-5">Lorem Ipsum</Text>
-        <Text className="pb-20 text-themeNavyBlue">Employment Info</Text>
-        <Text className="pb-20 text-themeNavyBlue">Addresses Reported</Text>
+        <Text className="text-center text-gray-500 pt-2 pb-5">Ryan Le</Text>
+        </View>
+        <View className="pb-10">
+        <Text className="text-center text-themeNavyBlue">Employment Info</Text>
+        <Text className="text-gray-500 pt-2 pb-5">Lime Apple LLC</Text>
+        </View>
+        <View className="pb-10">
+        <Text className="text-center text-themeNavyBlue">Addresses Reported</Text>
+        <Text className="text-gray-500 pt-2 pb-5">10971 Franklin Lakes New Ryanborough, MS 32366</Text>
+        </View>
         <Text className="font-bold text-themeNavyBlue">Accounts</Text>
         <View className="m-3 w-[300px] border border-themeNavyBlue bg-themeNavyBlue"></View>
 

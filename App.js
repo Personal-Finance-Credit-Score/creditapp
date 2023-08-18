@@ -1,7 +1,7 @@
 // In App.js in a new project
 
 import * as React from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, LogBox } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -31,52 +31,6 @@ import MoreTab from './assets/MoreTab.png'
 import { supabase } from './lib/supabase'
 import { useState, useEffect } from 'react'
 import Auth from './src/screens/Auth';
-
-
-// const Tab = createMaterialBottomTabNavigator();
-
-// function MyTabs() {
-//   return (
-//     <Tab.Navigator>
-//       <Tab.Screen
-//         name="Homescreen"
-//         title="Home"
-//         component={Homescreen}
-//         options={{
-//           tabBarLabel: "Credit",
-
-//           tabBarIcon: () => {
-//             return <Image source={CreditTab} />;
-//           },
-//         }}
-//       />
-//       <Tab.Screen name="Login" component={Login} />
-//       <Tab.Screen name="SignUp" component={SignUpScreen} options={{tabBarLabel:"SignUp"}} />
-//       <Tab.Screen name="IntakeForm" component={IntakeForm} options={{tabBarLabel:"Intake"}} />
-//       <Tab.Screen name="VerificationScreen" component={VerificationScreen} options={{tabBarLabel:"Verify"}}/>
-//       <Tab.Screen name="CreditReport" component={CreditReport} options={{tabBarLabel:"CR"}} />
-//       <Tab.Screen name="PaymentHistory" component={PaymentHistory} options={{tabBarLabel:"Pay"}} />
-//       <Tab.Screen name="CreditCardOffers" component={CreditCardOffers} options={{tabBarLabel:"OFF"}} />
-//     </Tab.Navigator>
-//   );
-// }
-
-// function App() {
-//   const [session, setSession] = useState(null);
-
-//   useEffect(() => {
-//     supabase.auth.onAuthStateChange((event, session) => {
-//       setSession(session);
-//     });
-//   }, []);
-//   return (
-//     <NavigationContainer>
-//       {/* {!session ? <Auth/> : <MyTabs key={session.user.id} session={session} />} */}
-//       <MyTabs />
-//     </NavigationContainer>
-//   );
-
-// -----------------------------------------------------------------------------------------
 
 
 const AuthStack = createNativeStackNavigator();
@@ -145,7 +99,8 @@ function MyTabs({session}) {
       </Tab.Navigator>
   );
 }
-
+  LogBox.ignoreLogs(['Passing an inline function']);
+  LogBox.ignoreLogs(['No storage option exists to persist the session']);
   function App() {
     const [session, setSession] = useState(null);
 
@@ -155,7 +110,6 @@ function MyTabs({session}) {
       });
     }, []);
 
-    console.log("wooo session" + JSON.stringify(session))
     return (
       <NavigationContainer>
         {!session ? <AuthStackScreen /> : <MyTabs key={session.user.id} session={session} />}
