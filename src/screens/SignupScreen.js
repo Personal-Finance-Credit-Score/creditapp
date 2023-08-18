@@ -75,7 +75,7 @@ const SignupScreen = ({ creds, setCreds, setisOld }) => {
       {/* Page container */}
       {!showIntake 
         ?
-      <View >
+      <View className="mb-32">
         {/* useState if !showIntake  */}
 
         <Text className="w-screen max-w-md px-10 text-3xl font-bold text-themeNavyBlue">Create your account</Text>

@@ -54,7 +54,7 @@ const VerificationScreen = (props) => {
 
       <ScrollView>
         {/* container for the page */}
-        <View className="flex-1 items-center justify-center mt-10">
+        <View className="flex-1 items-center justify-center mt-10 mb-32">
           {/* container for the top half of the screen */}
           <View className="flex-1">
             <Text className="text-center text-3xl font-bold text-themeNavyBlue">
