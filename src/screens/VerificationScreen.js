@@ -38,7 +38,7 @@ const VerificationScreen = (props) => {
 
   const handleFormSubmit = () => {
     console.log("submitt " + numbers);
-    navigation.navigate("Homescreen");
+    navigation.navigate("ConfirmationScreen");
   };
 
   return (

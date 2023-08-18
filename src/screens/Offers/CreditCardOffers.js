@@ -37,13 +37,13 @@ import {
 
         <ScrollView>
           {/* container for the page */}
-          <View className="min-h-screen">
+          <View className="min-h-screen mb-32">
             <View>
               <Text className="font-bold text-themeNavyBlue text-[30px] ml-[25px] mb-3">Your Offers</Text>
             </View>
 
             {/* container for tabs and content */}
-            <View className="px-10">
+            <View className="px-5">
               {/* cc & loan tabs */}
               <View className="flex-row">
       

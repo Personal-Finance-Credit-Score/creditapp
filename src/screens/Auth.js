@@ -8,6 +8,7 @@ import { supabase } from '../../lib/supabase'
 
 const Auth = () => {
   const [isOld,setisOld]=useState(true)
+  const [goToVerify, setGoToVerify] = useState(false)
 
   return (
     <SafeAreaView>
@@ -16,7 +17,6 @@ const Auth = () => {
         <Login setisOld={setisOld}/>
         :
         <SignupScreen setisOld={setisOld}/>
-
         }
       </View>
     </SafeAreaView>
