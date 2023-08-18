@@ -108,6 +108,8 @@ const Homescreen = (props) => {
                   Next check: tomorrow
                 </Text>
               </View>
+
+              {/* total debt and credit usage titles */}
               <View className="rounded-t-xl ml-5 mr-5 flex-row justify-between bg-themeGreen ">
                 <View>
                   <Text className="text-xl ml-2 p-2 ">Total Debt: </Text>
@@ -119,6 +121,7 @@ const Homescreen = (props) => {
                 </View>
               </View>
 
+              {/* total debt and credit usage info */}
               <View className="rounded-b-xl ml-5 mr-5 flex-row bg-themeGreen justify-between p-4">
                 <View>
                   <Text className="text-xl p-2 font-bold">$5,000 </Text>
@@ -127,11 +130,24 @@ const Homescreen = (props) => {
                   <Text className="text-xl p-2 font-bold">21% </Text>
                 </View>
               </View>
+
+              {/* button to view credit report */}
               <View>
-                <Text className="text-themeNavyBlue text-3xl font-bold ml-5 mt-3">
+                <TouchableOpacity
+                  className="bg-themeNavyBlue justify-around align-center h-12 mr-[20px] ml-[20px] mt-2"
+                  onPress={() => navigation.navigate("CreditReport")}
+                >
+                  <Text className="text-themeWhite text-center">
+                    View Full Credit Report
+                  </Text>
+                </TouchableOpacity>
+              </View>
+              <View>
+                <Text className="text-themeNavyBlue text-3xl font-bold ml-5 mt-5">
                   Score History
                 </Text>
               </View>
+              
 
 
                {/* ------------------- LINE GRAPH ------------------- */}
@@ -159,7 +175,7 @@ const Homescreen = (props) => {
                         }
                       ]
                     }}
-                    width={350} // from react-native
+                    width={340} // from react-native
                     height={220}
                     withInnerLines={false}
                     yAxisInterval={1} // optional, defaults to 1
@@ -201,57 +217,48 @@ const Homescreen = (props) => {
                   </Text>
                   <Text className="text-themeWhite font-bold">98%</Text>
                 </TouchableOpacity>
-                <View className="rounded-xl flex-1 h-12 flex-row p-3 justify-around ml-5 mr-5 mb-2 items-center bg-themeGreen">
+                <TouchableOpacity className="rounded-xl flex-1 h-12 flex-row p-3 justify-around ml-5 mr-5 mb-2 items-center bg-themeGreen" onPress={()=> {navigation.navigate("CreditCardUse")}}>
                   <Text className="text-themeWhite font-bold">
                     Credit Card Use
                   </Text>
                   <Text className="text-themeWhite font-bold">20%</Text>
-                </View>
+                </TouchableOpacity>
               </View>
               <View className="flex-1 justify-center bg-themeLightBlue">
-                <View className="rounded-xl flex-1 h-12 flex-row p-3 justify-around ml-5 mr-5 mb-2 items-center bg-themeGreen">
+                <TouchableOpacity className="rounded-xl flex-1 h-12 flex-row p-3 justify-around ml-5 mr-5 mb-2 items-center bg-themeGreen" onPress={()=> {navigation.navigate("DerogatoryMarks")}}>
                   <Text className="text-themeWhite font-bold">
                     Derogatory Marks
                   </Text>
                   <Text className="font-bold text-themeWhite">0%</Text>
-                </View>
+                </TouchableOpacity>
                 <View className="flex-row">
-                  <View className="rounded-xl flex-1 flex-col p-3 justify-around ml-[25px] mr-[22px] mb-2 items-center h-[100px] w-[143px] bg-themeGreen">
+                  <TouchableOpacity className="rounded-xl flex-1 flex-col p-3 justify-around ml-[25px] mr-[22px] mb-2 items-center h-[100px] w-[143px] bg-themeGreen" onPress={()=> {navigation.navigate("CreditAge")}}>
                     <Text className="text-themeWhite font-bold mt-3">
                       Credit Age
                     </Text>
                     <Text className="text-themeWhite font-semibold mb-5">
                       5 yrs, 4 mos
                     </Text>
-                  </View>
-                  <View className="rounded-xl flex-1 flex-col p-3 justify-around ml-[22] mr-[25px] mb-2 items-center w-[143px] bg-themeGreen">
+                  </TouchableOpacity>
+                  <TouchableOpacity className="rounded-xl flex-1 flex-col p-3 justify-around ml-[22] mr-[25px] mb-2 items-center w-[143px] bg-themeGreen" onPress={()=> {navigation.navigate("CreditAge")}}>
                     <Text className="text-themeWhite font-bold mt-3">
                       Total Accounts
                     </Text>
                     <Text className="text-themeWhite font-semibold mb-5">
                       5
                     </Text>
-                  </View>
+                  </TouchableOpacity>
                 </View>
               </View>
-              <View className="rounded-xl flex-1 flex-col p-3 justify-around self-center mb-0 mt-0 items-center w-[143px] bg-themeGreen">
+              <TouchableOpacity className="rounded-xl flex-1 flex-col p-3 justify-around self-center mb-0 mt-0 items-center w-[143px] bg-themeGreen" onPress={()=> {navigation.navigate("HardInquiries")}}>
                 <Text className="text-themeWhite font-bold mt-3">
                   Hard Inquiries
                 </Text>
                 <Text className="text-themeWhite font-semibold mt-2 mb-5">
                   3
                 </Text>
-              </View>
-              <View>
-                <TouchableOpacity
-                  className="bg-themeNavyBlue justify-around align-center h-12 mr-[20px] ml-[20px] mt-[29px]"
-                  onPress={() => navigation.navigate("LoadingScreen")}
-                >
-                  <Text className="text-themeWhite text-center">
-                    View Full Credit Report
-                  </Text>
-                </TouchableOpacity>
-              </View>
+              </TouchableOpacity>
+              
             </View>
           </ScrollView>
         </SafeAreaView>

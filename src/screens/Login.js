@@ -31,7 +31,6 @@ const Login = ({ creds, setCreds, setisOld }) => {
     setLoading(false)
     // navigation.navigate("VerificationScreen")
 
-    
   }
 
   return (
