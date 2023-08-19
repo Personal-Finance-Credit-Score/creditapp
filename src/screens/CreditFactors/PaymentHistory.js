@@ -2,9 +2,7 @@ import {
   View,
   Text,
   TouchableOpacity,
-  StyleSheet,
   SafeAreaView,
-  TextInput,
   Image,
   ScrollView,
 } from "react-native";
@@ -76,7 +74,9 @@ const PaymentHistory = (props) => {
               navigation.navigate("DerogatoryMarks");
             }}
           >
-            <Text className="text-themeWhite text-center">Derogatory Marks</Text>
+            <Text className="text-themeWhite text-center">
+              Derogatory Marks
+            </Text>
           </TouchableOpacity>
 
           <TouchableOpacity
@@ -85,7 +85,9 @@ const PaymentHistory = (props) => {
               navigation.navigate("CreditAge");
             }}
           >
-            <Text className="text-themeWhite text-center">Total Account & Credit Age</Text>
+            <Text className="text-themeWhite text-center">
+              Total Account & Credit Age
+            </Text>
           </TouchableOpacity>
 
           <TouchableOpacity

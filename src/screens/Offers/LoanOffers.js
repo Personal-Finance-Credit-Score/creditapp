@@ -8,7 +8,6 @@ import {
 } from "react-native";
 
 import { useNavigation } from "@react-navigation/native";
-import Ava from "../../../assets/offer.png"
 import React, { useState } from "react";
 import Avatar from "../../../assets/Avatar.png";
 import Logo from "../../../assets/riseLogo.png";
@@ -111,10 +110,7 @@ const LoanOffers = (props) => {
               <View className="border border-gray-500 mb-3 w-80 "></View>
             </View>
 
-
-            {/* ----------------------- UPDATE BELOW ----------------------- */}
               {/* card tabs */}
-              
                 <View className="flex-row justify-between mt-5 text-gray-500 mb-1 px-5">
                   <TouchableOpacity className={`${suggested} pb-2`} onPress={() => {
                     setLowAPR("")

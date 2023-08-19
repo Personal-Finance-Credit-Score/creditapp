@@ -26,13 +26,4 @@ const ComingSoonScreen = (props) => {
   );
 };
 
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: '#64B4A1',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   }
-// });
-
 export default ComingSoonScreen;
