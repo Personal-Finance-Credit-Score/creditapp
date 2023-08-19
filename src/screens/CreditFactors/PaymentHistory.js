@@ -99,8 +99,6 @@ const PaymentHistory = (props) => {
         </View>
       </ScrollView>
 
-      {/* TODO: Need another navbar for each credit factor */}
-
       <ScrollView>
         {/* container for the page */}
         <View className="flex flex-1 w-screen mx-auto px-8 max-w-md bg-testBgGreen pt-5 mb-32">

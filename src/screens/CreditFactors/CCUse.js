@@ -47,7 +47,7 @@ import {
         {/* horizontal nav bar */}
         <ScrollView
           horizontal
-          className="h-28"
+          className="h-28 mx-auto"
           style={{ android: { scrollbars: "none" } }}
           showsHorizontalScrollIndicator={false}
         >
@@ -101,7 +101,7 @@ import {
   
         <ScrollView>
           {/* container for the page */}
-          <View className="flex flex-1 w-screen px-8 max-w-md bg-testBgGreen pt-5 mb-32">
+          <View className="flex flex-1 w-screen mx-auto px-8 max-w-md bg-testBgGreen pt-5 mb-32">
             <View className="w-full">
               <Text className="text-3xl text-themeNavyBlue text-left mt-3">
                 Credit Card Use
