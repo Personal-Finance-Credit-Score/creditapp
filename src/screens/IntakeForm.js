@@ -3,10 +3,10 @@ import { useNavigation } from "@react-navigation/native";
 import { SafeAreaView, TextInput, Button, ScrollView } from "react-native";
 import React, { useState } from "react";
 import Avatar from "../../assets/Avatar.png";
-import { supabase } from '../../lib/supabase'
+import { supabase } from "../../lib/supabase";
 
 const IntakeForm = (props) => {
-  const { email, password} = props
+  const { email, password } = props;
   const navigation = useNavigation();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -18,28 +18,27 @@ const IntakeForm = (props) => {
   const [phone, setPhone] = useState("");
   const [ssn, setSsn] = useState("");
   const [income, setIncome] = useState("");
-  const [loading, setLoading] = useState(false)
-
+  const [loading, setLoading] = useState(false);
 
   async function signUpWithEmail() {
-    setLoading(true)
+    setLoading(true);
     const { data, error } = await supabase.auth.signUp({
       email: email,
       password: password,
-    })
+    });
 
-    if (error) Alert.alert(error.message)
-
+    if (error) Alert.alert(error.message);
   }
 
   return (
     <View>
       {/* Navbar without back arrow */}
       <ScrollView>
-
         {/* Page container */}
         <View className="pt-10 flex flex-1 mx-auto min-w-screen min-h-screen items-right text-center pt-30 mb-52">
-          <Text className="text-3xl font-bold text-themeNavyBlue">Enter your information</Text>
+          <Text className="text-3xl font-bold text-themeNavyBlue">
+            Enter your information
+          </Text>
           <Text></Text>
           <Text className="text-2xl font-semibold text-themeNavyBlue">
             This information will be used to create your account.
@@ -55,28 +54,36 @@ const IntakeForm = (props) => {
             We’ll never sell your personal info.
           </Text>
           <Text></Text>
-          <Text className="text-base font-medium pl-2 text-themeNavyBlue">First Name</Text>
+          <Text className="text-base font-medium pl-2 text-themeNavyBlue">
+            First Name
+          </Text>
           <TextInput
             className="relative rounded-sm border border-gray-300 bg-white w-80 h-10 pl-2.5 mb-2"
             placeholder="First Name"
             value={firstName}
             onChangeText={(text) => setFirstName(text)}
           />
-          <Text className="text-base font-medium pl-2 text-themeNavyBlue">Last Name</Text>
+          <Text className="text-base font-medium pl-2 text-themeNavyBlue">
+            Last Name
+          </Text>
           <TextInput
             className="relative rounded-sm border border-gray-300 bg-white w-80 h-10 pl-2.5 mb-2"
             placeholder="Last Name"
             value={lastName}
             onChangeText={(text) => setLastName(text)}
           />
-          <Text className="text-base font-medium pl-2 text-themeNavyBlue">Date Of Birth</Text>
+          <Text className="text-base font-medium pl-2 text-themeNavyBlue">
+            Date Of Birth
+          </Text>
           <TextInput
             className="relative rounded-sm border border-gray-300 bg-white w-80 h-10 pl-2.5 mb-2"
             placeholder="MM/DD/YYYY"
             value={dob}
             onChangeText={(text) => setDob(text)}
           />
-          <Text className="text-base font-medium pl-2 text-themeNavyBlue">Current Address</Text>
+          <Text className="text-base font-medium pl-2 text-themeNavyBlue">
+            Current Address
+          </Text>
           <TextInput
             className="relative rounded-sm border border-gray-300 bg-white w-80 h-10 pl-2.5 mb-2"
             placeholder="Street"
@@ -103,7 +110,9 @@ const IntakeForm = (props) => {
               onChangeText={(text) => setZip(text)}
             />
           </View>
-          <Text className="text-base font-medium pl-2 text-themeNavyBlue">Phone</Text>
+          <Text className="text-base font-medium pl-2 text-themeNavyBlue">
+            Phone
+          </Text>
           <TextInput
             className="relative rounded-sm border border-gray-300 bg-white w-80 h-10 pl-2.5 mb-2"
             placeholder="Phone"
@@ -119,7 +128,9 @@ const IntakeForm = (props) => {
             value={ssn}
             onChangeText={(text) => setSsn(text)}
           />
-          <Text className="text-base font-medium pl-2 text-themeNavyBlue">Income</Text>
+          <Text className="text-base font-medium pl-2 text-themeNavyBlue">
+            Income
+          </Text>
           <TextInput
             className="relative rounded-sm border border-gray-300 bg-white w-80 h-10 pl-2.5 mb-2"
             placeholder="Income"

@@ -27,20 +27,4 @@ const ConfirmationScreen = (props) => {
   );
 };
 
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: '#64B4A1',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-//   input: {
-//     borderWidth: 1,
-//     borderColor: 'gray',
-//     width: '80%',
-//     padding: 10,
-//     marginVertical: 10,
-//   },
-// });
-
 export default ConfirmationScreen;
