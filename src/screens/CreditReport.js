@@ -62,7 +62,7 @@ const CreditReport = (props) => {
 
 
   return (
-    <SafeAreaView className="flex-1 bg-themeLightBlue">
+    <SafeAreaView className="flex-1 min-w-screen min-h-screen bg-themeLightBlue">
 
         {/* Navbar, should be outside of scroll view so it stays at top of page on scroll */}
         <View className="h-1/8 pt-10 mb-1">
@@ -89,7 +89,7 @@ const CreditReport = (props) => {
       
 
       {/* container for the page */}
-      <View className="flex flex-1 mb-16 min-w-screen min-h-screen bg-testBgGreen items-center text-center pt-30">
+      <View className="flex flex-1 mb-16 mx-auto items-center text-center pt-30 max-w-md">
 
         <Text className="text-3xl font-bold text-themeNavyBlue">Credit Report</Text>
         <Text className="text-2xl text-themeNavyBlue">Ryan Le</Text>
@@ -135,7 +135,6 @@ const CreditReport = (props) => {
         <Text className="font-bold text-themeNavyBlue">Accounts</Text>
         <View className="m-3 w-[300px] border border-themeNavyBlue bg-themeNavyBlue"></View>
 
-        {/* Accounts Section */}
         {/* Accounts Section */}
         <View className="items-center">
             {/* section 1 */}

@@ -220,7 +220,6 @@ const [isLoading, setIsLoading] = useState(true);
                   </View>
                   <LineChart
                     data={{
-                      // labels: ["Mar", "Apr", "May", "Jun", "Jul", "Aug"],
                       yAxisLabel: "asdf",
                       datasets: [
                         {
