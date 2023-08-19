@@ -16,7 +16,7 @@ const Auth = () => {
         {isOld?
         <Login setisOld={setisOld}/>
         :
-        <SignupScreen setisOld={setisOld}/>
+        <SignupScreen isOld={isOld} setisOld={setisOld}/>
         }
       </View>
     </SafeAreaView>
