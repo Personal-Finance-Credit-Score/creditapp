@@ -8,8 +8,8 @@ Welcome to Rise! This mobile application was developed during a hackathon focuse
 
 <img src="./assets/Readme-images/team.jpg">
 This project was made possible by a talented team of UX designers, Software developers, and data engineers who worked over a three day sprint to bring the product to life!
-![App Screenshot](../../creditapp/creditapp/assets/Readme-images/slide1.jpg)
 
+![App Screenshot](../../creditapp/creditapp/assets/Readme-images/slide1.jpg)
 ## Table of Contents
 
 - [Introduction](#introduction)
