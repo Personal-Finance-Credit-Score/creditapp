@@ -19,7 +19,7 @@ const VerificationScreen = (props) => {
   const textInputs = Array(6).fill(null);
 
   // can get what user enters as verification code here:
-  const [numbers, setNumbers] = useState(Array(6).fill(''));
+  const [numbers, setNumbers] = useState(Array(6).fill(""));
 
   // when user clicks on "resend"
   const handleSendAgain = () => {
@@ -43,7 +43,6 @@ const VerificationScreen = (props) => {
 
   return (
     <SafeAreaView className="flex-1 min-h-screen min-w-screen bg-themeLightBlue">
-      
       {/* Navbar without back arrow */}
       <View className="flex h-1/8 pt-10 mb-1">
         <View className="mt-6 mb-2 ml-4 ">
@@ -70,7 +69,6 @@ const VerificationScreen = (props) => {
 
             {/* verification code input boxes */}
             <View className="flex-row justify-between mt-12 px-3">
-
               {textInputs.map((_, index) => (
                 <TextInput
                   className="flex-row border text-3xl w-12 py-2 text-center rounded border-themeNavyBlue"
@@ -80,7 +78,6 @@ const VerificationScreen = (props) => {
                   ref={(input) => (textInputs[index] = input)}
                 />
               ))}
-
             </View>
           </View>
 
@@ -107,42 +104,5 @@ const VerificationScreen = (props) => {
     </SafeAreaView>
   );
 };
-
-// const styles = StyleSheet.create({
-//   container: {
-//     display: 'flex',
-//     flex: 1,
-//     backgroundColor: '#64B4A1',
-//     alignItems: 'center',
-//     textAlign: 'center',
-//     justifyContent: 'center',
-//   },
-//   inputBox: {
-//     width: 150,
-//     padding: 5,
-//     borderColor: 'gray',
-//     borderWidth: 1,
-//   },
-//   numContainer: {
-//     borderWidth: 1,
-//     borderColor: 'gray',
-//     width: '75%',
-//     height: '25%',
-//     padding: 10,
-//     marginVertical: 10,
-//   },
-//   submitBtn: {
-//     width: 100,
-//     padding: "5px",
-//     backgroundColor: "gray",
-//     color: 'white',
-//   },
-//   sendAgainBtn: {
-//     width: "30vw",
-//     padding: "5px",
-//     backgroundColor: "white",
-//     color: 'black',
-//   }
-// });
 
 export default VerificationScreen;
