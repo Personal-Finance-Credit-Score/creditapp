@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Rise</title>
 </head>
 <body>
 	<h1>Welcome to Rise!</h1> 
