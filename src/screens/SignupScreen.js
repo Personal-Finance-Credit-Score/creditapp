@@ -9,27 +9,13 @@ import { supabase } from '../../lib/supabase'
 import IntakeForm from './IntakeForm'
 
 
-const SignupScreen = ({ creds, setCreds, setisOld }) => {
+const SignupScreen = ({ creds, setCreds, setisOld, isOld }) => {
   const navigation = useNavigation();
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [loading, setLoading] = useState(false)
   const [showIntake,setShowIntake] = useState(false)
-
-  // async function signUpWithEmail() {
-  //   setLoading(true)
-  //   const { data, error } = await supabase.auth.signUp({
-  //     email: email,
-  //     password: password,
-  //   })
-  //   console.log(user)
-
-  //   if (error) Alert.alert(error.message)
-
-  //   setLoading(false)
-  //   // navigation.navigate("VerificationScreen")
-  // }
 
   function handleSignUp()  {
     let show = true;
@@ -57,7 +43,14 @@ const SignupScreen = ({ creds, setCreds, setisOld }) => {
         <View className="flex-row mt-6 mb-5 justify-between ml-4 ">
           <TouchableOpacity
             className="mt-2"
-            onPress={() => navigation.goBack()}
+            onPress={() => {
+              if (!isOld && !showIntake) {
+                setisOld(true);
+              } else {
+                setShowIntake(false);
+              }
+            }}
+            // onPress={() => navigation.goBack()}
             accessible={true}
             accessibilityLabel="Back"
             accessibilityHint="Navigates to the previous screen"
