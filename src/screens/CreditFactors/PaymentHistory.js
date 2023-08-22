@@ -2,9 +2,7 @@ import {
   View,
   Text,
   TouchableOpacity,
-  StyleSheet,
   SafeAreaView,
-  TextInput,
   Image,
   ScrollView,
 } from "react-native";
@@ -47,7 +45,7 @@ const PaymentHistory = (props) => {
       {/* horizontal nav bar */}
       <ScrollView
         horizontal
-        className="h-28"
+        className="h-28 mx-auto"
         style={{ android: { scrollbars: "none" } }}
         showsHorizontalScrollIndicator={false}
       >
@@ -76,7 +74,9 @@ const PaymentHistory = (props) => {
               navigation.navigate("DerogatoryMarks");
             }}
           >
-            <Text className="text-themeWhite text-center">Derogatory Marks</Text>
+            <Text className="text-themeWhite text-center">
+              Derogatory Marks
+            </Text>
           </TouchableOpacity>
 
           <TouchableOpacity
@@ -85,7 +85,9 @@ const PaymentHistory = (props) => {
               navigation.navigate("CreditAge");
             }}
           >
-            <Text className="text-themeWhite text-center">Total Account & Credit Age</Text>
+            <Text className="text-themeWhite text-center">
+              Total Account & Credit Age
+            </Text>
           </TouchableOpacity>
 
           <TouchableOpacity
@@ -99,11 +101,9 @@ const PaymentHistory = (props) => {
         </View>
       </ScrollView>
 
-      {/* TODO: Need another navbar for each credit factor */}
-
       <ScrollView>
         {/* container for the page */}
-        <View className="flex flex-1 w-screen px-8 max-w-md bg-testBgGreen pt-5 mb-32">
+        <View className="flex flex-1 w-screen mx-auto px-8 max-w-md bg-testBgGreen pt-5 mb-32">
           <View className="w-full">
             <Text className="text-3xl text-themeNavyBlue text-left mt-3">
               Payment History

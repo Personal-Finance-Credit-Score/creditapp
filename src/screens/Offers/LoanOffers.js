@@ -8,7 +8,6 @@ import {
 } from "react-native";
 
 import { useNavigation } from "@react-navigation/native";
-import Ava from "../../../assets/offer.png"
 import React, { useState } from "react";
 import Avatar from "../../../assets/Avatar.png";
 import Logo from "../../../assets/riseLogo.png";
@@ -87,20 +86,20 @@ const LoanOffers = (props) => {
             </View>
 
             {/* slider section */}
-            <View className="mt-5 items-center px-4">
+            <View className="mt-5 items-center px-4 max-w-sm mx-auto text-center">
                 
               <Text className="font-bold text-xl text-themeNavyBlue">You could borrow up to $10,000*</Text>
               <Text className="text-gray-500 mt-2">*Based on your annual income of $150,000</Text>
               <View className="border border-gray-500 my-3 w-full mx-5"></View>
               <Text className="text-themeNavyBlue text-lg font-medium">Loan amount $1,000</Text>
               <View className="border border-gray-500 my-3 w-60 "></View>
-              <View className="flex-row justify-between w-full px-4">
+              <View className="flex-row justify-between w-full mx-auto px-4">
                 <Text className="text-themeNavyBlue">$100</Text>
                 <Text className="text-themeNavyBlue">$10,000</Text>
               </View>
 
               <View className="border border-gray-500 mt-3 w-80 "></View>
-              <View className="flex-row justify-around w-full">
+              <View className="flex-row justify-around mx-auto w-full">
                 
                   <Text className="pt-1 text-lg">Up to $98/mo</Text>
 
@@ -111,10 +110,7 @@ const LoanOffers = (props) => {
               <View className="border border-gray-500 mb-3 w-80 "></View>
             </View>
 
-
-            {/* ----------------------- UPDATE BELOW ----------------------- */}
               {/* card tabs */}
-              
                 <View className="flex-row justify-between mt-5 text-gray-500 mb-1 px-5">
                   <TouchableOpacity className={`${suggested} pb-2`} onPress={() => {
                     setLowAPR("")
